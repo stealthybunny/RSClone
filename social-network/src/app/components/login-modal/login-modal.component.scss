@@ -1,0 +1,51 @@
+.login_modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: #a349a3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_modal__form {
+  width: 450px;
+  height: 400px;
+  border-radius: 16px;
+  border: none;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login_modal__headline {
+  display: flex;
+  align-self: center;
+  color: #3897f1;
+  font-weight: bold;
+}
+
+.input__wrapper {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  height: 54px;
+}
+
+.login_input {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  height: 54px;
+  border-radius: 10px;
+  border: 1px solid #dadada;
+}
+
+.submit_button {
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #3897f1;
+}
