@@ -30,17 +30,16 @@ export class LoginServiceService {
   }
 
   getYourPage(id: string, token: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer: ${token}`
-    })
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer: ${token}`)
     console.log(headers)
-    return this.http.get<any>('http://localhost:5000/users/' + id, {headers})
+    return this.http.get<any>('http://localhost:5000/users/' + id, {'headers': headers})
       .pipe(
         tap(user => console.log(user))
       )
   }
 
-  
+
 
   private errorHandler(error: HttpErrorResponse) {
     this.errorService.handle(error.message)
