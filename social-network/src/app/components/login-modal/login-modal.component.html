@@ -3,34 +3,42 @@ class="login_modal"
 
 >
 
-
-<form 
-[formGroup]="form" (ngSubmit)="submit()"
-class="login_modal__form"
->
-<h2 class="login_modal__headline">Вход</h2>
-    <input
-    type="text"
-    id="login"
-    class="login_input"
-    placeholder="Введите логин"
-    required
-    formControlName="userName"
-    >
-    <input 
-    type="password"
-    id="password"
-    class="login_input"
-    placeholder="Введите пароль"
-    required
-    formControlName="password"
-    >
-  <button
-  type="submit"
-  class="login_input submit_button"
+<div class="login_modal__wrapper">
+  <form 
+  [formGroup]="form" (ngSubmit)="submit()"
+  class="login_modal__form"
   >
-  Подтвердить
-</button>
-</form>
+  <h2 class="login_modal__headline">Вход</h2>
+      <input
+      type="text"
+      id="login"
+      class="login_input"
+      placeholder="Введите логин"
+      required
+      formControlName="userName"
+      >
+      <input 
+      type="password"
+      id="password"
+      class="login_input"
+      placeholder="Введите пароль"
+      required
+      formControlName="password"
+      >
+    <button
+    type="submit"
+    class="login_input submit_button"
+    >
+    Войти
+  </button>
+  </form>
+  <p class="change_modal__text">Нет аккаунта? <span
+    class="auth__change_modal"
+    routerLink="/auth/register"
+    
+    >Регистрация</span></p>
+</div>
+
+
 
 </div>

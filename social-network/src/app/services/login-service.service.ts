@@ -1,26 +1,50 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { ILogin } from '../models/types';
-import { catchError, Observable, of } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http'
+import { ILogin, IToken } from '../models/types';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
-  errorMessage: any
+  errorMessage: any;
 
-  constructor(private http: HttpClient) {
-
+  constructor(
+    private http: HttpClient,
+    private errorService: ErrorService,
+    ) {
   }
 
-  login(loginInfo: ILogin): Observable<ILogin> {
-    return this.http.post<ILogin>('http://localhost:5000/auth/login', loginInfo)
+  login(loginInfo: ILogin): Observable<IToken> {
+    console.log('logind_1')
+    return this.http.post<IToken>('http://localhost:5000/auth/login', loginInfo)
+    .pipe(
+      tap(resp => {
+          const logInfo: IToken = resp;
+          window.localStorage.setItem('RSClone-socnetwork', JSON.stringify(logInfo));
+          window.location.assign('');
+      }),
+      catchError(this.errorHandler.bind(this))
+    )
+  }
+
+  getYourPage(id: string, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer: ${token}`
+    })
+    console.log(headers)
+    return this.http.get<any>('http://localhost:5000/users/' + id, {headers})
       .pipe(
-        catchError((error: any, caught: Observable<any>): Observable<any> => {
-          this.errorMessage = error.message;
-          console.error('Erorr!', error)
-          return of();
-        })
-      )  
+        tap(user => console.log(user))
+      )
+  }
+
+  
+
+  private errorHandler(error: HttpErrorResponse) {
+    this.errorService.handle(error.message)
+    return throwError(() => error.message);
+
   }
 }
