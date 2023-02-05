@@ -7,7 +7,9 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
+
 export class MainPageComponent implements OnInit {
+  public userData: any;
   constructor(
     private loginService: LoginServiceService
   ) {
@@ -16,7 +18,7 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     if (window.localStorage.getItem('RSClone-socnetwork')) {
       const userLofinInfo: IToken = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string);
-      this.loginService.getYourPage(userLofinInfo._id, userLofinInfo.token).subscribe()
+      this.loginService.getYourPage(userLofinInfo._id, userLofinInfo.token).subscribe(userdata => this.userData = userdata)
     } else {
       window.location.assign('/auth/login')
     }

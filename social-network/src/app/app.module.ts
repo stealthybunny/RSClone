@@ -10,6 +10,7 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginServiceService } from './services/login-service.service';
+import { LoginErrorComponent } from './components/login-error/login-error.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginServiceService } from './services/login-service.service';
     MainPageComponent,
     NotFoundComponent,
     LoginModalComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    LoginErrorComponent
   ],
   imports: [
     BrowserModule,

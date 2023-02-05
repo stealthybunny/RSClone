@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { pipe } from 'rxjs';
 import { ILogin } from 'src/app/models/types';
+import { ErrorService } from 'src/app/services/error.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
@@ -21,7 +22,10 @@ export class LoginModalComponent implements OnInit{
     ])
   })
 
-  constructor(private loginService: LoginServiceService) {
+  constructor(
+    private loginService: LoginServiceService,
+    public errorService: ErrorService
+    ) {
 
   }
 

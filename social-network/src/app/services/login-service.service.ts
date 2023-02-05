@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http'
-import { ILogin, IToken } from '../models/types';
+import { ILogin, IRegister, IToken } from '../models/types';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { ErrorService } from './error.service';
 
@@ -26,12 +26,25 @@ export class LoginServiceService {
           window.location.assign('');
       }),
       catchError(this.errorHandler.bind(this))
-    )
+    ) 
+  }
+
+  register(registerInfo: IRegister): Observable<any> {
+    console.log('registration')
+    return this.http.post<IToken>('http://localhost:5000/auth/registration', registerInfo)
+      .pipe(
+        tap(resp => {
+          const logInfo: any = resp;
+          window.localStorage.setItem('RSClone-socnetwork', JSON.stringify(logInfo));
+          window.location.assign('');
+      }),
+      catchError(this.errorHandler.bind(this))
+      )
   }
 
   getYourPage(id: string, token: string): Observable<any> {
     const headers = new HttpHeaders()
-      .set('Authorization', `Bearer: ${token}`)
+      .set('Authorization', `Bearer ${token}`)
     console.log(headers)
     return this.http.get<any>('http://localhost:5000/users/' + id, {'headers': headers})
       .pipe(
@@ -43,6 +56,7 @@ export class LoginServiceService {
 
   private errorHandler(error: HttpErrorResponse) {
     this.errorService.handle(error.message)
+    console.log('Error occuerd!!!')
     return throwError(() => error.message);
 
   }

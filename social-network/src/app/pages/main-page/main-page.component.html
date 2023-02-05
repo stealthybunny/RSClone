@@ -3,3 +3,15 @@
 routerLink="/auth/login"
 
 >To Login</button>
+<button 
+(click)="ngOnInit()"
+>
+  DownloadUser
+</button>
+
+<div>
+  <p>user name:  <span>{{userData.name}}</span></p>
+  <p>user photo: </p>
+  <img [src]="'http://localhost:5000/' + userData.avatar.imgLink" alt="">
+
+</div>

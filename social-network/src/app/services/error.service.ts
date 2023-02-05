@@ -8,7 +8,7 @@ export class ErrorService {
   error$ = new Subject<string>();
 
   handle(message: string) {
-    this.error$.next(message)
+    this.error$.next('Неверный логин или пароль!')
   }
 
   clear() {

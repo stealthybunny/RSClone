@@ -10,6 +10,7 @@ class="login_modal"
   >
   <h2 class="login_modal__headline">Вход</h2>
       <input
+      (focus)="errorService.clear()"
       type="text"
       id="login"
       class="login_input"
@@ -18,6 +19,7 @@ class="login_modal"
       formControlName="userName"
       >
       <input 
+      (focus)="errorService.clear()"
       type="password"
       id="password"
       class="login_input"
@@ -32,10 +34,10 @@ class="login_modal"
     Войти
   </button>
   </form>
+  <app-login-error></app-login-error>
   <p class="change_modal__text">Нет аккаунта? <span
     class="auth__change_modal"
-    routerLink="/auth/register"
-    
+    routerLink="/auth/registration"
     >Регистрация</span></p>
 </div>
 

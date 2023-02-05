@@ -5,6 +5,7 @@ class="register_modal"
 
 <div class="register_modal__wrapper">
   <form 
+  [formGroup]="form" (ngSubmit)="register()"
   class="register_modal__form"
   >
   <h2 class="register_modal__headline">Регистрация</h2>
@@ -22,7 +23,7 @@ class="register_modal"
       class="register_input"
       placeholder="Введите логин"
       required
-      formControlName="userName"
+      formControlName="username"
       >
       <input 
       type="password"
