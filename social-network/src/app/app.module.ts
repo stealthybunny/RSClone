@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginServiceService } from './services/login-service.service';
 import { LoginErrorComponent } from './components/login-error/login-error.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginErrorComponent } from './components/login-error/login-error.compon
     NotFoundComponent,
     LoginModalComponent,
     RegisterModalComponent,
-    LoginErrorComponent
+    LoginErrorComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
