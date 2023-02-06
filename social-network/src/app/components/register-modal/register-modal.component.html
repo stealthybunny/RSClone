@@ -1,0 +1,53 @@
+<div 
+class="register_modal"
+
+>
+
+<div class="register_modal__wrapper">
+  <form 
+  [formGroup]="form" (ngSubmit)="register()"
+  class="register_modal__form"
+  >
+  <h2 class="register_modal__headline">Регистрация</h2>
+      <input
+      type="text"
+      id="name"
+      class="register_input"
+      placeholder="Введите ваше имя"
+      required
+      formControlName="name"
+      >
+      <input 
+      type="text"
+      id="login"
+      class="register_input"
+      placeholder="Введите логин"
+      required
+      formControlName="username"
+      >
+      <input 
+      type="password"
+      id="password"
+      class="register_input"
+      placeholder="Введите пароль"
+      required
+      formControlName="password"
+      >
+    <button
+    type="submit"
+    class="register_input register_submit_button"
+    >
+    Зарегестироваться
+  </button>
+  </form>
+  <p class="change_modal__text">Уже зарегестрированы? <span
+    class="auth__change_modal"
+    routerLink="/auth/login"
+    
+    >Вход</span></p>
+</div>
+
+
+
+</div>
+
