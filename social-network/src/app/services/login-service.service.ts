@@ -9,6 +9,9 @@ import { ErrorService } from './error.service';
 })
 export class LoginServiceService {
   errorMessage: any;
+  userData: any;
+  userAvatar: string | undefined;
+  userGallery: string[] | string | undefined;
 
   constructor(
     private http: HttpClient,
@@ -17,7 +20,6 @@ export class LoginServiceService {
   }
 
   login(loginInfo: ILogin): Observable<IToken> {
-    console.log('logind_1')
     return this.http.post<IToken>('http://localhost:5000/auth/login', loginInfo)
     .pipe(
       tap(resp => {
@@ -30,7 +32,6 @@ export class LoginServiceService {
   }
 
   register(registerInfo: IRegister): Observable<any> {
-    console.log('registration')
     return this.http.post<IToken>('http://localhost:5000/auth/registration', registerInfo)
       .pipe(
         tap(resp => {
@@ -50,6 +51,40 @@ export class LoginServiceService {
       .pipe(
         tap(user => console.log(user))
       )
+  }
+
+  getUsers(token: string): Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`)
+    return this.http.get<any>('http://localhost:5000/users', {'headers': headers})
+  }
+
+  getPageData() {
+    let userID: string;
+    if (window.localStorage.getItem('RSClone-socnetwork')) {
+      const userLofinInfo: IToken = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string);
+      if (window.location.pathname === '/') {
+        userID = userLofinInfo._id
+      } else {
+        userID = window.location.pathname //?
+      }
+
+        this.getYourPage(userLofinInfo._id, userLofinInfo.token).subscribe(userdata => {
+        this.userData = userdata;
+        if (this.userData.avatar) {
+          this.userAvatar = `http://localhost:5000/${this.userData.avatar.imgLink}`;
+        } else {
+          this.userAvatar = `https://www.oseyo.co.uk/wp-content/uploads/2020/05/empty-profile-picture-png-2-2.png`;
+        }
+        this.userGallery = userdata.gallery;
+        if (!this.userGallery?.length) {
+          this.userGallery = 'Добавте фото в свою галлерею'
+        }
+      })
+    } else {
+      window.location.assign('/auth/login');
+    }
+
   }
 
 

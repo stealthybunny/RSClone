@@ -1,4 +1,6 @@
-<header class="app__header">
+<header class="app__header"
+
+>
   <div class="header__logo"
   routerLink="">
     Общественная <span class="header__logo_pink">сеть</span>
@@ -12,6 +14,13 @@
 
     >
   </div>
-<img
- [src]="'http://localhost:5000/' + userData.avatar.imgLink" alt="" class="header_user__menu">
+  <div class="img__menu">
+    <img
+    [src]="loginService.userAvatar" alt="avatar"
+    class="header_user__menu"
+    (click)="headerModalService.open()"
+    >
+    <app-header-modal *ngIf="headerModalService.isVisible$ | async"></app-header-modal>
+</div>
+
 </header>

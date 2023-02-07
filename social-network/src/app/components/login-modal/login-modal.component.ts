@@ -41,6 +41,7 @@ export class LoginModalComponent implements OnInit{
 
   ngOnInit(): void {
 
+
   }
 
 }
