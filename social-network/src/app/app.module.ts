@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginServiceService } from './services/login-service.service';
 import { LoginErrorComponent } from './components/login-error/login-error.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ChatListComponent } from './components/chats/chat-list/chat-list.component';
+import { ChatComponent } from './components/chats/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HeaderComponent } from './components/header/header.component';
     LoginModalComponent,
     RegisterModalComponent,
     LoginErrorComponent,
-    HeaderComponent
+    HeaderComponent,
+    ChatListComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,6 @@
+import { ChatsResolver } from './resolvers/chats.resolver';
+import { ChatComponent } from './components/chats/chat/chat.component';
+import { ChatListComponent } from './components/chats/chat-list/chat-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
@@ -6,14 +9,20 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
-  {path: '', component: MainPageComponent},
-  {path: 'auth/login', component: LoginModalComponent},
-  {path: 'auth/registration', component: RegisterModalComponent},
-  {path: '**', component: NotFoundComponent}
+  { path: '', component: MainPageComponent },
+  { path: 'auth/login', component: LoginModalComponent },
+  { path: 'auth/registration', component: RegisterModalComponent },
+  { path: 'chats', component: ChatListComponent },
+  {
+    path: 'chats/:id',
+    component: ChatComponent,
+    resolve: { data: ChatsResolver },
+  },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

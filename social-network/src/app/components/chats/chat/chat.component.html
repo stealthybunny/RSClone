@@ -1,0 +1,6 @@
+<div class="chat-container">
+  <div class="chat-id">{{chat._id}}</div>
+  <ul class="massage-list">
+    <li class="message" *ngFor="let message of chat.messages">{{message.text}}</li>
+  </ul>
+</div>
