@@ -1,4 +1,4 @@
-import { IChat } from './../models/types';
+import { IChat, IMessageBody } from './../models/types';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class ChatsService {
   url = `http://localhost:5000/chats`;
   token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiX2lkIjoiNjNlMjEzNmFkY2RmNmRhODYwNzQyOTI5IiwiaWF0IjoxNjc1NzY2ODE5LCJleHAiOjE2NzU4NTMyMTl9.n1oBRJUv9nsL9x7tplWVWit1zDjxuNdG0xxofZrTrGM';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiX2lkIjoiNjNlMjEzNmFkY2RmNmRhODYwNzQyOTI5IiwiaWF0IjoxNjc1ODQ4ODc5LCJleHAiOjE2NzU5MzUyNzl9.u7WCfz8_klNPJrKXgyW06GankfTEpY51GoCs1XUiJlc';
   constructor(private http: HttpClient) {}
 
   getChats() {
@@ -24,6 +24,28 @@ export class ChatsService {
       headers: {
         Authorization: `Bearer ${this.token}`,
       },
+    });
+  }
+
+  sendMessage(message: IMessageBody, chatId: string) {
+    console.log('отправка сообщения', message, chatId);
+    return this.http.post(`${this.url}/message/${chatId}`, message, {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+  }
+
+  test(message: IMessageBody, chatId: string) {
+    fetch(`${this.url}/message/${chatId}`, {
+      method: 'post',
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      //make sure to serialize your JSON body
+      body: JSON.stringify(message),
     });
   }
 }

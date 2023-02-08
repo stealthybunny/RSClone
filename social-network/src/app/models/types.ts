@@ -40,3 +40,7 @@ export interface IUser {
   //posts: UPostDocument[];
   chats: IChat[];
 }
+
+export interface IMessageBody {
+  text: string;
+}

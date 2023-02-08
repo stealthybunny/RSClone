@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SseService {
+  eventSource!: EventSource;
   constructor(private _zone: NgZone) {}
 
   getServerSentEvent(url: string): Observable<any> {
@@ -14,16 +15,16 @@ export class SseService {
         next: (arg0: MessageEvent<any>) => void;
         error: (arg0: Event) => void;
       }) => {
-        const eventSource = this.getEventSource(url);
+        this.eventSource = this.getEventSource(url);
 
-        eventSource.onmessage = (event) => {
+        this.eventSource.onmessage = (event) => {
           this._zone.run(() => {
             console.log('test');
             observer.next(event);
           });
         };
 
-        eventSource.onerror = (error) => {
+        this.eventSource.onerror = (error) => {
           this._zone.run(() => {
             observer.error(error);
           });
@@ -31,7 +32,9 @@ export class SseService {
       }
     );
   }
-
+  closeEventSourse() {
+    this.eventSource.close();
+  }
   private getEventSource(url: string): EventSource {
     return new EventSource(url);
   }

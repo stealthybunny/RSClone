@@ -1,0 +1,20 @@
+.chat-container{
+  width: 500px;
+  margin: 0 auto;
+}
+
+.message-form{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.message-form__text{
+  border: 1px solid rgb(139, 139, 139);
+  border-radius: 5px;
+}
+
+.massage-list{
+  max-height: 400px;
+  overflow-y: scroll;
+}
