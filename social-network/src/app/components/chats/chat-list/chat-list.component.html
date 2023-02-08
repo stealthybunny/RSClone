@@ -1,0 +1,9 @@
+<div class="chats-container">
+  <div class="chat-item" *ngFor="let chat of chatSubs | async">
+    <img src="../../../../assets/user_placeholder_woman.jpg" alt="">
+    <span class="chat-item__name">{{getUserName(chat)}}</span>
+    <span class="chat-item__id">{{chat._id}}</span>
+    <span class="chat-item__last-message">Message</span>
+    <button [routerLink]="['/chats',chat._id]">Open</button>
+  </div>
+</div>

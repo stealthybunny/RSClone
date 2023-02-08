@@ -1,0 +1,12 @@
+<div class="chat-container">
+  <button routerLink="">to main</button>
+  <div class="chat-id">{{chat._id}}</div>
+  <ul class="massage-list">
+    <li class="massage-list__item" *ngFor="let message of chat.messages">{{message.text}}</li>
+  </ul>
+  <form class="message-form" [formGroup]="form" (ngSubmit)="sendMeassage()">
+    <textarea class="message-form__text" rows="3" cols="45" formControlName="text">
+    </textarea>
+    <button class="message-form__send" type="submit">Send</button>
+  </form>
+</div>
