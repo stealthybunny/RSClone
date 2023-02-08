@@ -15,6 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AsideComponent } from './components/aside/aside.component';
 import { HeaderModalComponent } from './components/header-modal/header-modal.component';
 import { FindComponent } from './pages/find/find.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FindComponent } from './pages/find/find.component';
     HeaderComponent,
     AsideComponent,
     HeaderModalComponent,
-    FindComponent
+    FindComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

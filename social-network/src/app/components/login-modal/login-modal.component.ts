@@ -12,7 +12,7 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
 })
 export class LoginModalComponent implements OnInit{
   form = new FormGroup({
-    userName: new FormControl<string>('',[
+    username: new FormControl<string>('',[
       Validators.required,
       Validators.minLength(4)
     ]),
@@ -33,7 +33,7 @@ export class LoginModalComponent implements OnInit{
     console.log(this.form.value);
     window.localStorage.removeItem('RSClone-socnetwork');
     const loginInfo: ILogin = {
-      userName: this.form.value.userName as string,
+      username: this.form.value.username as string,
       password: this.form.value.password as string
     }
     this.loginService.login(loginInfo).subscribe()

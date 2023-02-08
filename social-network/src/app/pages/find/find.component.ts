@@ -17,8 +17,6 @@ export class FindComponent implements OnInit{
   }
   ngOnInit(): void {
     const token: string = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string).token;
-    this.users = this.loginService.getUsers(token).subscribe((data) => this.users = data)
-    
+    this.users = this.loginService.getUsers(token).subscribe((data) => {this.users = data; console.log(this.users)})
   }
-
 }
