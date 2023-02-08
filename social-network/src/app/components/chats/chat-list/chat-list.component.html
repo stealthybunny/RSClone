@@ -1,9 +1,12 @@
-<div class="chats-container">
-  <div class="chat-item" *ngFor="let chat of chatSubs | async">
-    <img src="../../../../assets/user_placeholder_woman.jpg" alt="">
-    <span class="chat-item__name">{{getUserName(chat)}}</span>
-    <span class="chat-item__id">{{chat._id}}</span>
-    <span class="chat-item__last-message">Message</span>
+<ul class="chats-container">
+  <li class="chat-item" *ngFor="let chat of chatSubs | async">
+    <div class="chat-item__left">
+      <img src="../../../../assets/user_placeholder_woman.jpg" alt="">
+      <div class="chat-item__info">
+        <p class="chat-item__name">{{getUserName(chat)}}</p>
+        <p class="chat-item__last-message">{{getLastMessage(chat)}}</p>
+      </div>
+    </div>
     <button [routerLink]="['/chats',chat._id]">Open</button>
-  </div>
-</div>
+  </li>
+</ul>

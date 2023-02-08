@@ -24,4 +24,8 @@ export class ChatListComponent implements OnInit {
       ? chat.users[1].name
       : chat.users[0].name;
   }
+
+  getLastMessage(chat: IChat) {
+    return chat.messages.length ? chat.messages.at(-1)?.text : '';
+  }
 }
