@@ -33,7 +33,7 @@ export interface IUser {
   username: string;
   name: string;
   password: string;
-  //avatar: UImageDocument;
+  avatar: IImage;
   isOnline: boolean;
   lastVisit: Date;
   //subscriptions: UserDocument[];
@@ -44,4 +44,12 @@ export interface IUser {
 
 export interface IMessageBody {
   text: string;
+}
+
+export interface IImage {
+  _id: string;
+  author: IUser;
+  date: Date;
+  imgLink: string;
+  //likes: LikeDocument[];
 }

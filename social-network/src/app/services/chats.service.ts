@@ -1,4 +1,4 @@
-import { IChat, IMessageBody, IToken } from './../models/types';
+import { IChat, IMessageBody, IToken, IUser } from './../models/types';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 export class ChatsService {
   userLofinInfo: IToken;
   url = `http://localhost:5000/chats`;
+  urlUsers = `http://localhost:5000/users`;
   token: string;
   constructor(private http: HttpClient) {
     this.userLofinInfo = JSON.parse(
@@ -41,16 +42,11 @@ export class ChatsService {
     });
   }
 
-  test(message: IMessageBody, chatId: string) {
-    fetch(`${this.url}/message/${chatId}`, {
-      method: 'post',
+  getOneUser(id: string) {
+    return this.http.get<IUser>(`${this.urlUsers}/${id}`, {
       headers: {
         Authorization: `Bearer ${this.token}`,
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
       },
-      //make sure to serialize your JSON body
-      body: JSON.stringify(message),
     });
   }
 }
