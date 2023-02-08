@@ -12,6 +12,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginServiceService } from './services/login-service.service';
 import { LoginErrorComponent } from './components/login-error/login-error.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AsideComponent } from './components/aside/aside.component';
+import { HeaderModalComponent } from './components/header-modal/header-modal.component';
+import { FindComponent } from './pages/find/find.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { HeaderComponent } from './components/header/header.component';
     LoginModalComponent,
     RegisterModalComponent,
     LoginErrorComponent,
-    HeaderComponent
+    HeaderComponent,
+    AsideComponent,
+    HeaderModalComponent,
+    FindComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,
