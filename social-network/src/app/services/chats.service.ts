@@ -1,4 +1,4 @@
-import { IChat, IMessageBody } from './../models/types';
+import { IChat, IMessageBody, IToken } from './../models/types';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -6,10 +6,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ChatsService {
+  userLofinInfo: IToken;
   url = `http://localhost:5000/chats`;
-  token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiX2lkIjoiNjNlMjEzNmFkY2RmNmRhODYwNzQyOTI5IiwiaWF0IjoxNjc1ODQ4ODc5LCJleHAiOjE2NzU5MzUyNzl9.u7WCfz8_klNPJrKXgyW06GankfTEpY51GoCs1XUiJlc';
-  constructor(private http: HttpClient) {}
+  token: string;
+  constructor(private http: HttpClient) {
+    this.userLofinInfo = JSON.parse(
+      window.localStorage.getItem('RSClone-socnetwork') as string
+    ) as IToken;
+    this.token = this.userLofinInfo.token;
+  }
 
   getChats() {
     return this.http.get<IChat[]>(this.url, {

@@ -1,0 +1,26 @@
+<app-header></app-header>
+<main class="main"
+(click)="headerModalService.close()">
+  <app-aside></app-aside>
+  <div class="find_page">
+    <div class="find__field">
+      <div class="user__found"
+      *ngFor="let user of users"
+      [routerLink]="['/user', user._id]"
+      >
+      <img 
+      [src]="'http://localhost:5000/' + user.avatar.imgLink" 
+      alt="User avatar" 
+      class="user__avatar">
+      <p 
+  
+      class="user__name">{{user.name}}</p>
+  
+      </div>
+      
+    </div>
+
+  </div>
+
+  
+</main>

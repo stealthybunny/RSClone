@@ -1,0 +1,24 @@
+.aside__menu {
+  width: 200px;
+  
+}
+
+.aside__menu_list {
+  list-style: none;
+  color: #477dbb;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aside__menu_item {
+  display: flex;
+  gap: 10px;
+  height: 20px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu__text {
+  color: black;
+}

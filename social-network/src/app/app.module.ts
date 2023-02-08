@@ -14,6 +14,10 @@ import { LoginErrorComponent } from './components/login-error/login-error.compon
 import { HeaderComponent } from './components/header/header.component';
 import { ChatListComponent } from './components/chats/chat-list/chat-list.component';
 import { ChatComponent } from './components/chats/chat/chat.component';
+import { AsideComponent } from './components/aside/aside.component';
+import { HeaderModalComponent } from './components/header-modal/header-modal.component';
+import { FindComponent } from './pages/find/find.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -25,16 +29,20 @@ import { ChatComponent } from './components/chats/chat/chat.component';
     LoginErrorComponent,
     HeaderComponent,
     ChatListComponent,
-    ChatComponent
+    ChatComponent,
+    AsideComponent,
+    HeaderModalComponent,
+    FindComponent,
+    UserPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [LoginServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

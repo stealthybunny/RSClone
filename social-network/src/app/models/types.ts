@@ -1,5 +1,5 @@
 export interface ILogin {
-  userName: string;
+  username: string;
   password: string;
 }
 
@@ -29,6 +29,7 @@ export interface IMessage {
 }
 
 export interface IUser {
+  _id: string;
   username: string;
   name: string;
   password: string;
