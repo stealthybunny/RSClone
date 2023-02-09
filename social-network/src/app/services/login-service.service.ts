@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angul
 import { ILogin, IRegister, IToken } from '../models/types';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { ErrorService } from './error.service';
+import { pathToAPI } from '../store';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class LoginServiceService {
   }
 
   login(loginInfo: ILogin): Observable<IToken> {
-    return this.http.post<IToken>('http://localhost:5000/auth/login', loginInfo)
+    console.log(`${pathToAPI}/auth/login`)
+    return this.http.post<IToken>(`${pathToAPI}/auth/login`, loginInfo)
     .pipe(
       tap(resp => {
           const logInfo: IToken = resp;
@@ -32,7 +34,7 @@ export class LoginServiceService {
   }
 
   register(registerInfo: IRegister): Observable<any> {
-    return this.http.post<IToken>('http://localhost:5000/auth/registration', registerInfo)
+    return this.http.post<IToken>(`${pathToAPI}/auth/registration`, registerInfo)
       .pipe(
         tap(resp => {
           const logInfo: any = resp;
@@ -47,7 +49,7 @@ export class LoginServiceService {
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
     console.log(headers)
-    return this.http.get<any>('http://localhost:5000/users/' + id, {'headers': headers})
+    return this.http.get<any>(`${pathToAPI}/users/` + id, {'headers': headers})
       .pipe(
         tap(user => console.log(user))
       )
@@ -56,7 +58,7 @@ export class LoginServiceService {
   getUsers(token: string): Observable<any> {
     const headers = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`)
-    return this.http.get<any>('http://localhost:5000/users', {'headers': headers})
+    return this.http.get<any>(`${pathToAPI}/users`, {'headers': headers})
   }
 
   getPageData() {
@@ -72,7 +74,7 @@ export class LoginServiceService {
         this.getYourPage(userLofinInfo._id, userLofinInfo.token).subscribe(userdata => {
         this.userData = userdata;
         if (this.userData.avatar) {
-          this.userAvatar = `http://localhost:5000/${this.userData.avatar.imgLink}`;
+          this.userAvatar = `${pathToAPI}/${this.userData.avatar.imgLink}`;
         } else {
           this.userAvatar = `https://www.oseyo.co.uk/wp-content/uploads/2020/05/empty-profile-picture-png-2-2.png`;
         }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IToken } from 'src/app/models/types';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { AuthState } from 'src/app/store';
 
 @Component({
   selector: 'app-main-page',
@@ -20,6 +21,7 @@ export class MainPageComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    console.log(AuthState)
     this.loginService.getPageData();
   }
 
