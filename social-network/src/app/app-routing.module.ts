@@ -9,6 +9,8 @@ import { FindComponent } from './pages/find/find.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
+import { GalleryPageComponent } from './components/gallery/gallery-page/gallery-page.component';
+import { GalleryResolver } from './resolvers/gallery.resolver';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -21,6 +23,11 @@ const routes: Routes = [
     path: 'chats/:id',
     component: ChatComponent,
     resolve: { data: ChatsResolver },
+  },
+  {
+    path: 'gallery/:id',
+    component: GalleryPageComponent,
+    resolve: { data: GalleryResolver },
   },
   { path: '**', component: NotFoundComponent },
 ];
