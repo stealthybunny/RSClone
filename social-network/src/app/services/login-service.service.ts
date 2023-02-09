@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http'
-import { ILogin, IRegister, IToken } from '../models/types';
+import { ILogin, IRegister, IToken, IUser } from '../models/types';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { ErrorService } from './error.service';
 import { pathToAPI } from '../store';
@@ -9,8 +9,8 @@ import { pathToAPI } from '../store';
   providedIn: 'root'
 })
 export class LoginServiceService {
-  errorMessage: any;
-  userData: any;
+  errorMessage: any; //-------------------------------------any!!------------------------------
+  userData: IUser;
   userAvatar: string | undefined;
   userGallery: string[] | string | undefined;
 
@@ -45,20 +45,21 @@ export class LoginServiceService {
       )
   }
 
-  getYourPage(id: string, token: string): Observable<any> {
+  getYourPage(id: string, token: string): Observable<IUser> {
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
     console.log(headers)
-    return this.http.get<any>(`${pathToAPI}/users/` + id, {'headers': headers})
+    return this.http.get<IUser>(`${pathToAPI}/users/` + id, {'headers': headers})
       .pipe(
         tap(user => console.log(user))
       )
   }
 
-  getUsers(token: string): Observable<any> {
+
+  getUsers(token: string): Observable<IUser[]> {
     const headers = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`)
-    return this.http.get<any>(`${pathToAPI}/users`, {'headers': headers})
+    return this.http.get<IUser[]>(`${pathToAPI}/users`, {'headers': headers})
   }
 
   getPageData() {
@@ -73,7 +74,7 @@ export class LoginServiceService {
 
         this.getYourPage(userLofinInfo._id, userLofinInfo.token).subscribe(userdata => {
         this.userData = userdata;
-        if (this.userData.avatar) {
+        if (this.userData.avatar) {  //useless??-------------
           this.userAvatar = `${pathToAPI}/${this.userData.avatar.imgLink}`;
         } else {
           this.userAvatar = `https://www.oseyo.co.uk/wp-content/uploads/2020/05/empty-profile-picture-png-2-2.png`;
