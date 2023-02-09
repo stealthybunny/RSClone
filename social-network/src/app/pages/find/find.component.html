@@ -15,6 +15,15 @@
       <p 
   
       class="user__name">{{user.name}}</p>
+      <button
+      class="createChat"
+      (click)="write(user._id, token)"
+      
+      >Написать</button>
+      <button
+      class="subscribeToUser"
+      
+      >Подписаться</button>
   
       </div>
       

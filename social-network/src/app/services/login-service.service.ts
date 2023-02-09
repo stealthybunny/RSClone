@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http'
-import { ILogin, IRegister, IToken, IUser } from '../models/types';
+import { IChat, ILogin, IRegister, IToken, IUser } from '../models/types';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { ErrorService } from './error.service';
 import { pathToAPI } from '../store';
@@ -21,7 +21,6 @@ export class LoginServiceService {
   }
 
   login(loginInfo: ILogin): Observable<IToken> {
-    console.log(`${pathToAPI}/auth/login`)
     return this.http.post<IToken>(`${pathToAPI}/auth/login`, loginInfo)
     .pipe(
       tap(resp => {
@@ -89,6 +88,12 @@ export class LoginServiceService {
       window.location.assign('/auth/login');
     }
 
+  }
+
+  addChat(id: string, token: string): Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`)
+    return this.http.post<any>(`${pathToAPI}/chats/${id}`, '', {'headers': headers})
   }
 
 
