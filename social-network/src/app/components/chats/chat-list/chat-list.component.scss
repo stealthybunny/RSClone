@@ -20,6 +20,11 @@
   justify-content: space-between;
   border-bottom: 1px solid rgb(185, 185, 185);
 }
+
+.chat-item:hover{
+  background-color: #f3f4f7;
+}
+
 .chat-item:nth-last-child(-n+1){
   border: none;
 }
@@ -35,4 +40,24 @@
   width: 40px;
   min-width: 40px;
   height: 40px;
+}
+
+.chat-item__info{
+  width: 320px;
+  cursor: pointer;
+}
+
+.chat-date{
+  font-size: 10px;
+  color: #868686;
+  min-width: 80px;
+}
+
+.chat-item__name{
+  color: #4b528d;
+}
+
+.chat-item__last-message{
+  height: 16px;
+  overflow: hidden;
 }

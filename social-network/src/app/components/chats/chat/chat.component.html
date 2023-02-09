@@ -12,6 +12,7 @@
         <p class="author-name">{{message.author.name.split(' ')[0]}}</p>
         <p>{{message.text}}</p>
       </div>
+      <p class="message-date">{{message.date | date: 'h:mm a MMMM d'}}</p>
     </li>
   </ul>
   <form class="message-form" [formGroup]="form" (ngSubmit)="sendMeassage()">
