@@ -1,1 +1,31 @@
-<p>user-page works!</p>
+<app-header></app-header>
+<main class="main"
+(click)="headerModalService.close()">
+  <app-aside></app-aside>
+  <div class="user__page">
+    <div class="user__info">
+      <div class="user__avatar">
+        <img 
+        class="user__photo"
+        [src]="userAvatar"
+         alt="">
+      </div>
+      <h1 class="user__name">{{user.name}}</h1>
+
+    </div>
+    <div class="user__gallery">
+
+    </div>
+
+    <div class="user__create_new_post">
+
+    </div>
+
+    <div class="user__posts">
+
+    </div>
+  </div>
+</main>
+
+
+

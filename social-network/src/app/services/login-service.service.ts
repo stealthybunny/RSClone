@@ -76,6 +76,7 @@ export class LoginServiceService {
         this.userData = userdata;
         if (this.userData.avatar) {  //useless??-------------
           this.userAvatar = `${pathToAPI}/${this.userData.avatar.imgLink}`;
+          console.log(this.userAvatar)
         } else {
           this.userAvatar = `https://www.oseyo.co.uk/wp-content/uploads/2020/05/empty-profile-picture-png-2-2.png`;
         }
