@@ -47,7 +47,6 @@ export class LoginServiceService {
   getYourPage(id: string, token: string): Observable<IUser> {
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
-    console.log(headers)
     return this.http.get<IUser>(`${pathToAPI}/users/` + id, {'headers': headers})
       .pipe(
         tap(user => console.log(user))
