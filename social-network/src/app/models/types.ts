@@ -36,9 +36,9 @@ export interface IUser {
   avatar: IImage;
   isOnline: boolean;
   lastVisit: Date;
-  //subscriptions: UserDocument[];
-  //gallery: UImageDocument[];
-  //posts: UPostDocument[];
+  subscriptions: UserDocument[] | any;
+  gallery: UImageDocument[] | any;
+  posts: UPostDocument[] | any;
   chats: IChat[];
 }
 
@@ -51,5 +51,25 @@ export interface IImage {
   author: IUser;
   date: Date;
   imgLink: string;
-  //likes: LikeDocument[];
+  likes: LikeDocument[] | any;
 }
+
+export interface UImageDocument {
+  //?
+}
+
+export interface UserDocument {
+  //?
+}
+
+export interface UPostDocument {
+  //?
+}
+
+export interface LikeDocument {
+  //?
+}
+
+
+
+

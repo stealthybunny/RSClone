@@ -1,0 +1,60 @@
+.main {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(177, 177, 177, 0.541);
+}
+
+.user__page {
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.user__info {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  gap: 30px;
+  background-color: #fff;
+  border: 1px solid rgba(137, 137, 137, 0.42);
+  border-radius: 24px;
+}
+
+.user__avatar {
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  border: none;
+  background: rgb(163,73,163);
+  background: linear-gradient(19deg, rgba(163,73,163,1) 0%, rgba(56,151,241,1) 100%);
+}
+
+.user__photo {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  border: none;
+}
+
+.user__name {
+  margin-top: 20px;
+  color: red;
+}
+
+.user__gallery {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  gap: 30px;
+  background-color: #fff;
+  border: 1px solid rgba(137, 137, 137, 0.42);
+  border-radius: 24px;
+}
+

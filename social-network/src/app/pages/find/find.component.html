@@ -6,15 +6,26 @@
     <div class="find__field">
       <div class="user__found"
       *ngFor="let user of users"
-      [routerLink]="['/user', user._id]"
       >
-      <img 
-      [src]="'http://localhost:5000/' + user.avatar.imgLink" 
-      alt="User avatar" 
-      class="user__avatar">
-      <p 
-  
-      class="user__name">{{user.name}}</p>
+      <div class="userInfo__wrapper"
+      [routerLink]="['/user', user._id]">
+        <img 
+        [src]="'http://localhost:5000/' + user.avatar.imgLink" 
+        alt="User avatar" 
+        class="user__avatar">
+        <p 
+        class="user__name">{{user.name}}</p>
+      </div>
+      
+      <button
+      class="createChat"
+      (click)="write(user._id, token)"
+      
+      >Написать</button>
+      <button
+      class="subscribeToUser"
+      
+      >Подписаться</button>
   
       </div>
       

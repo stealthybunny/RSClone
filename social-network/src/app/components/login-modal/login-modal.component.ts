@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { pipe } from 'rxjs';
-import { ILogin } from 'src/app/models/types';
+import { ILogin, IToken } from 'src/app/models/types';
 import { ErrorService } from 'src/app/services/error.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { AuthState } from 'src/app/store';
 
 @Component({
   selector: 'app-login-modal',
@@ -36,11 +37,14 @@ export class LoginModalComponent implements OnInit{
       username: this.form.value.username as string,
       password: this.form.value.password as string
     }
-    this.loginService.login(loginInfo).subscribe()
+    this.loginService.login(loginInfo).subscribe(authData => {
+      AuthState._id = authData._id;
+      AuthState.token = authData.token;
+    }
+    )
   }
 
   ngOnInit(): void {
-
 
   }
 
