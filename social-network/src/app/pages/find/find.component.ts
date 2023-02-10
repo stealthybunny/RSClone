@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/types';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
@@ -13,8 +14,9 @@ export class FindComponent implements OnInit{
   public users: IUser[];
   public token: string;
   constructor(
+    private router: Router,
     public headerModalService: HeaderModalService,
-    private loginService: LoginServiceService
+    private loginService: LoginServiceService,
   ) {
     
   }
@@ -25,6 +27,10 @@ export class FindComponent implements OnInit{
   }
 
   write(userID: string, token: string) {
-    this.loginService.addChat(userID, token).subscribe();
+    this.loginService.writeToUser(userID, token).subscribe((data) => {
+      const chatID = data.chat;
+      this.router.navigate(['chats',chatID])
+
+    })
   }
 }

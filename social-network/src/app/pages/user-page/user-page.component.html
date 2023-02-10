@@ -4,13 +4,22 @@
   <app-aside></app-aside>
   <div class="user__page">
     <div class="user__info">
-      <div class="user__avatar">
-        <img 
-        class="user__photo"
-        [src]="userAvatar"
-         alt="">
+      <div class="foreign__user_block">
+        <div class="user__avatar">
+          <img 
+          class="user__photo"
+          [src]="userAvatar"
+          alt="avatar">
+        </div>
+        <button
+        (click)="writeToThisUser()"
+        >Написать</button>
+      <button>Подписаться</button>
+
       </div>
+      
       <h1 class="user__name">{{user.name}}</h1>
+      
 
     </div>
     <div class="user__gallery">

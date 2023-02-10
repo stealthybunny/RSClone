@@ -90,11 +90,17 @@ export class LoginServiceService {
 
   }
 
-  addChat(id: string, token: string): Observable<any> {
+  writeToUser(id: string, token: string): Observable<any> {
     const headers = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`)
     return this.http.post<any>(`${pathToAPI}/chats/${id}`, '', {'headers': headers})
   }
+
+  // goToChat(chatID: string, token: string): Observable<any> {
+  //   const headers = new HttpHeaders()
+  //   .set('Authorization', `Bearer ${token}`)
+  //   return this.http.get<any>(`${pathToAPI}/chats/${chatID}`, {'headers': headers})
+  // }
 
 
 
