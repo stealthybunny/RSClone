@@ -18,6 +18,8 @@ import { AsideComponent } from './components/aside/aside.component';
 import { HeaderModalComponent } from './components/header-modal/header-modal.component';
 import { FindComponent } from './pages/find/find.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
+import { GalleryPageComponent } from './components/gallery/gallery-page/gallery-page.component';
+import { GalleryModalComponent } from './components/gallery/gallery-modal/gallery-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
     HeaderModalComponent,
     FindComponent,
     UserPageComponent,
+    GalleryPageComponent,
+    GalleryModalComponent,
   ],
   imports: [
     BrowserModule,

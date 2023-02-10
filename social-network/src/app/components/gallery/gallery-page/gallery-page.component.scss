@@ -1,0 +1,35 @@
+p{
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  width: 750px;
+  margin: 0 auto;
+}
+
+.gallery-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.images-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.images-list__item>img{
+  width: 200px;
+}
