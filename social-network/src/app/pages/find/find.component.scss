@@ -23,11 +23,19 @@
 .user__found {
   display: flex;
   align-items: center;
-  gap: 30px;
+  justify-content: space-between;
   width: 100%;
   cursor: pointer;
   border: 1px solid gray;
   border-radius: 5px;
+}
+
+.userInfo__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  cursor: pointer;
 }
 
 .user__avatar {
@@ -35,5 +43,10 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+
+.createChat {
+  position: relative;
+  z-index: 10;
 }
 

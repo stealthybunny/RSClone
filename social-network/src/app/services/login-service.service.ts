@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http'
-import { ILogin, IRegister, IToken } from '../models/types';
+import { IChat, ILogin, IRegister, IToken, IUser } from '../models/types';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { ErrorService } from './error.service';
+import { pathToAPI } from '../store';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
-  errorMessage: any;
-  userData: any;
+  errorMessage: any; //-------------------------------------any!!------------------------------
+  userData: IUser;
   userAvatar: string | undefined;
   userGallery: string[] | string | undefined;
 
@@ -20,7 +21,7 @@ export class LoginServiceService {
   }
 
   login(loginInfo: ILogin): Observable<IToken> {
-    return this.http.post<IToken>('http://localhost:5000/auth/login', loginInfo)
+    return this.http.post<IToken>(`${pathToAPI}/auth/login`, loginInfo)
     .pipe(
       tap(resp => {
           const logInfo: IToken = resp;
@@ -32,7 +33,7 @@ export class LoginServiceService {
   }
 
   register(registerInfo: IRegister): Observable<any> {
-    return this.http.post<IToken>('http://localhost:5000/auth/registration', registerInfo)
+    return this.http.post<IToken>(`${pathToAPI}/auth/registration`, registerInfo)
       .pipe(
         tap(resp => {
           const logInfo: any = resp;
@@ -43,20 +44,21 @@ export class LoginServiceService {
       )
   }
 
-  getYourPage(id: string, token: string): Observable<any> {
+  getYourPage(id: string, token: string): Observable<IUser> {
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
     console.log(headers)
-    return this.http.get<any>('http://localhost:5000/users/' + id, {'headers': headers})
+    return this.http.get<IUser>(`${pathToAPI}/users/` + id, {'headers': headers})
       .pipe(
         tap(user => console.log(user))
       )
   }
 
-  getUsers(token: string): Observable<any> {
+
+  getUsers(token: string): Observable<IUser[]> {
     const headers = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`)
-    return this.http.get<any>('http://localhost:5000/users', {'headers': headers})
+    return this.http.get<IUser[]>(`${pathToAPI}/users`, {'headers': headers})
   }
 
   getPageData() {
@@ -71,8 +73,9 @@ export class LoginServiceService {
 
         this.getYourPage(userLofinInfo._id, userLofinInfo.token).subscribe(userdata => {
         this.userData = userdata;
-        if (this.userData.avatar) {
-          this.userAvatar = `http://localhost:5000/${this.userData.avatar.imgLink}`;
+        if (this.userData.avatar) {  //useless??-------------
+          this.userAvatar = `${pathToAPI}/${this.userData.avatar.imgLink}`;
+          console.log(this.userAvatar)
         } else {
           this.userAvatar = `https://www.oseyo.co.uk/wp-content/uploads/2020/05/empty-profile-picture-png-2-2.png`;
         }
@@ -86,6 +89,18 @@ export class LoginServiceService {
     }
 
   }
+
+  writeToUser(id: string, token: string): Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`)
+    return this.http.post<any>(`${pathToAPI}/chats/${id}`, '', {'headers': headers})
+  }
+
+  // goToChat(chatID: string, token: string): Observable<any> {
+  //   const headers = new HttpHeaders()
+  //   .set('Authorization', `Bearer ${token}`)
+  //   return this.http.get<any>(`${pathToAPI}/chats/${chatID}`, {'headers': headers})
+  // }
 
 
 

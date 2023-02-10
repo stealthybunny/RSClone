@@ -11,12 +11,17 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GalleryPageComponent } from './components/gallery/gallery-page/gallery-page.component';
 import { GalleryResolver } from './resolvers/gallery.resolver';
+import { UserResolver } from './resolvers/user.resolver';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'auth/login', component: LoginModalComponent },
   { path: 'auth/registration', component: RegisterModalComponent },
-  { path: 'user/:id', component: UserPageComponent },
+  {
+    path: 'user/:id',
+    component: UserPageComponent,
+    resolve: { data: UserResolver },
+  },
   { path: 'find', component: FindComponent },
   { path: 'chats', component: ChatListComponent },
   {
