@@ -3,5 +3,19 @@
     <p class="gallery-info__name">Фотографии Пользователя</p>
     <button>Добавить фотографии</button>
   </div>
-  <input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*"/>
+  <h1>Upload your Image!</h1>
+  <div>
+    <div *ngIf="error">
+      {{ error.message }}
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input type="file" name="files" (change)="onFileChange($event)" #file/>
+      <button type="submit" [disabled]="isDisabled">Upload</button>
+    </form>
+  </div>
+  <ul class="images-list">
+    <li class="images-list__item" *ngFor="let image of imgList">
+      <img [src]="getImageLink(image).link" alt="">
+    </li>
+  </ul>
 </div>
