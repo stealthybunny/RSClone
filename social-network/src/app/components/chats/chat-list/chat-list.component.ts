@@ -1,4 +1,4 @@
-import { IChat, IToken } from './../../../models/types';
+import { IChat, IToken, IMessage } from './../../../models/types';
 import { ChatsService } from './../../../services/chats.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -21,11 +21,19 @@ export class ChatListComponent implements OnInit {
 
   getUserName(chat: IChat) {
     return chat.users[0]._id == this.userLofinInfo._id
-      ? chat.users[1].name
-      : chat.users[0].name;
+      ? {
+          name: chat.users[1].name,
+          imgLink: `http://localhost:5000/${chat.users[1].avatar.imgLink}`,
+        }
+      : {
+          name: chat.users[0].name,
+          imgLink: `http://localhost:5000/${chat.users[0].avatar.imgLink}`,
+        };
   }
 
   getLastMessage(chat: IChat) {
-    return chat.messages.length ? chat.messages.at(-1)?.text : '';
+    return chat.messages.length
+      ? (chat.messages.at(-1) as IMessage)
+      : { text: 'пока нет сообщений', date: new Date() };
   }
 }
