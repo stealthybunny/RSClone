@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="images-list__item__img" [style]="getImageLink(image).link" (click)="isOpen=true">
+    <button
+    class="delete-btn"
+    (click)="deleteEvent(); isDisabled=true"
+    [disabled]="isDisabled"
+    *ngIf="isSameId"
+    >delete</button>
+  </div>
+  <app-gallery-modal [image]="image" *ngIf="isOpen" (newItemEvent)="log($event)"></app-gallery-modal>
+</div>

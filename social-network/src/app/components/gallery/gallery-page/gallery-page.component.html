@@ -3,8 +3,8 @@
     <p class="gallery-info__name">Фотографии Пользователя</p>
     <button>Добавить фотографии</button>
   </div>
-  <h1>Upload your Image!</h1>
-  <div>
+  <div class="upload" *ngIf="isSameId">
+    <h1>Upload your Image!</h1>
     <div *ngIf="error">
       {{ error.message }}
     </div>
@@ -15,7 +15,7 @@
   </div>
   <ul class="images-list">
     <li class="images-list__item" *ngFor="let image of imgList">
-      <img [src]="getImageLink(image).link" alt="">
+      <app-gallery-image [image]="image" [id]="id" [isSameId]="isSameId" (delete)="deleteImage($event)"></app-gallery-image>
     </li>
   </ul>
 </div>

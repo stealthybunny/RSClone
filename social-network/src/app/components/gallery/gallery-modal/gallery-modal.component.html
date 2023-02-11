@@ -1,1 +1,19 @@
-<p>gallery-modal works!</p>
+<div class="container">
+  <div class="cover" (click)="test()"></div>
+  <div class="modal">
+    <div class="modal-info">
+      <div class="modal-info__author">
+        <img [src]="[api+'/'+image.author.avatar.imgLink]" alt="">
+        {{image.author.name}}
+        <p>likes:{{image.likes.length}}</p>
+      </div>
+    </div>
+    <div class="img-container" (mouseover)="likesVisable=true" (mouseleave)="likesVisable=false">
+      <img [src]="[api+'/'+image.imgLink]" alt="">
+      <div *ngIf="likesVisable" class="likes">
+        <button>like</button>
+      </div>
+    </div>
+  </div>
+</div>
+
