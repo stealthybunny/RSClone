@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IToken, IUser } from 'src/app/models/types';
+import { EditProfileService } from 'src/app/services/edit-profile.service';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { AuthState } from 'src/app/store';
@@ -16,7 +17,8 @@ export class MainPageComponent implements OnInit {
   public userName: string | undefined;
   constructor(
     public loginService: LoginServiceService,
-    public headerModalService: HeaderModalService
+    public headerModalService: HeaderModalService,
+    public editProfileService: EditProfileService,
   ) {
 
   }

@@ -1,7 +1,6 @@
-<app-header></app-header>
-<main class="main"
-(click)="headerModalService.close()">
-  <app-aside></app-aside>
+<!-- <main class="main"
+(click)="headerModalService.close()"
+> -->
   <div class="user__page">
     <div class="user__info">
       <div class="avatar__block">
@@ -11,16 +10,21 @@
           [src]="loginService.userAvatar"
           alt="">
         </div>
-        <button>Сменить фото профиля</button>
+        <button
+        class="changeAvatar"
+        (click)="editProfileService.open()"
+        >Сменить фото профиля</button>
       </div>
       <div class="user__description">
-        <h1 class="user__name">{{loginService.userData.name}}<button>Сменить имя</button></h1>
+        <h1 class="user__name">{{loginService.userData.name}}
+          <button>Сменить имя</button></h1>
         <h4>Страна:<span> ЮАР</span></h4>
         <h4>Город:<span> Претория</span></h4>
         <h4>Взраст:<span> NaN</span></h4>
         <h4>Работа:<span> Null</span></h4>
         <h4>Школа:<span> Undefined</span></h4>
       </div>
+
       
 
 
@@ -37,7 +41,7 @@
 
     </div>
   </div>
-</main>
+<!-- </main> -->
 
 
 

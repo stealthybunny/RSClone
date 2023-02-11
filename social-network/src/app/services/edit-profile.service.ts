@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { pathToAPI } from '../store';
 import { ErrorService } from './error.service';
 
@@ -12,6 +13,23 @@ export class EditProfileService {
     private http: HttpClient,
     private errorService: ErrorService,
   ) { }
+
+  isVisible$ = new BehaviorSubject<boolean>(false);
+
+  open() {
+    this.isVisible$.next(true)
+    console.log('open')
+  }
+
+  close() {
+
+      this.isVisible$.next(false)
+      console.log('close')
+  }
+
+  log() {
+    console.log("Shalom!")
+  }
 
   changeProfilePhoto(token: string) {
     const headers = new HttpHeaders()

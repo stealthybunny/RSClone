@@ -30,7 +30,6 @@ export class FindComponent implements OnInit{
     this.loginService.writeToUser(userID, token).subscribe((data) => {
       const chatID = data.chat;
       this.router.navigate(['chats',chatID])
-
     })
   }
 }
