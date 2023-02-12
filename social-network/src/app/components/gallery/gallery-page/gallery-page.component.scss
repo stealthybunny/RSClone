@@ -17,6 +17,11 @@ ul{
 .container{
   width: 750px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .gallery-info{
@@ -28,8 +33,34 @@ ul{
 .images-list{
   display: flex;
   flex-wrap: wrap;
+  gap: 5px;
 }
 
-.images-list__item>img{
-  width: 200px;
+.images-list__item{
+  background-color: #1d1d1d;
+  background-size: 100% 100%;
+  border-radius: 3px;
+}
+
+
+.images-list__item__blur{
+  backdrop-filter: blur(1px);
+}
+
+.gallery-info{
+  width: 100%;
+  display: grid;
+  grid-template-columns: max-content max-content 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 5px;
+}
+
+.gallery-info>img{
+  border-radius: 50%;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
 }

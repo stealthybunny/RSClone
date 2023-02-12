@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChatsService } from 'src/app/services/chats.service';
 import { GalleryService } from 'src/app/services/gallery.service';
+import { pathToAPI } from 'src/app/store';
 
 @Component({
   selector: 'app-gallery-page',
@@ -16,6 +17,9 @@ export class GalleryPageComponent implements OnInit {
   error: { statusCode: number; message: string } | null;
   @ViewChild('file') file: ElementRef;
   isDisabled: boolean = false;
+  id: string;
+  isSameId: boolean;
+  api = pathToAPI;
   constructor(
     private route: ActivatedRoute,
     private galleryService: GalleryService,
@@ -30,6 +34,8 @@ export class GalleryPageComponent implements OnInit {
     this.form = this.formBuilder.group({
       files: [''],
     });
+    this.id = this.getId() as string;
+    this.isSameId = this.id == this.galleryService.userLofinInfo._id;
   }
 
   onFileChange(event: any) {
@@ -62,7 +68,19 @@ export class GalleryPageComponent implements OnInit {
     });
   }
 
-  getImageLink(image: IImage) {
-    return { link: `http://localhost:5000/${image.imgLink}` };
+  deleteImage(id: string) {
+    this.galleryService.delete(id).subscribe({
+      next: (data) => {
+        this.imgList = data;
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
+  }
+
+  getId() {
+    const url = new URL(window.location.href);
+    return url.pathname.split('/').at(-1);
   }
 }
