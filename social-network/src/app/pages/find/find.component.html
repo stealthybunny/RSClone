@@ -10,7 +10,7 @@
       <div class="userInfo__wrapper"
       [routerLink]="['/user', user._id]">
         <img 
-        [src]="'http://localhost:5000/' + user.avatar.imgLink" 
+        [src]="api + '/' + user.avatar.imgLink" 
         alt="User avatar" 
         class="user__avatar">
         <p 
