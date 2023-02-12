@@ -3,12 +3,14 @@
 > -->
   <div class="user__page">
     <div class="user__info">
-      <div class="avatar__block">
+      <div class="avatar__block"
+      (mouseleave)="editProfileService.close()">
         <div class="user__avatar">
           <img 
           class="user__photo"
           [src]="userAvatar"
           (mouseover)="editProfileService.open()"
+
 
           alt="">
           <app-avatar-modal
