@@ -11,8 +11,11 @@
 }
 
 .avatar__change__wrapper {
-  position: absolute;
-  margin: 0 auto;
+  // position: fixed;
+  // top: 250px;
+  // left: 10px;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
   width: 150px;
   height: 150px;
   background-color: #fff;
