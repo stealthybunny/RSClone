@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let news of newsList">
+    {{ news.text }}
+    <app-comments [comments]="news.comments"></app-comments>
+  </li>
+</ul>

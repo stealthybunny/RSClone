@@ -54,6 +54,30 @@ export interface IImage {
   likes: LikeDocument[] | any;
 }
 
+export interface ILike {
+  _id: string;
+  author: IUser;
+  date: Date;
+}
+
+export interface IComment {
+  _id: string;
+  author: IUser;
+  date: Date;
+  text: string;
+}
+
+export interface IPost {
+  _id: string;
+  author: IUser;
+  date: Date;
+  headline: string;
+  text: string;
+  images: string[];
+  likes: ILike[];
+  comments: IComment[];
+}
+
 export interface UImageDocument {
   //?
 }
