@@ -21,6 +21,7 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GalleryPageComponent } from './components/gallery/gallery-page/gallery-page.component';
 import { GalleryModalComponent } from './components/gallery/gallery-modal/gallery-modal.component';
 import { GalleryImageComponent } from './components/gallery/gallery-image/gallery-image.component';
+import { AvatarModalComponent } from './components/avatar-modal/avatar-modal.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { GalleryImageComponent } from './components/gallery/gallery-image/galler
     GalleryPageComponent,
     GalleryModalComponent,
     GalleryImageComponent,
+    AvatarModalComponent,
   ],
   imports: [
     BrowserModule,

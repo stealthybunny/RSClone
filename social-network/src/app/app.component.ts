@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EditProfileService } from './services/edit-profile.service';
 // import { HeaderModalService } from './services/header-modal.service';
 
 @Component({
@@ -10,8 +11,14 @@ export class AppComponent {
   title = 'social-network';
 
   constructor(
+    public editProfileService: EditProfileService
     // public headerModalService: HeaderModalService
   ) {
 
+  }
+
+  isLogin() {
+    let url = new URL(window.location.href);
+    return url.pathname === '/auth/login' || url.pathname === '/auth/registration';
   }
 }

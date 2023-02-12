@@ -2,3 +2,16 @@
   margin: 0;
   padding: 0;
 }
+
+
+
+
+.app__main {
+  display: grid;
+  grid-template-columns: max-content min-content 1fr;
+  max-width: 1000px;
+  margin: 0 auto;
+  // width: 100vw;
+  // height: 100vh;
+  // background-color: rgba(177, 177, 177, 0.541);
+}
