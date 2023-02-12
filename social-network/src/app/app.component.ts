@@ -19,7 +19,6 @@ export class AppComponent {
 
   isLogin() {
     let url = new URL(window.location.href);
-    console.log(url.pathname);
     return url.pathname === '/auth/login' || url.pathname === '/auth/registration';
   }
 }
