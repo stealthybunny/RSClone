@@ -27,7 +27,7 @@
   min-width: 650px;
   height: 450px;
   display: flex;
-  justify-content: center;
+  justify-content:space-between;
   align-items: center;
   position: relative;
 }
@@ -59,4 +59,8 @@
   top: 20%;
   transform: translate(-50%,-50%);
   opacity: 0.5;
+}
+
+.img-container__btn{
+  width: 50px;
 }

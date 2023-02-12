@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChatsService } from 'src/app/services/chats.service';
 import { GalleryService } from 'src/app/services/gallery.service';
+import { pathToAPI } from 'src/app/store';
 
 @Component({
   selector: 'app-gallery-page',
@@ -18,6 +19,7 @@ export class GalleryPageComponent implements OnInit {
   isDisabled: boolean = false;
   id: string;
   isSameId: boolean;
+  api = pathToAPI;
   constructor(
     private route: ActivatedRoute,
     private galleryService: GalleryService,

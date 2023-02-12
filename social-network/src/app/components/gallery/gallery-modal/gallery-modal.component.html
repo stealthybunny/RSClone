@@ -3,13 +3,15 @@
   <div class="modal">
     <div class="modal-info">
       <div class="modal-info__author">
-        <img [src]="[api+'/'+image.author.avatar.imgLink]" alt="">
-        {{image.author.name}}
-        <p>likes:{{image.likes.length}}</p>
+        <img [src]="[api+'/'+imgList[index].author.avatar.imgLink]" alt="">
+        {{imgList[index].author.name}}
+        <p>likes:{{imgList[index].likes.length}}</p>
       </div>
     </div>
     <div class="img-container" (mouseover)="likesVisable=true" (mouseleave)="likesVisable=false">
-      <img [src]="[api+'/'+image.imgLink]" alt="">
+      <button class="img-container__btn" (click)="decrement()">left</button>
+      <img [src]="[api+'/'+imgList[index].imgLink]" alt="">
+      <button class="img-container__btn" (click)="increment()">right</button>
       <div *ngIf="likesVisable" class="likes">
         <button>like</button>
       </div>
