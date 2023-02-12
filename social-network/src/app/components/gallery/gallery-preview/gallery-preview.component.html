@@ -1,0 +1,17 @@
+<div class="container">
+  <p>Фото</p>
+  <ul class="img-list">
+    <li class="img-list__item" 
+    *ngFor="let image of imgList.slice(0, 8); let i=index"
+    (click)="currentImage = image; modalOpen=true"
+    >
+      <div class="img_container" [style]="getImageLink(image).link"></div>
+    </li>
+  </ul>
+  <button [routerLink]="['/gallery/']+id">Показать все</button>
+  <app-gallery-modal *ngIf="modalOpen"
+  [image]="currentImage"
+  [imgArrFromParrent]="imgList"
+  (newItemEvent)="modalOpen=false"
+  ></app-gallery-modal>
+</div>

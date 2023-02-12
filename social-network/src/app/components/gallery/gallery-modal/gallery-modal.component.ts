@@ -1,6 +1,7 @@
 import { pathToAPI } from './../../../store';
 import { IImage } from './../../../models/types';
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { GalleryService } from 'src/app/services/gallery.service';
 
 @Component({
   selector: 'app-gallery-modal',
@@ -10,18 +11,32 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 export class GalleryModalComponent implements OnInit {
   @Input() image: IImage;
   @Output() newItemEvent = new EventEmitter<boolean>();
-  @Input() imgList: IImage[];
+  @Input() imgArrFromParrent: IImage[];
+  imgList: IImage[];
+  @Output() sendData = new EventEmitter<IImage[]>();
   index: number;
   likesVisable = false;
   api = pathToAPI;
-  constructor() {}
+  isDisabled = false;
+  constructor(private galleryService: GalleryService) {}
   ngOnInit(): void {
+    this.imgList = this.imgArrFromParrent;
     this.index = this.getIndex();
+    this.galleryService.getImagesList(this.image.author._id).subscribe({
+      next: (data) => {
+        this.imgList = data;
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
   }
 
-  test() {
+  close() {
+    this.imgArrFromParrent = [...this.imgList];
     console.log('event');
     this.newItemEvent.emit(false);
+    this.sendData.emit(this.imgList);
   }
 
   getIndex() {
@@ -43,5 +58,19 @@ export class GalleryModalComponent implements OnInit {
     } else {
       this.index -= 1;
     }
+  }
+
+  postLike(id: string) {
+    this.galleryService.postLike(id).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.imgList[this.index] = data;
+        this.isDisabled = false;
+      },
+      error: (e) => {
+        console.log(e);
+        this.isDisabled = false;
+      },
+    });
   }
 }
