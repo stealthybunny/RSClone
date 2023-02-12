@@ -8,12 +8,14 @@
           <img 
           class="user__photo"
           [src]="loginService.userAvatar"
+          (mouseover)="editProfileService.open()"
+
           alt="">
+          <app-avatar-modal
+          class="modal__wrapper"
+           *ngIf="editProfileService.isVisible$ | async"></app-avatar-modal>
         </div>
-        <button
-        class="changeAvatar"
-        (click)="editProfileService.open()"
-        >Сменить фото профиля</button>
+        <!-- <button class="changeAvatar">Сменить фото профиля</button> -->
       </div>
       <div class="user__description">
         <h1 class="user__name">{{loginService.userData.name}}
