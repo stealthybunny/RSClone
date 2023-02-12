@@ -20,6 +20,7 @@ import { FindComponent } from './pages/find/find.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GalleryPageComponent } from './components/gallery/gallery-page/gallery-page.component';
 import { GalleryModalComponent } from './components/gallery/gallery-modal/gallery-modal.component';
+import { GalleryImageComponent } from './components/gallery/gallery-image/gallery-image.component';
 import { AvatarModalComponent } from './components/avatar-modal/avatar-modal.component';
 
 @NgModule({
@@ -39,6 +40,7 @@ import { AvatarModalComponent } from './components/avatar-modal/avatar-modal.com
     UserPageComponent,
     GalleryPageComponent,
     GalleryModalComponent,
+    GalleryImageComponent,
     AvatarModalComponent,
   ],
   imports: [

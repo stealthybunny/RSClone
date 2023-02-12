@@ -44,6 +44,17 @@ export class GalleryService {
       .pipe(catchError(this.handleError));
   }
 
+  delete(id: string): Observable<IImage[]> {
+    const url = `${this.url}/${id}`;
+    return this.http
+      .delete<IImage[]>(url, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
