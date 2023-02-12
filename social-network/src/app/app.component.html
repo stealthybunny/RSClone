@@ -1,2 +1,14 @@
 
-<router-outlet></router-outlet>
+<app-header *ngIf="!isLogin()"></app-header>
+<app-avatar-modal *ngIf="editProfileService.isVisible$ | async"></app-avatar-modal>
+
+
+<div class="app__main">
+  <app-aside *ngIf="!isLogin()"></app-aside>
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
+

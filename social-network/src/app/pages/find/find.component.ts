@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/types';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { pathToAPI } from 'src/app/store';
 
 @Component({
   selector: 'app-find',
@@ -13,6 +14,7 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
 export class FindComponent implements OnInit{
   public users: IUser[];
   public token: string;
+  public api = pathToAPI;
   constructor(
     private router: Router,
     public headerModalService: HeaderModalService,
@@ -30,7 +32,6 @@ export class FindComponent implements OnInit{
     this.loginService.writeToUser(userID, token).subscribe((data) => {
       const chatID = data.chat;
       this.router.navigate(['chats',chatID])
-
     })
   }
 }
