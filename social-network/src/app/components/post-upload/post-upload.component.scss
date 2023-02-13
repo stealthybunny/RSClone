@@ -1,0 +1,30 @@
+.container{
+  width: 480px;
+  padding: 10px;
+  border: 1px solid rgb(201, 201, 201);
+  margin-top: 10px;
+}
+
+.upload{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.upload__text{
+  width: 100%;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.upload__text:focus{
+  border: 1px solid rgb(148, 148, 148);
+}
+
+.errors__item, .file-errors{
+  color: rgb(192, 58, 58);
+  font-family:'Courier New', Courier, monospace;
+  font-size: 12px;
+}

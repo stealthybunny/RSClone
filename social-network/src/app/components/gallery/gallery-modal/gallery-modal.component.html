@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="cover" (click)="test()"></div>
+  <div class="cover" (click)="close()"></div>
   <div class="modal">
     <div class="modal-info">
       <div class="modal-info__author">
@@ -13,7 +13,7 @@
       <img [src]="[api+'/'+imgList[index].imgLink]" alt="">
       <button class="img-container__btn" (click)="increment()">right</button>
       <div *ngIf="likesVisable" class="likes">
-        <button>like</button>
+        <button (click)="postLike(imgList[index]._id); isDisabled=true" [disabled]="isDisabled">like</button>
       </div>
     </div>
   </div>

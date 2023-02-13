@@ -1,11 +1,14 @@
 <ul class="chats-container">
-  <li class="chat-item" *ngFor="let chat of chatSubs | async">
+  <li class="chat-item" *ngFor="let chat of chatSubs">
     <div class="chat-item__left">
       <img [src]="getUserName(chat).imgLink" alt="">
       <div class="chat-item__info" [routerLink]="['/chats',chat._id]">
         <p class="chat-item__name">{{getUserName(chat).name}}</p>
         <p class="chat-item__last-message">{{getLastMessage(chat).text}}</p>
       </div>
+    </div>
+    <div class="not-read-count" *ngIf="getNoRead(chat)">
+      <p>{{getNoRead(chat)}}</p>
     </div>
     <p class="chat-date">{{getLastMessage(chat).date | date: 'h:mm a MMMM d'}}</p>
   </li>
