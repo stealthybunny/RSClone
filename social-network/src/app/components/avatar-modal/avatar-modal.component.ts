@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IImage } from 'src/app/models/types';
+import { AvatarChangeMenuService } from 'src/app/services/avatar-change-menu.service';
 import { EditProfileService } from 'src/app/services/edit-profile.service';
 
 @Component({
@@ -6,10 +8,14 @@ import { EditProfileService } from 'src/app/services/edit-profile.service';
   templateUrl: './avatar-modal.component.html',
   styleUrls: ['./avatar-modal.component.scss']
 })
+
 export class AvatarModalComponent implements OnInit{
   token: string;
+  @Input() avatar: IImage;
+
   constructor(
-    public editProfileService: EditProfileService
+    public editProfileService: EditProfileService,
+    public avatarChangeMenuService: AvatarChangeMenuService
   ) {
 
   }

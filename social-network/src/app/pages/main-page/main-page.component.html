@@ -4,7 +4,8 @@
   <div class="user__page">
     <div class="user__info">
       <div class="avatar__block"
-      (mouseleave)="editProfileService.close()">
+      (mouseleave)="editProfileService.close()"
+      >
         <div class="user__avatar">
           <img 
           class="user__photo"
@@ -16,6 +17,9 @@
           <app-avatar-modal
           class="modal__wrapper"
            *ngIf="editProfileService.isVisible$ | async"></app-avatar-modal>
+           <app-avatar-change-menu
+           *ngIf="avatarChangeMenuService.isVisible$ | async"
+           ></app-avatar-change-menu>
         </div>
         <!-- <button class="changeAvatar">Сменить фото профиля</button> -->
       </div>
@@ -33,7 +37,7 @@
 
     </div>
     <div class="user__gallery">
-
+      <app-gallery-preview [id]="authInfo._id"></app-gallery-preview>
     </div>
 
     <div class="user__create_new_post">

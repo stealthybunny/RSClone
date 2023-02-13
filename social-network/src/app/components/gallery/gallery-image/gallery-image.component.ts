@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { IImage } from 'src/app/models/types';
 
 @Component({
@@ -6,7 +14,7 @@ import { IImage } from 'src/app/models/types';
   templateUrl: './gallery-image.component.html',
   styleUrls: ['./gallery-image.component.scss'],
 })
-export class GalleryImageComponent {
+export class GalleryImageComponent implements OnInit {
   @Input() image: IImage;
   @Input() id = '';
   @Input() isSameId = false;
@@ -16,18 +24,31 @@ export class GalleryImageComponent {
   isDisabled = false;
   constructor() {}
 
+  ngOnInit(): void {
+    console.log('персесборка');
+  }
+
   getImageLink(image: IImage) {
     return {
       link: `background-image: url("http://localhost:5000/${image.imgLink}");`,
     };
   }
 
-  log(status: boolean) {
+  close(status: boolean) {
     this.isOpen = status;
     console.log(this.isOpen);
   }
 
+  test() {
+    console.log('test');
+  }
+
   deleteEvent() {
     this.delete.emit(this.image._id);
+  }
+
+  getIndex() {
+    console.log(this.imgList.indexOf(this.image));
+    return this.imgList.indexOf(this.image);
   }
 }

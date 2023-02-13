@@ -7,6 +7,7 @@ import {
 import { Injectable } from '@angular/core';
 import { IToken } from '../models/types';
 import { catchError, map, Observable, throwError } from 'rxjs';
+import { pathToAPI } from '../store';
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +42,22 @@ export class GalleryService {
           Authorization: `Bearer ${this.token}`,
         },
       })
+      .pipe(catchError(this.handleError));
+  }
+
+  postLike(id: string) {
+    const url = pathToAPI + '/likes/image/' + id;
+    console.log(this.token);
+    return this.http
+      .post<IImage>(
+        url,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        }
+      )
       .pipe(catchError(this.handleError));
   }
 
