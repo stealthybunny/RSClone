@@ -24,6 +24,9 @@ import { GalleryImageComponent } from './components/gallery/gallery-image/galler
 import { AvatarModalComponent } from './components/avatar-modal/avatar-modal.component';
 import { GalleryPreviewComponent } from './components/gallery/gallery-preview/gallery-preview.component';
 import { PostUploadComponent } from './components/post-upload/post-upload.component';
+import { AvatarChangeMenuComponent } from './components/avatar-change-menu/avatar-change-menu.component';
+import { NewsComponent } from './components/posts/news/news.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { PostUploadComponent } from './components/post-upload/post-upload.compon
     AvatarModalComponent,
     GalleryPreviewComponent,
     PostUploadComponent,
+    AvatarChangeMenuComponent,
+    NewsComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,

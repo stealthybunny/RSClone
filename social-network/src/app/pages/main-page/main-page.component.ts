@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IToken, IUser } from 'src/app/models/types';
+import { IImage, IToken, IUser } from 'src/app/models/types';
+import { AvatarChangeMenuService } from 'src/app/services/avatar-change-menu.service';
 import { EditProfileService } from 'src/app/services/edit-profile.service';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
@@ -17,12 +18,14 @@ export class MainPageComponent implements OnInit {
   );
   public userData: IUser;
   public userAvatar: string | undefined;
+  public changedAvatar: IImage;
   public userName: string | undefined;
   userSubscription: Subscription;
   constructor(
     public loginService: LoginServiceService,
     public headerModalService: HeaderModalService,
-    public editProfileService: EditProfileService
+    public editProfileService: EditProfileService,
+    public avatarChangeMenuService: AvatarChangeMenuService
   ) {}
   ngOnInit(): void {
     const authInfo = JSON.parse(
@@ -31,10 +34,9 @@ export class MainPageComponent implements OnInit {
     this.userSubscription = this.loginService
       .getYourPage(authInfo._id, authInfo.token)
       .subscribe((userdata) => {
-        console.log(userdata);
-        this.userData = userdata;
         this.userName = userdata.name;
         this.userAvatar = `${pathToAPI}/${userdata.avatar.imgLink}`;
+        this.changedAvatar = userdata.avatar;
       });
   }
 }

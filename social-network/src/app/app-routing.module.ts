@@ -12,6 +12,7 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GalleryPageComponent } from './components/gallery/gallery-page/gallery-page.component';
 import { GalleryResolver } from './resolvers/gallery.resolver';
 import { UserResolver } from './resolvers/user.resolver';
+import { NewsComponent } from './components/posts/news/news.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -33,6 +34,10 @@ const routes: Routes = [
     path: 'gallery/:id',
     component: GalleryPageComponent,
     resolve: { data: GalleryResolver },
+  },
+  {
+    path: 'news',
+    component: NewsComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];
