@@ -1,6 +1,12 @@
-<ul>
-  <li *ngFor="let news of newsList">
-    {{ news.text }}
-    <app-comments [comments]="news.comments"></app-comments>
+<ul class="ul__post">
+  <li class="li__post" *ngFor="let news of newsList">
+    <div class="header__post">
+      <p class="author__post"><img [src]="news.author.avatar" alt="avatar"> {{ news.author.name }}</p>
+      <p class="date__post">Added: {{ news.date | date: 'medium' }}</p>
+    </div>
+    <div class="body__post">
+      <div class="text__post">{{ news.text }}</div>
+    </div>
+    <!-- <app-comments [comments]="news.comments"></app-comments> -->
   </li>
 </ul>

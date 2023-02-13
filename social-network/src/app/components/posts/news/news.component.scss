@@ -1,0 +1,44 @@
+.header__post {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(188, 188, 188);
+  color: #525252;
+  padding: 0.7rem 1rem 0.7rem 1rem;
+  font-size: 16px;
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+
+.author__post {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.author__post:hover {
+  color: #000000;
+  transition: all 0.2s;
+}
+
+.date__post {
+  cursor: default;
+}
+
+.ul__post {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: #67a8e4;
+}
+
+.li__post {
+}
+
+.body__post {
+  background-color: rgb(209, 209, 209);
+  padding: 1rem;
+  border-radius: 0 0 0.4rem 0.4rem;
+}
+
+.text__post {
+  font-size: 18px;
+}
