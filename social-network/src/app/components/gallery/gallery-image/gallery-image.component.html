@@ -13,9 +13,9 @@
     </div>
   </div>
   <app-gallery-modal
-    [imgList]="imgList"
+    [imgArrFromParrent]="imgList"
     [image]="image" 
-    *ngIf="isOpen" 
-    (newItemEvent)="log($event)">
+    *ngIf="isOpen"
+    (newItemEvent)="close($event)">
   </app-gallery-modal>
 </div>
