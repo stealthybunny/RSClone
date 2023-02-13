@@ -1,0 +1,22 @@
+<div class="container">
+  <ul class="errors" *ngIf="errors">
+    <li class="errors__item" *ngFor="let item of errors.message">
+      {{item}}
+    </li>
+  </ul>
+  <div class="file-errors" *ngIf="fileError">
+    {{fileError.message}}
+  </div>
+  <form class="upload" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="headline">
+    <input type="file" name="files" (change)="onFileChange($event)" #files/>
+    <div
+      class="upload__text"
+      role="textbox"
+      contenteditable="true"
+      aria-multiline="true"
+      #textbox
+      ></div>
+    <button type="submit" [disabled]="isDisabled">post</button>
+  </form>
+</div>

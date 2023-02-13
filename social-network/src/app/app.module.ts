@@ -23,6 +23,7 @@ import { GalleryModalComponent } from './components/gallery/gallery-modal/galler
 import { GalleryImageComponent } from './components/gallery/gallery-image/gallery-image.component';
 import { AvatarModalComponent } from './components/avatar-modal/avatar-modal.component';
 import { GalleryPreviewComponent } from './components/gallery/gallery-preview/gallery-preview.component';
+import { PostUploadComponent } from './components/post-upload/post-upload.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { GalleryPreviewComponent } from './components/gallery/gallery-preview/ga
     GalleryImageComponent,
     AvatarModalComponent,
     GalleryPreviewComponent,
+    PostUploadComponent,
   ],
   imports: [
     BrowserModule,
