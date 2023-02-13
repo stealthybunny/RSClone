@@ -38,8 +38,11 @@ export class LoginModalComponent implements OnInit{
       password: this.form.value.password as string
     }
     this.loginService.login(loginInfo).subscribe(authData => {
-      AuthState._id = authData._id;
-      AuthState.token = authData.token;
+      // AuthState._id = authData._id;
+      // AuthState.token = authData.token;
+      this.loginService.getUsers(authData.token).subscribe(
+        
+      )
     }
     )
   }
