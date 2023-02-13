@@ -9,14 +9,22 @@ import { Observable } from 'rxjs';
   styleUrls: ['./chat-list.component.scss'],
 })
 export class ChatListComponent implements OnInit {
-  chatSubs!: Observable<IChat[]>;
+  chatSubs!: IChat[];
   userLofinInfo = JSON.parse(
     window.localStorage.getItem('RSClone-socnetwork') as string
   ) as IToken;
   constructor(private chatsService: ChatsService) {}
 
   ngOnInit(): void {
-    this.chatSubs = this.chatsService.getChats();
+    this.chatsService.getChats().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.chatSubs = data;
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
   }
 
   getUserName(chat: IChat) {
@@ -35,5 +43,12 @@ export class ChatListComponent implements OnInit {
     return chat.messages.length
       ? (chat.messages.at(-1) as IMessage)
       : { text: 'пока нет сообщений', date: new Date() };
+  }
+
+  getNoRead(chat: IChat) {
+    const filterMessages = chat.messages.filter(
+      (e) => e.author._id !== this.userLofinInfo._id && !e.isRead
+    );
+    return filterMessages.length;
   }
 }
