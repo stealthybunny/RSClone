@@ -15,6 +15,7 @@ export class FindComponent implements OnInit{
   public users: IUser[];
   public token: string;
   public api = pathToAPI;
+  public isOnline: boolean = false;
   constructor(
     private router: Router,
     public headerModalService: HeaderModalService,
@@ -23,15 +24,21 @@ export class FindComponent implements OnInit{
     
   }
   ngOnInit(): void {
-    this.token = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string).token;
+    const authInfo = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string)
+    this.token = authInfo.token;
     const token: string = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string).token;
-    this.loginService.getUsers(token).subscribe((data) => {this.users = data; console.log(this.users)})
+    this.loginService.getUsers(token).subscribe((data) => {
+      const dataArr = data.filter(user => user._id !== authInfo._id);
+
+      this.users = dataArr;
+      console.log(this.users)
+    })
   }
 
   write(userID: string, token: string) {
     this.loginService.writeToUser(userID, token).subscribe((data) => {
       const chatID = data.chat;
-      this.router.navigate(['chats',chatID])
+      this.router.navigate(['chats',chatID]);
     })
   }
 }
