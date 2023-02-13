@@ -10,6 +10,9 @@
           class="user__photo"
           [src]="userAvatar"
           alt="avatar">
+          <span
+          class="user__status"
+          *ngIf="user.isOnline"></span>
         </div>
         <button
         (click)="writeToThisUser()"
