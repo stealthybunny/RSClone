@@ -26,7 +26,8 @@ export class LoginServiceService {
       tap(resp => {
           const logInfo: IToken = resp;
           window.localStorage.setItem('RSClone-socnetwork', JSON.stringify(logInfo));
-          // window.location.assign(`/users/${logInfo._id}`);
+          window.location.assign('/user/' + resp._id);
+
       }),
       catchError(this.errorHandler.bind(this))
     ) 
