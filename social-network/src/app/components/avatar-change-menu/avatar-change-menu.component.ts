@@ -1,7 +1,9 @@
 import { Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { pipe, tap } from 'rxjs';
 import { IImage } from 'src/app/models/types';
+import { UserPageComponent } from 'src/app/pages/user-page/user-page.component';
 import { AvatarChangeMenuService } from 'src/app/services/avatar-change-menu.service';
 import { EditProfileService } from 'src/app/services/edit-profile.service';
 
@@ -25,8 +27,9 @@ export class AvatarChangeMenuComponent implements OnInit {
   constructor(
     public avatarChangeModalService: AvatarChangeMenuService,
     public editProfileService: EditProfileService,
-    private formBuilder: FormBuilder
-    // private route: ActivatedRoute
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userPage: UserPageComponent
   ) {
 
   }
@@ -38,6 +41,9 @@ export class AvatarChangeMenuComponent implements OnInit {
 
     this.avatarChangeModalService.upload(formData, this.userToken).subscribe({
       next: (data) => {
+        // this.router.navigate(['user',this.userID]);
+        // this.userPage.ngOnInit();
+        window.location.assign(`/user/${this.userID}`)
         console.log(data);
         this.file.nativeElement.value = null;
         this.isDisabled = false;
@@ -47,6 +53,7 @@ export class AvatarChangeMenuComponent implements OnInit {
         this.error = e;
         this.isDisabled = false;
       },
+      
     });
   }
 

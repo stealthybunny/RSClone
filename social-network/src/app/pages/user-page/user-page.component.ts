@@ -29,6 +29,7 @@ export class UserPageComponent implements OnInit {
     public avatarChangeMenuService: AvatarChangeMenuService
   ) {}
   ngOnInit(): void {
+    console.log('---------userPage OnInit!!----')
     if (JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string)) {
       
     }
@@ -51,5 +52,9 @@ export class UserPageComponent implements OnInit {
         const chatID = data.chat;
         window.location.assign(`/chats/${chatID}`);
       });
+  }
+
+  avatarRedraw() {
+    
   }
 }
