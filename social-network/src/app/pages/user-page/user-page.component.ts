@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HeaderModalComponent } from 'src/app/components/header-modal/header-modal.component';
-import { IUser } from 'src/app/models/types';
+import { IImage, IUser } from 'src/app/models/types';
 import { AvatarChangeMenuService } from 'src/app/services/avatar-change-menu.service';
 import { EditProfileService } from 'src/app/services/edit-profile.service';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
@@ -20,6 +20,8 @@ export class UserPageComponent implements OnInit {
   userAvatar: string;
   token: string;
   isYourPage: boolean = false;
+  avatar: IImage;
+  api = pathToAPI;
 
   constructor(
     private route: ActivatedRoute,

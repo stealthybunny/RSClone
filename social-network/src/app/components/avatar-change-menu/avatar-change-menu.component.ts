@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { pipe, tap } from 'rxjs';
@@ -22,7 +22,7 @@ export class AvatarChangeMenuComponent implements OnInit {
   @ViewChild('file') file: ElementRef
   @ViewChild('inputFile') inputRef: ElementRef
   photoPreview: string | ArrayBuffer | null = '';
-  @Input() avatar: IImage;
+  @Output() changeAvatar = new EventEmitter();
 
   constructor(
     public avatarChangeModalService: AvatarChangeMenuService,
@@ -40,10 +40,10 @@ export class AvatarChangeMenuComponent implements OnInit {
     formData.append('file', this.form.get('file')!.value);
     this.avatarChangeModalService.upload(formData, this.userToken).subscribe({
       next: (data) => {
-        window.location.assign(`/user/${this.userID}`)
         console.log(data);
         this.file.nativeElement.value = null;
         this.isDisabled = false;
+        this.changeAvatar.emit(data);
       },
       error: (e) => {
         console.log(e);

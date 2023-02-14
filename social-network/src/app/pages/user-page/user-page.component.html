@@ -5,7 +5,7 @@
         <div class="user__avatar">
           <img 
           class="user__photo"
-          [src]="userAvatar"
+          [src]="api + '/' + user.avatar.imgLink"
           (mouseover)="editProfileService.open()"
           alt="avatar">
           <div class="div"
@@ -17,6 +17,7 @@
           </div>
           
             <app-avatar-change-menu
+            (changeAvatar)="user.avatar = $event"
            *ngIf="avatarChangeMenuService.isVisible$ | async"
             ></app-avatar-change-menu>
           <span
@@ -45,7 +46,9 @@
         <app-gallery-preview [id]="user._id"></app-gallery-preview>
       </div>
       <div class="user__subscriptions">
-        <app-subscribtions></app-subscribtions>
+        <app-subscribtions
+        [subscriptions]="user.subscriptions"
+        ></app-subscribtions>
       </div>
     </div>
    
