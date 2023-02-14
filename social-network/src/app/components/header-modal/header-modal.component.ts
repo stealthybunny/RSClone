@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HeaderModalService } from 'src/app/services/header-modal.service';
 
 @Component({
   selector: 'app-header-modal',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-modal.component.scss']
 })
 export class HeaderModalComponent {
+  constructor(
+    public headerModalService: HeaderModalService
+  ) {
+
+  }
 
   deleteToken() {
     window.localStorage.removeItem('RSClone-socnetwork')

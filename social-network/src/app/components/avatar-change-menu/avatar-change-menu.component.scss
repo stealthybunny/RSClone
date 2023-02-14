@@ -59,8 +59,25 @@
   display: none;
 }
 
+.preview__container {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  border: none;
+  background: rgb(163,73,163);
+  background: linear-gradient(19deg, rgba(163,73,163,1) 0%, rgba(56,151,241,1) 100%);
+}
+
 .preview__image {
+  position: relative;
   width: 148px;
   height: 148px;
   border-radius: 50%;
+  border: none;
 }

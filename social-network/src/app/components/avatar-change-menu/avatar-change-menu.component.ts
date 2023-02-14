@@ -38,11 +38,8 @@ export class AvatarChangeMenuComponent implements OnInit {
     this.isDisabled = true;
     const formData = new FormData();
     formData.append('file', this.form.get('file')!.value);
-
     this.avatarChangeModalService.upload(formData, this.userToken).subscribe({
       next: (data) => {
-        // this.router.navigate(['user',this.userID]);
-        // this.userPage.ngOnInit();
         window.location.assign(`/user/${this.userID}`)
         console.log(data);
         this.file.nativeElement.value = null;
@@ -64,7 +61,13 @@ export class AvatarChangeMenuComponent implements OnInit {
       this.form.get('file')!.setValue(file);
       console.log(this.form);
       this.error = null;
+      const reader = new FileReader();
+      reader.onload = () => {
+      this.photoPreview = reader.result;
     }
+    reader.readAsDataURL(file);
+    }
+    
   }
 
   triggerClick() {

@@ -38,6 +38,7 @@
 }
 
 .user__photo {
+  position: relative;
   width: 148px;
   height: 148px;
   border-radius: 50%;
@@ -66,5 +67,11 @@
   border: 3px solid white;
   border-radius: 50%;
   background-color: rgb(3, 202, 3);
+}
+
+.modal__wrapper {
+  position: absolute;
+  top: 150px;
+  left: 0px;
 }
 

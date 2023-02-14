@@ -5,13 +5,16 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class HeaderModalService {
-  isVisible$ = new BehaviorSubject<boolean>(false);
+  isOpened$ = new BehaviorSubject<boolean>(false);
 
   open() {
-    this.isVisible$.next(true)
+    this.isOpened$.next(true)
+    console.log(this.isOpened$.value)
+
   }
 
   close() {
-    this.isVisible$.next(false)
+    this.isOpened$.next(false)
+    console.log(this.isOpened$.value)
   }
 }
