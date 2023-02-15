@@ -5,6 +5,7 @@ import { pipe, tap } from 'rxjs';
 import { IImage } from 'src/app/models/types';
 import { UserPageComponent } from 'src/app/pages/user-page/user-page.component';
 import { AvatarChangeMenuService } from 'src/app/services/avatar-change-menu.service';
+import { DataTransportService } from 'src/app/services/data-transport.service';
 import { EditProfileService } from 'src/app/services/edit-profile.service';
 
 @Component({
@@ -23,13 +24,16 @@ export class AvatarChangeMenuComponent implements OnInit {
   @ViewChild('inputFile') inputRef: ElementRef
   photoPreview: string | ArrayBuffer | null = '';
   @Output() changeAvatar = new EventEmitter();
+  // @ViewChild('headerImage') headerImage: string;
+
 
   constructor(
     public avatarChangeModalService: AvatarChangeMenuService,
     public editProfileService: EditProfileService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private userPage: UserPageComponent
+    private userPage: UserPageComponent,
+    private dataTransport: DataTransportService
   ) {
 
   }
@@ -44,6 +48,9 @@ export class AvatarChangeMenuComponent implements OnInit {
         this.file.nativeElement.value = null;
         this.isDisabled = false;
         this.changeAvatar.emit(data);
+        // this.headerImage = data.imgLink;
+        this.dataTransport.getPhoto(data);
+        
       },
       error: (e) => {
         console.log(e);

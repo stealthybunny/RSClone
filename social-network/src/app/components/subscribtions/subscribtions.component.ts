@@ -20,7 +20,7 @@ export class SubscribtionsComponent implements OnInit{
   }
   ngOnInit(): void {
     console.log(this.subscriptions)
-    this.api = pathToAPI
+    this.api = pathToAPI;
     // const authInfo = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string)
     // this.token = authInfo.token;
     // const token: string = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string).token;

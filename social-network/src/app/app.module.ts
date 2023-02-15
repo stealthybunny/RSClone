@@ -62,7 +62,7 @@ import { SubscribtionsComponent } from './components/subscribtions/subscribtions
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [LoginServiceService],
+  providers: [LoginServiceService, HeaderComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

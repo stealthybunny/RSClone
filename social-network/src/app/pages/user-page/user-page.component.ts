@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HeaderModalComponent } from 'src/app/components/header-modal/header-modal.component';
