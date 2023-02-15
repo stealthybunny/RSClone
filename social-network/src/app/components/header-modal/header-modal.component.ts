@@ -9,12 +9,9 @@ import { HeaderModalService } from 'src/app/services/header-modal.service';
 export class HeaderModalComponent {
   constructor(
     public headerModalService: HeaderModalService
-  ) {
-
-  }
+  ) {  }
 
   deleteToken() {
     window.localStorage.removeItem('RSClone-socnetwork')
   }
-
 }

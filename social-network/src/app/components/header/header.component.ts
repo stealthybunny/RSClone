@@ -37,12 +37,6 @@ export class HeaderComponent implements OnInit {
       this.userPath = `/user/${data._id}`;
       this.userAvatar = `${pathToAPI}/${data.avatar.imgLink}`;
     })
-    // if (window.localStorage.getItem('RSClone-socnetwork')) {
-    //   const userLofinInfo: IToken = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string);
-    //   this.loginService.getYourPage(userLofinInfo._id, userLofinInfo.token).subscribe(userdata => this.userData = userdata)
-    // } else {
-    //   window.location.assign('/auth/login')
-    // }
   }
 
 }

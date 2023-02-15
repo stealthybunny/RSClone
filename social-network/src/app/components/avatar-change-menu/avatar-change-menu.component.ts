@@ -81,22 +81,12 @@ export class AvatarChangeMenuComponent implements OnInit {
     this.inputRef.nativeElement.click()
   }
 
-
   ngOnInit(): void {
-    // this.form = new FormGroup({
-    //   file: new FormControl()
-    // })
-
-
     this.form = this.formBuilder.group({
       file: '',
-    });
-
-
-    
+    });    
     const auth = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string);
     this.userID = auth._id;
     this.userToken = auth.token;
   }
-
 }
