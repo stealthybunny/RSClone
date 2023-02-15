@@ -14,11 +14,6 @@
           class="user__status"
           *ngIf="user.isOnline"></span>
         </div>
-        <button
-        (click)="writeToThisUser()"
-        >Написать</button>
-      <button>Подписаться</button>
-
       </div>
       <div class="user__description">
         <h1 class="user__name">{{user.name}}</h1>
@@ -29,7 +24,10 @@
         <h4>Школа:<span> Undefined</span></h4>
       </div>
       
-
+      <button class="btn"
+      (click)="writeToThisUser()"
+      >Написать</button>
+      <button class="btn">Подписаться</button>
     </div>
     <div class="user__gallery">
       <app-gallery-preview [id]="user._id"></app-gallery-preview>

@@ -1,6 +1,26 @@
-<ul>
-  <li *ngFor="let news of newsList">
-    {{ news.text }}
-    <app-comments [comments]="news.comments"></app-comments>
+<ul class="ul__post">
+  <li class="li__post" *ngFor="let news of newsList">
+    <div class="header__post">
+      <p class="author__post"><img [src]="news.author.avatar" alt="avatar"> {{ news.author.name }}</p>
+      <p class="date__post">Added: {{ news.date | date: 'medium' }}</p>
+    </div>
+    <div class="title__post">
+      <div class="text__post">{{ news.headline }}</div>
+    </div>
+    <div class="body__post">
+      <div [innerHTML]="news.text" class="text__post"></div>
+      <img [src]="api+'/'+news.images[0]" class="images__post">
+    </div>
+    <div class="footer__post">
+      <div class="item__footer-post">
+        <img class="like__svg" src="../../../../assets/like-svgrepo-com.svg" alt="like">
+        {{ news.likes.length }}
+      </div>
+      <div (click)="isOpen = !isOpen" class="item__footer-post">
+        <img class="comment__svg" src="../../../../assets/comment-svgrepo-com.svg" alt="comments">{{ news.comments.length }}
+      </div>
+    </div>
+    <app-comments *ngIf="isOpen" [comments]="news.comments"></app-comments>
+
   </li>
 </ul>

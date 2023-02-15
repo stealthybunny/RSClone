@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500');
+
 .app__header {
-  width: 100vw;
+  width: 100%;
   height: 50px;
-  background-color: #3897f1;
+  background-color: #3e3e3e;
 }
 
 .header__container {
@@ -15,14 +16,18 @@
 }
 
 .header__logo {
-  color: white;
+  color: rgb(147, 222, 140);
   font-size: 28px;
-  font-family: 'Lobster', cursive;
+  font-family: 'Kanit', sans-serif;
+  // font-family: 'Lobster', cursive;
+  display: flex;
   cursor: pointer;
 }
 
-.header__logo_pink {
-  color: #fd06fd;
+.right__text-logo {
+  color: rgb(155, 115, 224);
+  margin-left: -12px;
+  margin-top: 3px;
 }
 
 .header__search {
@@ -35,9 +40,11 @@
 
 .header__search_field {
   width: 100%;
-  height: 70%;
-  border: 1px solid #fd06fd;
+  height: 50%;
+  border: 2px solid rgb(147, 222, 140);
+  background-color: #cbcbcb;
   border-radius: 8px;
+  padding-left: 0.5rem;
 }
 
 .header__search_field:focus {
@@ -50,8 +57,9 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid #fd06fd;
+  border: 2px solid rgb(147, 222, 140);
   cursor: pointer;
+
 }
 
 .img__menu {
@@ -61,6 +69,7 @@
   justify-content: flex-start;
   width: 50px;
   height: 100%;
+  padding-right: 3rem;
 }
 
 

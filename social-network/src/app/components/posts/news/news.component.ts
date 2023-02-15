@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IPost } from 'src/app/models/types';
 import { NewsService } from 'src/app/services/news.service';
+import { pathToAPI } from 'src/app/store';
 
 @Component({
   selector: 'app-news',
@@ -9,6 +10,8 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class NewsComponent implements OnInit {
   newsList: IPost[];
+  isOpen = false;
+  api = pathToAPI;
   constructor(
     private newsServes: NewsService,
   ) {
@@ -25,6 +28,11 @@ export class NewsComponent implements OnInit {
         console.log(e);
       },
     });
+  }
+
+  getComments(post: IPost) {
+    console.log(post);
+    console.log(document.querySelectorAll('app-comments'))
   }
 }
 
