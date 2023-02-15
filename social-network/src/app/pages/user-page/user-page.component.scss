@@ -6,10 +6,13 @@
 }
 
 .user__page {
-  margin-top: 10px;
-  margin-right: 10px;
+  padding: 2rem;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
 }
 
 .user__info {
@@ -17,15 +20,15 @@
   width: 100%;
   height: 200px;
   gap: 30px;
-  background-color: #fff;
-  border: 1px solid rgba(137, 137, 137, 0.42);
+  background-color: rgb(51, 51, 51);
+  // border: 1px solid rgba(137, 137, 137, 0.42);
   border-radius: 24px;
 }
 
 .user__avatar {
   position: relative;
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-top: 1rem;
+  margin-left: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +37,7 @@
   border-radius: 50%;
   border: none;
   background: rgb(163,73,163);
-  background: linear-gradient(19deg, rgba(163,73,163,1) 0%, rgba(56,151,241,1) 100%);
+  background: linear-gradient(19deg, rgb(64, 194, 105) 0%, rgb(147, 57, 196)100%);
 }
 
 .user__photo {
@@ -46,7 +49,22 @@
 
 .user__name {
   margin-top: 20px;
-  color: red;
+  color: rgb(192, 172, 227);
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  margin-left: 3rem;
+  background-color: rgb(99, 99, 99);
+  width: auto;
+  padding: 0.4rem 1.5rem;
+  height: 2rem;
+  margin-top: 2rem;
+  border: 0;
+  border-radius: 0.5rem;
+  color: rgb(200, 200, 200);
+  cursor: pointer;
 }
 
 .user__gallery {
@@ -68,3 +86,6 @@
   background-color: rgb(3, 202, 3);
 }
 
+.user__description {
+  
+}

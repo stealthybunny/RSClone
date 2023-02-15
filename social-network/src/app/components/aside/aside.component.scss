@@ -1,14 +1,17 @@
 .aside__menu {
   width: 200px;
-  margin-top: 10px;
+  margin-top: 2rem;
+  background-color: rgb(51, 51, 51);
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 .aside__menu_list {
   list-style: none;
-  color: #477dbb;
+  color: rgb(200, 200, 200);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .aside__menu_item {
@@ -20,5 +23,6 @@
 }
 
 .menu__text {
-  color: black;
+  color: rgb(200, 200, 200);
+  font-family: 'Times New Roman', Times, serif;
 }
