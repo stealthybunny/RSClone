@@ -1,19 +1,38 @@
-<!-- <app-header></app-header> -->
-<!-- <main class="main"
-(click)="headerModalService.close()"> -->
-  <!-- <app-aside></app-aside> -->
   <div class="user__page">
     <div class="user__info">
-      <div class="foreign__user_block">
+      <div class="foreign__user_block"
+      (mouseleave)="editProfileService.close()">
         <div class="user__avatar">
           <img 
           class="user__photo"
-          [src]="userAvatar"
+          [src]="api + '/' + user.avatar.imgLink"
+          (mouseover)="editProfileService.open()"
           alt="avatar">
+          <div class="div"
+          *ngIf="isYourPage">
+            <app-avatar-modal
+          class="modal__wrapper"
+           *ngIf="editProfileService.isVisible$ | async"></app-avatar-modal>
+
+          </div>
+          
+            <app-avatar-change-menu
+            (changeAvatar)="user.avatar = $event"
+           *ngIf="avatarChangeMenuService.isVisible$ | async"
+            ></app-avatar-change-menu>
           <span
           class="user__status"
           *ngIf="user.isOnline"></span>
         </div>
+
+        <div class="user__interactions__btns"
+        *ngIf="!isYourPage">
+          <button       
+          (click)="writeToThisUser()"
+          >Написать</button>
+          <button>Подписаться</button>
+        </div>
+
       </div>
       <div class="user__description">
         <h1 class="user__name">{{user.name}}</h1>
@@ -23,25 +42,23 @@
         <h4>Работа:<span> Null</span></h4>
         <h4>Школа:<span> Undefined</span></h4>
       </div>
-      
-      <button class="btn"
-      (click)="writeToThisUser()"
-      >Написать</button>
-      <button class="btn">Подписаться</button>
     </div>
-    <div class="user__gallery">
-      <app-gallery-preview [id]="user._id"></app-gallery-preview>
+    <div class="wrapper">
+      <div class="user__gallery">
+        <app-gallery-preview [id]="user._id"></app-gallery-preview>
+      </div>
+      <div class="user__subscriptions">
+        <app-subscribtions
+        [subscriptions]="user.subscriptions"
+        ></app-subscribtions>
+      </div>
     </div>
-
+   
     <div class="user__create_new_post">
-
     </div>
-
     <div class="user__posts">
-
     </div>
   </div>
-<!-- </main> -->
 
 
 

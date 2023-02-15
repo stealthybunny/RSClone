@@ -27,6 +27,7 @@ import { PostUploadComponent } from './components/post-upload/post-upload.compon
 import { AvatarChangeMenuComponent } from './components/avatar-change-menu/avatar-change-menu.component';
 import { NewsComponent } from './components/posts/news/news.component';
 import { CommentsComponent } from './components/comments/comments.component';
+import { SubscribtionsComponent } from './components/subscribtions/subscribtions.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { CommentsComponent } from './components/comments/comments.component';
     AvatarChangeMenuComponent,
     NewsComponent,
     CommentsComponent,
+    SubscribtionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,7 @@ import { CommentsComponent } from './components/comments/comments.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [LoginServiceService],
+  providers: [LoginServiceService, HeaderComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

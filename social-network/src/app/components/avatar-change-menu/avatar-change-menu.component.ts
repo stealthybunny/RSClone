@@ -1,8 +1,11 @@
-import { Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { pipe, tap } from 'rxjs';
 import { IImage } from 'src/app/models/types';
+import { UserPageComponent } from 'src/app/pages/user-page/user-page.component';
 import { AvatarChangeMenuService } from 'src/app/services/avatar-change-menu.service';
+import { DataTransportService } from 'src/app/services/data-transport.service';
 import { EditProfileService } from 'src/app/services/edit-profile.service';
 
 @Component({
@@ -20,13 +23,17 @@ export class AvatarChangeMenuComponent implements OnInit {
   @ViewChild('file') file: ElementRef
   @ViewChild('inputFile') inputRef: ElementRef
   photoPreview: string | ArrayBuffer | null = '';
-  @Input() avatar: IImage;
+  @Output() changeAvatar = new EventEmitter();
+  // @ViewChild('headerImage') headerImage: string;
+
 
   constructor(
     public avatarChangeModalService: AvatarChangeMenuService,
     public editProfileService: EditProfileService,
-    private formBuilder: FormBuilder
-    // private route: ActivatedRoute
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userPage: UserPageComponent,
+    private dataTransport: DataTransportService
   ) {
 
   }
@@ -35,18 +42,22 @@ export class AvatarChangeMenuComponent implements OnInit {
     this.isDisabled = true;
     const formData = new FormData();
     formData.append('file', this.form.get('file')!.value);
-
     this.avatarChangeModalService.upload(formData, this.userToken).subscribe({
       next: (data) => {
         console.log(data);
         this.file.nativeElement.value = null;
         this.isDisabled = false;
+        this.changeAvatar.emit(data);
+        // this.headerImage = data.imgLink;
+        this.dataTransport.getPhoto(data);
+        
       },
       error: (e) => {
         console.log(e);
         this.error = e;
         this.isDisabled = false;
       },
+      
     });
   }
 
@@ -57,29 +68,25 @@ export class AvatarChangeMenuComponent implements OnInit {
       this.form.get('file')!.setValue(file);
       console.log(this.form);
       this.error = null;
+      const reader = new FileReader();
+      reader.onload = () => {
+      this.photoPreview = reader.result;
     }
+    reader.readAsDataURL(file);
+    }
+    
   }
 
   triggerClick() {
     this.inputRef.nativeElement.click()
   }
 
-
   ngOnInit(): void {
-    // this.form = new FormGroup({
-    //   file: new FormControl()
-    // })
-
-
     this.form = this.formBuilder.group({
       file: '',
-    });
-
-
-    
+    });    
     const auth = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string);
     this.userID = auth._id;
     this.userToken = auth.token;
   }
-
 }

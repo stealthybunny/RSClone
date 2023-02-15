@@ -8,3 +8,5 @@ export const AuthState: IToken = {
   _id: '1',
   token: '2',
 }
+
+

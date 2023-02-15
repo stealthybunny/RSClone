@@ -21,7 +21,12 @@
       <img class="preview__image" 
       [src]="photoPreview"
       *ngIf="photoPreview"
-       alt="avatar preview">
+      alt="avatar preview">
+    </div>
+    <div
+    style="color: red;"
+    *ngIf="error">
+      {{ error.message }}
     </div>
   </div>
   <div class="modal__footer">

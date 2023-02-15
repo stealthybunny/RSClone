@@ -8,11 +8,13 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
   styleUrls: ['./aside.component.scss'],
 })
 export class AsideComponent implements OnInit {
+  userPath: string;
   userLofinInfo = JSON.parse(
     window.localStorage.getItem('RSClone-socnetwork') as string
   ) as IToken;
   constructor(public loginService: LoginServiceService) {}
   ngOnInit(): void {
+    this.userPath = `/user/${this.userLofinInfo._id}`;
     this.loginService;
   }
   getGalleryLink() {
