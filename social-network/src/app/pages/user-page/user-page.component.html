@@ -24,6 +24,7 @@
           class="user__status"
           *ngIf="user.isOnline"></span>
         </div>
+
         <div class="user__interactions__btns"
         *ngIf="!isYourPage">
           <button       
@@ -31,6 +32,7 @@
           >Написать</button>
           <button>Подписаться</button>
         </div>
+
       </div>
       <div class="user__description">
         <h1 class="user__name">{{user.name}}</h1>

@@ -1,0 +1,20 @@
+.comments__post {
+  background-color: rgb(51, 51, 51);
+  color: rgb(200, 200, 200);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  padding-top: 1rem;
+  margin-top: -1rem;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comment__post {
+}

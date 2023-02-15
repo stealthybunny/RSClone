@@ -1,4 +1,5 @@
 <div class="container">
+  <p class="title__post">Новый пост</p>
   <ul class="errors" *ngIf="errors">
     <li class="errors__item" *ngFor="let item of errors.message">
       {{item}}
@@ -8,15 +9,16 @@
     {{fileError.message}}
   </div>
   <form class="upload" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="headline">
-    <input type="file" name="files" (change)="onFileChange($event)" #files/>
+    <input class="headline" type="text" formControlName="headline" placeholder="Заголовок">
     <div
-      class="upload__text"
-      role="textbox"
-      contenteditable="true"
-      aria-multiline="true"
-      #textbox
-      ></div>
-    <button type="submit" [disabled]="isDisabled">post</button>
+    class="upload__text"
+    role="textbox"
+    contenteditable="true"
+    aria-multiline="true"
+    #textbox
+    ></div>
+    <input class="input__file" type="file" name="files" id="input__file" (change)="onFileChange($event)" #files/>
+    <label class="add__file" for="input__file">Добавить фото</label>
+    <button class="submit__post" type="submit" [disabled]="isDisabled">Поделиться</button>
   </form>
 </div>

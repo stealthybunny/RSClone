@@ -54,6 +54,8 @@ export class PostUploadComponent implements OnInit {
 
   onFileChange(event: any) {
     console.log('change');
+    let addFile = document.querySelector('.add__file');
+    addFile!.innerHTML = 'Фото выбрано (1)';
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.form.get('files')?.setValue(file);
