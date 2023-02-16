@@ -1,3 +1,5 @@
+@import "../../models/styleVar.scss";
+
 .main {
   display: flex;
   width: 80%;
@@ -6,9 +8,9 @@
 }
 
 .find_page {
-  margin-top: 10px;
-  margin-right: 10px;
-  width: 60%;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  width: 100%;
   height: 500px;
 }
 
@@ -17,8 +19,8 @@
   width: 95%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  max-height: 700px;
+  gap: 0.5rem;
+  // max-height: 700px;
   overflow: scroll;
 
 }
@@ -27,16 +29,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: $color-default;
   width: 100%;
   cursor: pointer;
-  border: 1px solid gray;
-  border-radius: 5px;
+  border: 1px solid $border-item;
+  background-color: $background-post;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.5rem;
 }
 
 .userInfo__wrapper {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 1rem;
   width: 100%;
   height: 50px;
   cursor: pointer;
@@ -49,10 +54,46 @@
   border-radius: 50%;
 }
 
+.user__name {
+  color: $color-default;
+  font-size: 16px;
+}
+
+.btns__wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn__find {
+  font-size: 14px;
+  background-color: $item;
+  color: $color-default;
+  border: 1px solid $border-item;
+  padding: 0.3rem 0.4rem;
+  border-radius: 0.4rem;
+  transition: all 0.2s;
+}
+
+.btn__find:hover {
+  background-color: $hover-item;
+  transition: all 0.2s;
+}
+
+.btn__find:active {
+  background-color: $active-item;
+  transition: all 0.2s;
+}
+
 .createChat {
   position: relative;
   z-index: 10;
+
 }
+
+// .subscribeToUser {
+
+// }
 
 .avatar_wrapper {
   position: relative;
