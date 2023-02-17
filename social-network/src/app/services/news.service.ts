@@ -39,6 +39,16 @@ export class NewsService {
       .pipe(catchError(this.handleError));
   }
 
+  deletePost(id: string) {
+    return this.http
+      .delete<IPost>(`${this.url}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .pipe(catchError(this.handleError));
+  }
+
   postLike(id: string) {
     const url = pathToAPI + '/likes/post/' + id;
     console.log(this.token);
