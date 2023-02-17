@@ -1,4 +1,5 @@
 import { IImage } from 'src/app/models/types';
+
 import {
   Component,
   Input,
@@ -15,6 +16,7 @@ import { GalleryService } from 'src/app/services/gallery.service';
 })
 export class GalleryPreviewComponent implements OnInit, OnChanges {
   @Input() id: string;
+  oldID: string;
   imgList: IImage[] = [];
   currentImage: IImage;
   modalOpen = false;
@@ -38,6 +40,7 @@ export class GalleryPreviewComponent implements OnInit, OnChanges {
         console.log(e);
       },
     });
+    this.oldID = this.id;
   }
 
   getImageLink(image: IImage) {
