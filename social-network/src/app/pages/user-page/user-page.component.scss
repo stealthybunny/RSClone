@@ -94,7 +94,7 @@
   right: 12px;
   width: 20px;
   height: 20px;
-  border: 3px solid white;
+  border: 3px solid $background-post;
   border-radius: 50%;
   background-color: rgb(3, 202, 3);
 }
@@ -113,9 +113,10 @@
 }
 
 .user__subscriptions {
-  background-color: #fff;
+  color: $color-default;
+  background-color: $background-post;
   border: 1px solid rgba(137, 137, 137, 0.42);
-  border-radius: 24px;
+  border-radius: 1rem;
   margin-top: 10px;
   flex-grow: 1;
 }

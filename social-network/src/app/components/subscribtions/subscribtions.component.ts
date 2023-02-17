@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { concat } from 'rxjs';
 import { IUser } from 'src/app/models/types';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { SubsModalServiceService } from 'src/app/services/subs-modal-service.service';
 import { pathToAPI } from 'src/app/store';
 
 @Component({
@@ -11,9 +13,13 @@ import { pathToAPI } from 'src/app/store';
 export class SubscribtionsComponent implements OnInit{
   token: string;
   @Input() subscriptions: IUser[];
+ 
   api: string;
 
-  constructor(private loginService: LoginServiceService) {
+  constructor(
+    private loginService: LoginServiceService,
+    public subModalService: SubsModalServiceService
+    ) {
 
   }
   ngOnInit(): void {

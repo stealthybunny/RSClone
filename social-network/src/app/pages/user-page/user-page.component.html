@@ -49,11 +49,13 @@
       </div>
       <div class="user__subscriptions">
         <app-subscribtions
-        [subscriptions]="user.subscriptions"
+        [subscriptions]="sortedSubs"
         ></app-subscribtions>
       </div>
     </div>
-   
+    <app-subscriptions-modal
+    *ngIf="subModalService.isOpened$ | async"
+    [id]="user._id"></app-subscriptions-modal>
     <div class="user__create_new_post">
       <app-news [id]="user._id"></app-news>
     </div>

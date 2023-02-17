@@ -1,0 +1,110 @@
+@import "../../models/styleVar.scss";
+
+.cover{
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(128, 128, 128, 0.2);
+}
+
+.wrapper {
+  color: $color-default;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 400px;
+  border-radius: 1rem;
+  background-color: $background-post;
+}
+
+.controls__wrapper {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.controls {
+  width: 33%;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.controls:hover {
+  background-color: $hover-item;
+}
+
+.active {
+  background-color: $hover-item;
+}
+
+.passive {
+  background-color: $background-post;
+}
+
+.headline {
+text-align: center;
+line-height: 26px;
+}
+
+.modal__body {
+  margin: 0 auto;
+  width: 80%;
+  height: 330px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.line__wrapper {
+  border-radius: 1rem;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.line__wrapper:hover {
+  background-color: $hover-item;
+
+}
+
+.image {
+  width: 40px;
+  height: 40px;
+  border-radius: 1rem;
+}
+
+.modal__header {
+  position: relative;
+}
+
+.modal__header_close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  // position: relative;
+  cursor: pointer;
+}
+
+
+.line {
+  position: absolute;
+  top: 9px;
+  left: 3px;
+  width: 15px;
+  height: 2px;
+  background-color: $color-default;
+  transform: rotate(45deg);
+}
+
+.second__line {
+  position: absolute;
+  transform: rotate(-45deg);
+}

@@ -1,6 +1,15 @@
+@import "../../models/styleVar.scss";
+
 .subs__headline {
   margin: 0 auto;
   text-align: center;
+  cursor: pointer;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.subs__headline:hover {
+  background-color: $hover-item;
+  overflow: hidden;
 }
 
 .img__wrapper {
@@ -10,7 +19,7 @@
 .sub__img {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 1rem;
 }
 
 .status__marker {
@@ -19,8 +28,8 @@
   right: -2px;
   width: 13px;
   height: 13px;
-  border: 2px solid white;
-  border-radius: 50%;
+  border: 2px solid $background-post;
+  border-radius: 1rem;
   background-color: rgb(3, 202, 3);
 }
 
@@ -36,4 +45,9 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
+}
+
+.wrapper:hover {
+  background-color: $hover-item;
+  border-radius: 1rem;
 }

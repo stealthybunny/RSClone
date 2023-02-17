@@ -1,0 +1,43 @@
+<div class="cover"
+(click)="subModalService.close()"></div>
+<div class="wrapper">
+  <div class="modal__header">
+    <h3 class="headline">Подписки</h3>
+    <div class="modal__header_close"
+    (click)="subModalService.close()">
+      <div class="line"></div>
+      <div class="line second__line"></div>
+    </div>
+  </div>
+  <div class="controls__wrapper">
+    <div class="subs__all controls"
+    [ngClass]="first ? 'active' : 'passive'"
+    (click)="getAllSubs()">
+      Все
+    </div>
+    <div class="subs__online controls"
+    [ngClass]="second ? 'active' : 'passive'"
+    (click)="getOnlineSubs()">
+      Оналйн
+    </div>
+    <div class="subs__offline controls"
+    [ngClass]="third ? 'active' : 'passive'"
+    (click)="getOfflineSubs()">
+      Оффлайн
+    </div>
+  </div>
+  <div class="modal__body"
+  >
+  <div class="line__wrapper"
+  *ngFor="let sub of output"
+  [routerLink]="['/user', sub._id]"
+  (click)="subModalService.close()">
+    <img 
+    [src]="api + '/' + sub.avatar.imgLink"
+    class="image">
+    <div class="name">{{sub.name}}</div>
+  </div>
+
+
+  </div>
+</div>
