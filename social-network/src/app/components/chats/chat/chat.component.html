@@ -1,5 +1,5 @@
 <div class="chat-container">
-  <button routerLink="">to main</button>
+  <button class="btn__main" routerLink="">to main</button>
   <div class="chat-info">
     <button class="chat-info__btn" routerLink="/chats">Back</button>
     <p class="chat-info__user">{{getTargetNameAndLink().name}}</p>
@@ -10,7 +10,7 @@
       <img [src]="getImgLink(message)" alt="">
       <div class="message-container">
         <p class="author-name">{{message.author.name.split(' ')[0]}}</p>
-        <p>{{message.text}}</p>
+        <p class="message__text">{{message.text}}</p>
       </div>
       <p class="message-date">{{message.date | date: 'h:mm a MMMM d'}}</p>
     </li>

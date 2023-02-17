@@ -23,15 +23,22 @@
         class="user__name">{{user.name}}</p>
       </div>
       
-      <button
-      class="createChat"
-      (click)="write(user._id, token)"
-      
-      >Написать</button>
-      <button
-      class="subscribeToUser"
-      
-      >Подписаться</button>
+      <div class="btns__wrap">
+        <button
+        class="btn__find createChat"
+        (click)="write(user._id, token)"
+        >
+        Написать
+        </button>
+
+        <button
+        class="btn__find subscribeToUser"
+        >
+        Подписаться
+        </button>
+        
+      </div>
+
   
       </div>
       
