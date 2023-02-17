@@ -58,46 +58,17 @@ export class LoginServiceService {
     return this.http.get<IUser[]>(`${pathToAPI}/users`, {'headers': headers})
   }
 
-  // getPageData() {
-  //   let userID: string;
-  //   if (window.localStorage.getItem('RSClone-socnetwork')) {
-  //     const userLofinInfo: IToken = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string);
-  //     if (window.location.pathname === '/') {
-  //       userID = userLofinInfo._id
-  //     } else {
-  //       userID = window.location.pathname //?
-  //     }
-
-  //       this.getYourPage(userLofinInfo._id, userLofinInfo.token).subscribe(userdata => {
-  //       this.userData = userdata;
-  //       if (this.userData.avatar) {  //useless??-------------
-  //         this.userAvatar = `${pathToAPI}/${this.userData.avatar.imgLink}`;
-  //         console.log(this.userAvatar)
-  //       } else {
-  //         this.userAvatar = `https://www.oseyo.co.uk/wp-content/uploads/2020/05/empty-profile-picture-png-2-2.png`;
-  //       }
-  //       this.userGallery = userdata.gallery;
-  //       if (!this.userGallery?.length) {
-  //         this.userGallery = 'Добавте фото в свою галлерею'
-  //       }
-  //     })
-  //   } else {
-  //     window.location.assign('/auth/login');
-  //   }
-
-  // }
-
   writeToUser(id: string, token: string): Observable<any> {
     const headers = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`)
     return this.http.post<any>(`${pathToAPI}/chats/${id}`, '', {'headers': headers})
   }
 
-  // goToChat(chatID: string, token: string): Observable<any> {
-  //   const headers = new HttpHeaders()
-  //   .set('Authorization', `Bearer ${token}`)
-  //   return this.http.get<any>(`${pathToAPI}/chats/${chatID}`, {'headers': headers})
-  // }
+  subscribeOnUser(id: string, token: string): Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`)
+    return this.http.post<any>(`${pathToAPI}/users/subs/${id}`, '', {'headers': headers})
+  }
 
 
 

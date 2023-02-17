@@ -15,7 +15,7 @@ import { UserResolver } from './resolvers/user.resolver';
 import { NewsComponent } from './components/posts/news/news.component';
 
 const routes: Routes = [
-  { path: '', component: MainPageComponent },
+  // { path: '', component: MainPageComponent },
   { path: 'auth/login', component: LoginModalComponent },
   { path: 'auth/registration', component: RegisterModalComponent },
   {

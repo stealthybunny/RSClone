@@ -12,15 +12,12 @@ export class SubscribtionsComponent implements OnInit{
   token: string;
   @Input() subscriptions: IUser[];
   api: string;
-  subsTotal: number;
-  
 
   constructor(private loginService: LoginServiceService) {
 
   }
   ngOnInit(): void {
-    console.log(this.subscriptions)
+    console.log(this.subscriptions);
     this.api = pathToAPI;
   }
-
 }

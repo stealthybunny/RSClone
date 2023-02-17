@@ -23,6 +23,7 @@
         class="user__name">{{user.name}}</p>
       </div>
       
+
       <div class="btns__wrap">
         <button
         class="btn__find createChat"
@@ -32,13 +33,13 @@
         </button>
 
         <button
+        (click)="subscribe(user._id, token)"
         class="btn__find subscribeToUser"
         >
         Подписаться
         </button>
         
       </div>
-
   
       </div>
       
