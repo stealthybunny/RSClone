@@ -39,8 +39,13 @@ export class UserPageComponent implements OnInit {
     this.token = authInfo.token;
     this.userSubscription = this.route.data.subscribe((data) => {
       this.user = data['data'];
+      console.log('yourPage',this.user)
+      // console.log(this.user.gallery)
       if (this.user._id === authInfo._id) {
+        console.log('this is your page')
         this.isYourPage = true;
+      } else {
+        console.log('not yours')
       }
       this.userAvatar = `${pathToAPI}/${this.user.avatar.imgLink}`;
       console.log(this.userAvatar);
@@ -54,9 +59,5 @@ export class UserPageComponent implements OnInit {
         const chatID = data.chat;
         window.location.assign(`/chats/${chatID}`);
       });
-  }
-
-  avatarRedraw() {
-    
   }
 }

@@ -7,7 +7,7 @@ import { IImage } from '../models/types';
 })
 export class DataTransportService {
   photoData: IImage;
-  sub = new Subject()
+  sub = new Subject();
 
 
   constructor(
