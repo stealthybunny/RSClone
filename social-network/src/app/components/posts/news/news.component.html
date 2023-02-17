@@ -4,6 +4,7 @@
     <div class="header__post">
       <p class="author__post"><img [src]="api+'/'+news.author.avatar.imgLink" alt="avatar"> {{ news.author.name }}</p>
       <p class="date__post">Added: {{ news.date | date: 'medium' }}</p>
+      <button class="post-delete"  *ngIf="isYourPage" [disabled]="isDeleteDisabled" (click)="deletePost(news._id)">Delete</button>
     </div>
     <div class="title__post">
       <div class="text__post">{{ news.headline }}</div>
