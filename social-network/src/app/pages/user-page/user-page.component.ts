@@ -7,6 +7,7 @@ import { AvatarChangeMenuService } from 'src/app/services/avatar-change-menu.ser
 import { EditProfileService } from 'src/app/services/edit-profile.service';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { SubsModalServiceService } from 'src/app/services/subs-modal-service.service';
 import { pathToAPI } from 'src/app/store';
 
 @Component({
@@ -17,6 +18,10 @@ import { pathToAPI } from 'src/app/store';
 export class UserPageComponent implements OnInit {
   user: IUser;
   userSubscription: Subscription;
+  onlineUsers: IUser[];
+  offlineUsers: IUser[];
+  sortedSubs: IUser[];
+
   userAvatar: string;
   token: string;
   isYourPage: boolean = false;
@@ -28,7 +33,8 @@ export class UserPageComponent implements OnInit {
     public headerModalService: HeaderModalService,
     public loginService: LoginServiceService,
     public editProfileService: EditProfileService,
-    public avatarChangeMenuService: AvatarChangeMenuService
+    public avatarChangeMenuService: AvatarChangeMenuService,
+    public subModalService: SubsModalServiceService
   ) {}
   ngOnInit(): void {
     console.log('---------userPage OnInit!!----');
@@ -42,6 +48,10 @@ export class UserPageComponent implements OnInit {
     this.token = authInfo.token;
     this.userSubscription = this.route.data.subscribe((data) => {
       this.user = data['data'];
+      this.offlineUsers = this.user.subscriptions.filter((el: { isOnline: any; }) => !el.isOnline);
+    this.onlineUsers = this.user.subscriptions.filter((el: { isOnline: any; }) => el.isOnline);
+    this.sortedSubs = [...this.onlineUsers, ...this.offlineUsers];
+    console.log(this.sortedSubs);
       console.log('yourPage',this.user)
       // console.log(this.user.gallery)
       if (this.user._id === authInfo._id) {

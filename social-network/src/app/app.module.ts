@@ -28,6 +28,7 @@ import { AvatarChangeMenuComponent } from './components/avatar-change-menu/avata
 import { NewsComponent } from './components/posts/news/news.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { SubscribtionsComponent } from './components/subscribtions/subscribtions.component';
+import { SubscriptionsModalComponent } from './components/subscriptions-modal/subscriptions-modal.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { SubscribtionsComponent } from './components/subscribtions/subscribtions
     NewsComponent,
     CommentsComponent,
     SubscribtionsComponent,
+    SubscriptionsModalComponent,
   ],
   imports: [
     BrowserModule,
