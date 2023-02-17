@@ -49,6 +49,8 @@ export class UserPageComponent implements OnInit {
         this.isYourPage = true;
       } else {
         console.log('not yours')
+        this.isYourPage = false;
+
       }
       this.userAvatar = `${pathToAPI}/${this.user.avatar.imgLink}`;
       console.log(this.userAvatar);
@@ -63,9 +65,4 @@ export class UserPageComponent implements OnInit {
         window.location.assign(`/chats/${chatID}`);
       });
   }
-<<<<<<< HEAD
-=======
-
-  avatarRedraw() {}
->>>>>>> develop
 }
