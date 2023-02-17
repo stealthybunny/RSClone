@@ -31,11 +31,14 @@ export class UserPageComponent implements OnInit {
     public avatarChangeMenuService: AvatarChangeMenuService
   ) {}
   ngOnInit(): void {
-    console.log('---------userPage OnInit!!----')
-    if (JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string)) {
-      
+    console.log('---------userPage OnInit!!----');
+    if (
+      JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string)
+    ) {
     }
-    const authInfo = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string);
+    const authInfo = JSON.parse(
+      window.localStorage.getItem('RSClone-socnetwork') as string
+    );
     this.token = authInfo.token;
     this.userSubscription = this.route.data.subscribe((data) => {
       this.user = data['data'];
@@ -60,4 +63,9 @@ export class UserPageComponent implements OnInit {
         window.location.assign(`/chats/${chatID}`);
       });
   }
+<<<<<<< HEAD
+=======
+
+  avatarRedraw() {}
+>>>>>>> develop
 }

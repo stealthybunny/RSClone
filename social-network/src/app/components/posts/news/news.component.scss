@@ -1,16 +1,19 @@
+@import "../../../models/styleVar.scss";
+
 .header__post {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(61, 61, 61);
-  color: rgb(200, 200, 200);
+  background-color: $header-background;
+  color: $color-default;
+  border-bottom: 1px solid $border-item;
   padding: 0.5rem 1rem 0.5rem 1rem;
   font-size: 14px;
   border-radius: 1rem 1rem 0 0;
 }
 
 .title__post {
-  background-color: rgb(61, 61, 61);
-  color: rgb(206, 206, 206);
+  background-color: $header-background;
+  color: $color-default;
   padding: 1rem;
 }
 
@@ -19,8 +22,15 @@
   transition: all 0.2s;
 }
 
+.author__post>img{
+  border-radius: 50%;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+}
+
 .author__post:hover {
-  color: rgb(222, 222, 222);
+  color: $color-default-hover;
   transition: all 0.2s;
 }
 
@@ -40,8 +50,8 @@
 }
 
 .body__post {
-  background-color: rgb(51, 51, 51);
-  color: rgb(200, 200, 200);
+  background-color: $background-post;
+  color: $color-default;
   padding: 1rem;
 }
 
@@ -58,7 +68,7 @@
   display: flex;
   gap: 1.5rem ;
   height: 4rem;
-  background-color: rgb(51, 51, 51);
+  background-color: $background-post;
   padding-top: 0.5rem;
   border-radius: 0 0 1rem 1rem;
 }
@@ -72,16 +82,16 @@
   align-items: center;
   cursor: pointer;
   user-select: none;
-  color: rgb(200, 200, 200);
+  color: $color-default;
 }
 
 .item__footer-post:hover {
-  background-color: rgb(61, 61, 61);
+  background-color: $header-background;
   transition: all 0.2s;
 }
 
 .item__footer-post:active {
-  background-color: rgb(99, 99, 99);
+  background-color: $active-item;
   transition: all 0.1s;
 }
 
@@ -103,4 +113,9 @@
 
 .app__comments {
   background-color: rgb(119, 119, 119)
+}
+
+.disabled{
+  pointer-events: none;
+  background-color: $active-item;
 }

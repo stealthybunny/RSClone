@@ -1,5 +1,12 @@
 import { IImage } from 'src/app/models/types';
-import { Component, DoCheck, Input, OnInit } from '@angular/core';
+
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { GalleryService } from 'src/app/services/gallery.service';
 
 @Component({
@@ -7,7 +14,7 @@ import { GalleryService } from 'src/app/services/gallery.service';
   templateUrl: './gallery-preview.component.html',
   styleUrls: ['./gallery-preview.component.scss'],
 })
-export class GalleryPreviewComponent implements OnInit, DoCheck {
+export class GalleryPreviewComponent implements OnInit, OnChanges {
   @Input() id: string;
   oldID: string;
   imgList: IImage[] = [];
@@ -15,23 +22,16 @@ export class GalleryPreviewComponent implements OnInit, DoCheck {
   modalOpen = false;
   constructor(private galleryService: GalleryService) {}
 
-  ngDoCheck(): void {
-    if (this.oldID !== this.id) {
-      this.galleryService.getImagesList(this.id).subscribe({
-        next: (data) => {
-          console.log(data);
-          this.imgList = data;
-        },
-        error: (e) => {
-          console.log(e);
-        },
-      });
-      this.oldID = this.id
-    }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getImageList(this.id);
   }
 
   ngOnInit(): void {
-    this.galleryService.getImagesList(this.id).subscribe({
+    this.getImageList(this.id);
+  }
+
+  getImageList(id: string) {
+    this.galleryService.getImagesList(id).subscribe({
       next: (data) => {
         console.log(data);
         this.imgList = data;

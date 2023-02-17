@@ -4,6 +4,16 @@
       {{ comment.text }}
     </li>
   </ul>
+  <form class="upload" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div
+    class="upload__text"
+    role="textbox"
+    contenteditable="true"
+    aria-multiline="true"
+    #textbox
+    ></div>
+    <button class="submit__post" type="submit" [disabled]="isDisabled">Поделиться</button>
+  </form>
 </div>
 
 

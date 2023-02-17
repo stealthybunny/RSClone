@@ -1,3 +1,4 @@
+import { IComment } from './../models/types';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
@@ -5,7 +6,7 @@ import { IPost, IToken } from '../models/types';
 import { pathToAPI } from '../store';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NewsService {
   userLofinInfo: IToken;
@@ -19,12 +20,51 @@ export class NewsService {
   }
 
   getAllNewsList() {
-    return this.http.get<IPost[]>(`${this.url}`, {
-      headers: {
-        Authorization: `Bearer ${this.token}`,
-      },
-    })
-    .pipe(catchError(this.handleError));
+    return this.http
+      .get<IPost[]>(`${this.url}`, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  getUserPostList(id: string) {
+    return this.http
+      .get<IPost[]>(`${this.url}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  postLike(id: string) {
+    const url = pathToAPI + '/likes/post/' + id;
+    console.log(this.token);
+    return this.http
+      .post<IPost>(
+        url,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        }
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  sendComment(id: string, body: { text: string }) {
+    const url = pathToAPI + '/posts/comment/' + id;
+    console.log(this.token);
+    return this.http
+      .post<IComment[]>(url, body, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
