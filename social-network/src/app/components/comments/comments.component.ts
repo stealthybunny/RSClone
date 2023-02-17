@@ -10,6 +10,7 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { IComment } from 'src/app/models/types';
 import { NewsService } from 'src/app/services/news.service';
+import { pathToAPI } from 'src/app/store';
 
 @Component({
   selector: 'app-comments',
@@ -22,6 +23,7 @@ export class CommentsComponent implements OnInit {
   @Output() updateComments = new EventEmitter<IComment[]>();
   isDisabled = false;
   form: FormGroup;
+  api = pathToAPI;
   @ViewChild('textbox') textbox: ElementRef;
   constructor(private newsServes: NewsService) {}
 

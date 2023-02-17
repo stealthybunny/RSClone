@@ -1,4 +1,4 @@
-.comments__post {
+.comments-container {
   background-color: rgb(51, 51, 51);
   color: rgb(200, 200, 200);
   display: flex;
@@ -8,6 +8,7 @@
   padding-top: 1rem;
   margin-top: -1rem;
   border-radius: 0 0 1rem 1rem;
+  font-size: 12px;
 }
 
 .comments {
@@ -17,6 +18,9 @@
 }
 
 .comment__post {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .upload__text{
@@ -24,4 +28,23 @@
   min-height: 40px;
   padding: 5px;
   border: 1px solid rgb(187, 187, 187);
+}
+
+.comment-avatar{
+  border-radius: 50%;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+}
+
+.comment-name{
+  color: rgb(70, 104, 167);
+}
+
+.comment-text{
+  font-size: 14px;
+}
+
+.comment-date{
+  color: rgb(114, 114, 114);
 }
