@@ -1,4 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { IPost } from './../../models/types';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PostUploadService } from 'src/app/services/post-upload.service';
 
@@ -11,6 +19,7 @@ export class PostUploadComponent implements OnInit {
   form: FormGroup;
   @ViewChild('files') files: ElementRef;
   @ViewChild('textbox') textbox: ElementRef;
+  @Output() updatePosts = new EventEmitter<IPost[]>();
   errors: { message: string[] } | null;
   fileError: { message: string } | null;
   isDisabled = false;
@@ -39,6 +48,7 @@ export class PostUploadComponent implements OnInit {
         this.files.nativeElement.value = null;
         this.errors = null;
         this.isDisabled = false;
+        this.updatePosts.emit(data);
       },
       error: (e) => {
         console.log(e);

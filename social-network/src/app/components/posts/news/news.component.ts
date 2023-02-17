@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { IPost } from 'src/app/models/types';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { IPost, IToken } from 'src/app/models/types';
 import { NewsService } from 'src/app/services/news.service';
 import { pathToAPI } from 'src/app/store';
 
@@ -8,20 +14,48 @@ import { pathToAPI } from 'src/app/store';
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss'],
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent implements OnInit, OnChanges {
+  @Input() id: string = '';
   newsList: IPost[];
   isOpen: boolean[];
   isDisabled = false;
   api = pathToAPI;
+  isYourPage: boolean;
+  userLofinInfo = JSON.parse(
+    window.localStorage.getItem('RSClone-socnetwork') as string
+  ) as IToken;
   constructor(private newsServes: NewsService) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.isYourPage = this.id === this.userLofinInfo._id;
+    this.getUserPostList(this.id);
+  }
+
   ngOnInit(): void {
-    this.newsServes.getAllNewsList().subscribe({
+    this.isYourPage = this.id === this.userLofinInfo._id;
+    if (!this.id) {
+      this.newsServes.getAllNewsList().subscribe({
+        next: (data) => {
+          console.log(data);
+          this.newsList = data;
+          this.isOpen = Array.from(this.newsList, (e) => false);
+          console.log(this.isOpen);
+        },
+        error: (e) => {
+          console.log(e);
+        },
+      });
+    } else {
+      this.getUserPostList(this.id);
+    }
+  }
+
+  getUserPostList(id: string) {
+    this.newsServes.getUserPostList(id).subscribe({
       next: (data) => {
         console.log(data);
         this.newsList = data;
         this.isOpen = Array.from(this.newsList, (e) => false);
-        console.log(this.isOpen);
       },
       error: (e) => {
         console.log(e);

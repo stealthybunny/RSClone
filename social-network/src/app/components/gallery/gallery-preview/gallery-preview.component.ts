@@ -1,5 +1,11 @@
 import { IImage } from 'src/app/models/types';
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { GalleryService } from 'src/app/services/gallery.service';
 
 @Component({
@@ -7,15 +13,23 @@ import { GalleryService } from 'src/app/services/gallery.service';
   templateUrl: './gallery-preview.component.html',
   styleUrls: ['./gallery-preview.component.scss'],
 })
-export class GalleryPreviewComponent implements OnInit {
+export class GalleryPreviewComponent implements OnInit, OnChanges {
   @Input() id: string;
   imgList: IImage[] = [];
   currentImage: IImage;
   modalOpen = false;
   constructor(private galleryService: GalleryService) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getImageList(this.id);
+  }
+
   ngOnInit(): void {
-    this.galleryService.getImagesList(this.id).subscribe({
+    this.getImageList(this.id);
+  }
+
+  getImageList(id: string) {
+    this.galleryService.getImagesList(id).subscribe({
       next: (data) => {
         console.log(data);
         this.imgList = data;
