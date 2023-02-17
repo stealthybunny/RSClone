@@ -10,8 +10,23 @@
       class="header__search_field"
       type="search"
       placeholder="Поиск"
-  
+      (input)="onInput()"
+      (focus)="isVisible=true"
+      (focusout)="onFocuseOut()"
+      #search
       >
+      <div class="search-modal" *ngIf="isVisible && filtredUsers.length">
+        <ul class="search-modal__list">
+          <li class="search-modal__list__item" 
+          *ngFor="let user of filtredUsers.slice(0,5)"
+          [routerLink]="'/user/'+user._id"
+          (click)="isVisible=false"
+          >
+            <img [src]="api+'/'+user.avatar.imgLink" alt="">
+            <p>{{user.name}}</p>
+          </li>
+        </ul>
+      </div>  
     </div>
     <div 
     class="img__menu"

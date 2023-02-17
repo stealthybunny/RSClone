@@ -19,6 +19,7 @@ export class NewsComponent implements OnInit, OnChanges {
   newsList: IPost[];
   isOpen: boolean[];
   isDisabled = false;
+  isDeleteDisabled = false;
   api = pathToAPI;
   isYourPage: boolean;
   userLofinInfo = JSON.parse(
@@ -73,6 +74,21 @@ export class NewsComponent implements OnInit, OnChanges {
       error: (e) => {
         console.log(e);
         this.isDisabled = false;
+      },
+    });
+  }
+
+  deletePost(id: string) {
+    this.isDeleteDisabled = true;
+    this.newsServes.deletePost(id).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.newsList = this.newsList.filter((e) => e._id !== data._id);
+        this.isDeleteDisabled = false;
+      },
+      error: (e) => {
+        console.log(e);
+        this.isDeleteDisabled = false;
       },
     });
   }
