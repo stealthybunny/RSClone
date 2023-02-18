@@ -1,7 +1,7 @@
 @import "../../models/styleVar.scss";
 
 .cover{
-position: absolute;
+position: fixed;
 top: 0;
 left: 0;
 right: 0;
@@ -11,12 +11,13 @@ background-color: rgba(128, 128, 128, 0.2);
 
 .wrapper {
   color: $color-default;
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 350px;
   height: 400px;
+  border: 1px solid $border-item;
   border-radius: 1rem;
   background-color: $background-post;
 }

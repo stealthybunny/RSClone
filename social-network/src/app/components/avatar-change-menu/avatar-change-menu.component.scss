@@ -1,19 +1,24 @@
+@import "../../models/styleVar.scss";
+
 .avatar_menu__cover {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(128, 128, 128, 0.473);
+  background-color: rgba(128, 128, 128, 0.2);
 }
 
 .avatar_menu__modal {
+  color: $color-default;
   position: fixed;
   top: 50%;
   left: 50%;
   width: 300px;
   height: 300px;
-  background-color: #fff;
+  background-color: $background-post;
+  border-radius: 1rem;
+  border: 1px solid $border-item;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -21,16 +26,22 @@
 }
 
 .modal__header {
-  height: 20px;
+  height: 30px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   border-bottom: 1px solid gray;
+}
+
+.modal__header_text {
+  line-height: 30px;
 }
 
 .modal__header_close {
   width: 18px;
   height: 18px;
-  position: relative;
+  position: absolute;
+  right: 10px;
+  top: 5px;
   cursor: pointer;
 }
 
@@ -71,7 +82,7 @@
   border-radius: 50%;
   border: none;
   background: rgb(163,73,163);
-  background: linear-gradient(19deg, rgba(163,73,163,1) 0%, rgba(56,151,241,1) 100%);
+  background: linear-gradient(19deg, $green-default 0%, $violet-default 100%);
 }
 
 .preview__image {
