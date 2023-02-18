@@ -1,5 +1,9 @@
 @import "../../models/styleVar.scss";
 
+.headline__block {
+  border-bottom: 1px solid $border-item;
+}
+
 .subs__headline {
   margin: 0 auto;
   text-align: center;
