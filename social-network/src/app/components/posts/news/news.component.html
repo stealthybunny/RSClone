@@ -1,31 +1,33 @@
-<app-post-upload *ngIf="isYourPage" (updatePosts)="newsList = $event"></app-post-upload>
-<ul class="ul__post">
-  <li class="li__post" *ngFor="let news of newsList; let i=index">
-    <div class="header__post">
-      <p class="author__post"><img [src]="api+'/'+news.author.avatar.imgLink" alt="avatar"> {{ news.author.name }}</p>
-      <p class="date__post">Added: {{ news.date | date: 'medium' }}</p>
-      <button class="post-delete"  *ngIf="isYourPage" [disabled]="isDeleteDisabled" (click)="deletePost(news._id)">Delete</button>
-    </div>
-    <div class="title__post">
-      <div class="text__post">{{ news.headline }}</div>
-    </div>
-    <div class="body__post">
-      <div [innerHTML]="news.text" class="text__post"></div>
-      <img *ngIf="news.images.length" [src]="api+'/'+news.images[0]" class="images__post">
-    </div>
-    <div class="footer__post">
-      <div class="item__footer-post" (click)="sendLike(news._id, i)" [ngClass]="isDisabled ? 'disabled' : ''">
-        <img class="like__svg" src="../../../../assets/like-svgrepo-com.svg" alt="like">
-        {{ news.likes.length }}
+<div class="container">
+  <app-post-upload *ngIf="isYourPage" (updatePosts)="newsList = $event"></app-post-upload>
+  <ul class="ul__post">
+    <li class="li__post" *ngFor="let news of newsList; let i=index">
+      <div class="header__post">
+        <p class="author__post"><img [src]="api+'/'+news.author.avatar.imgLink" alt="avatar"> {{ news.author.name }}</p>
+        <p class="date__post">Added: {{ news.date | date: 'medium' }}</p>
+        <button class="post-delete"  *ngIf="isYourPage" [disabled]="isDeleteDisabled" (click)="deletePost(news._id)">Delete</button>
       </div>
-      <div class="item__footer-post" (click)="isOpen[i]=!isOpen[i]">
-        <img class="comment__svg" src="../../../../assets/comment-svgrepo-com.svg" alt="comments">{{ news.comments.length }}
+      <div class="title__post">
+        <div class="text__post">{{ news.headline }}</div>
       </div>
-    </div>
-    <app-comments
-    *ngIf="isOpen[i]"
-    [comments]="news.comments"
-    [postId]="news._id"
-    (updateComments)="news.comments = $event"></app-comments>
-  </li>
-</ul>
+      <div class="body__post">
+        <div [innerHTML]="news.text" class="text__post"></div>
+        <img *ngIf="news.images.length" [src]="api+'/'+news.images[0]" class="images__post">
+      </div>
+      <div class="footer__post">
+        <div class="item__footer-post" (click)="sendLike(news._id, i)" [ngClass]="isDisabled ? 'disabled' : ''">
+          <img class="like__svg" src="../../../../assets/like-svgrepo-com.svg" alt="like">
+          {{ news.likes.length }}
+        </div>
+        <div class="item__footer-post" (click)="isOpen[i]=!isOpen[i]">
+          <img class="comment__svg" src="../../../../assets/comment-svgrepo-com.svg" alt="comments">{{ news.comments.length }}
+        </div>
+      </div>
+      <app-comments
+      *ngIf="isOpen[i]"
+      [comments]="news.comments"
+      [postId]="news._id"
+      (updateComments)="news.comments = $event"></app-comments>
+    </li>
+  </ul>
+</div>

@@ -1,19 +1,24 @@
-@import "../../../models/styleVar.scss";
+@import "../../../../styles.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .header__post {
   display: flex;
   justify-content: space-between;
-  background-color: $header-background;
-  color: $color-default;
-  border-bottom: 1px solid $border-item;
+  background-color: var(--header-background);
+  color: var(--color-default);
+  border-bottom: 1px solid var(--border-item);
   padding: 0.5rem 1rem 0.5rem 1rem;
   font-size: 14px;
-  border-radius: 1rem 1rem 0 0;
 }
 
 .title__post {
-  background-color: $header-background;
-  color: $color-default;
+  background-color: var(--header-background);
+  color: var(--color-default);
   padding: 1rem;
 }
 
@@ -30,7 +35,7 @@
 }
 
 .author__post:hover {
-  color: $color-default-hover;
+  color: var(--color-default-hover);
   transition: all 0.2s;
 }
 
@@ -41,17 +46,18 @@
 .ul__post {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 2rem;
-  // background-color: rgb(35, 35, 35);
+  gap: 1rem;
 }
 
 .li__post {
+  border: 1px solid var(--border-item);
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .body__post {
-  background-color: $background-post;
-  color: $color-default;
+  background-color: var(--background-post);
+  color: var(--color-default);
   padding: 1rem;
 }
 
@@ -68,9 +74,8 @@
   display: flex;
   gap: 1.5rem ;
   height: 4rem;
-  background-color: $background-post;
+  background-color: var(--background-post);
   padding-top: 0.5rem;
-  border-radius: 0 0 1rem 1rem;
 }
 
 
@@ -82,16 +87,16 @@
   align-items: center;
   cursor: pointer;
   user-select: none;
-  color: $color-default;
+  color: var(--color-default);
 }
 
 .item__footer-post:hover {
-  background-color: $header-background;
+  background-color: var(--header-background);
   transition: all 0.2s;
 }
 
 .item__footer-post:active {
-  background-color: $active-item;
+  background-color: var(--active-item);
   transition: all 0.1s;
 }
 
@@ -117,5 +122,27 @@
 
 .disabled{
   pointer-events: none;
-  background-color: $active-item;
+  background-color: var(--active-item);
+}
+
+.post-delete {
+  margin-left: 3rem;
+  background-color: var(--item);
+  width: auto;
+  padding: 0.4rem 1.5rem;
+  // height: 2rem;
+  border: 1px solid var(--border-item);
+  border-radius: 0.5rem;
+  color: var(--color-default);
+  cursor: pointer;
+}
+
+.post-delete:hover {
+  background-color: var(--hover-item);
+  transition: all 0.2s;
+}
+
+.post-delete:active {
+  background-color: var(--active-item);
+  transition: all 0.1s;
 }

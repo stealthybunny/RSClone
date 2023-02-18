@@ -1,4 +1,4 @@
-@import "../../models/styleVar.scss";
+@import "../../../styles.scss";
 
 .avatar_menu__cover {
   position: fixed;
@@ -10,15 +10,15 @@
 }
 
 .avatar_menu__modal {
-  color: $color-default;
+  color: var(--color-default);
   position: fixed;
   top: 50%;
   left: 50%;
   width: 300px;
   height: 300px;
-  background-color: $background-post;
+  background-color: var(--background-post);
   border-radius: 1rem;
-  border: 1px solid $border-item;
+  border: 1px solid var(--border-item);
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@
   height: 30px;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid var(--border-item);
 }
 
 .modal__header_text {
@@ -63,7 +63,7 @@
 
 .modal__footer {
   height: 20px;
-  border-top: 1px solid gray;
+  border-top: 1px solid var(--border-item);
 }
 
 .none {
@@ -81,8 +81,8 @@
   height: 155px;
   border-radius: 50%;
   border: none;
-  background: rgb(163,73,163);
-  background: linear-gradient(19deg, $green-default 0%, $violet-default 100%);
+  background: var(--violet-default);
+  background: linear-gradient(19deg, var(--green-default) 0%, var(--violet-default) 100%);
 }
 
 .preview__image {

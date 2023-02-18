@@ -1,4 +1,4 @@
-@import "../../../models/styleVar.scss";
+@import "../../../../styles.scss";
 
 p{
   margin: 0;
@@ -24,33 +24,33 @@ ul{
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border: 1px solid $border-item;
+  border: 1px solid var(--border-item);
   border-radius: 1rem;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #2e2e2e;
   font-size: 14px;
-  background-color: $background-post;
+  background-color: var(--background-post);
   overflow: hidden;
 }
 
 .btn__main {
-  background-color: $item;
+  background-color: var(--item);
   border: 0;
   font-size: 14px;
-  color: $color-default;
+  color: var(--color-default);
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
-  border-bottom: 1px solid $border-item;
+  border-bottom: 1px solid var(--border-item);
   transition: all 0.2s;
 }
 
 .btn__main:hover {
-  background-color: $hover-item;
+  background-color: var(--hover-item);
   transition: all 0.2s;
 }
 
 .btn__main:active {
-  background-color: $active-item;
+  background-color: var(--active-item);
   transition: all 0.2s;
 }
 
@@ -58,36 +58,36 @@ ul{
   display: flex;
   align-items: center;
   gap: 1rem;
-  background-color: $background-post;
+  background-color: var(--background-post);
 }
 
 .message-form__text{
-  border: 1px solid $border-item;
+  border: 1px solid var(--border-item);
   border-radius: 0.5rem;
   padding: 0.7rem;
-  background-color: $item;
+  background-color: var(--item);
   margin-bottom: 1rem;
   margin-left: 1rem;
-  color: $color-default;
+  color: var(--color-default);
 }
 
 .message-form__send {
-  background-color: $item;
-  border: 1px solid $border-item;
+  background-color: var(--item);
+  border: 1px solid var(--border-item);
   font-size: 14px;
   border-radius: 0.5rem;
-  color: $color-default;
+  color: var(--color-default);
   padding: 0.3rem 1rem;
   transition: all 0.2s;
 }
 
 .message-form__send:hover {
-  background-color: $hover-item;
+  background-color: var(--hover-item);
   transition: all 0.2s;
 }
 
 .message-form__send:active {
-  background-color: $active-item;
+  background-color: var(--active-item);
   transition: all 0.2s;
 }
 
@@ -103,7 +103,7 @@ ul{
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-  border-top: 1px solid $border-item;
+  border-top: 1px solid var(--border-item);
 }
 
 .massage-list__item{
@@ -122,7 +122,7 @@ ul{
 
 .author-name{
   font-size: 12px;
-  color: $green-default;
+  color: var(--green-default);
 }
 
 .textbox{
@@ -155,10 +155,10 @@ ul{
 }
 
 .chat-info__btn{
-  background-color: $item;
-  border: 1px solid $border-item;
+  background-color: var(--item);
+  border: 1px solid var(--border-item);
   font-size: 14px;
-  color: $color-default;
+  color: var(--color-default);
   border-radius: 0.4rem;
   padding: 0.3rem 0.6rem;
   margin-left: 1rem;
@@ -166,22 +166,22 @@ ul{
 }
 
 .chat-info__btn:hover {
-  background-color: $hover-item;
+  background-color: var(--hover-item);
   transition: all 0.2s;
 }
 
 .chat-info__btn:active {
-  background-color: $active-item;
+  background-color: var(--active-item);
   transition: all 0.2s;
 }
 
 .message__text {
-  color: $color-default;
+  color: var(--color-default);
 }
 
 .chat-info__user{
   font-weight: bold;
-  color: $violet-default;
+  color: var(--violet-default);
   font-size: 16px;
 }
 

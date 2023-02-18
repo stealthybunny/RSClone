@@ -3,16 +3,16 @@
     <!-- <img [src]="[api+'/'+imgList[0].author.avatar.imgLink]" alt=""> -->
     <!-- <p class="gallery-info__name">Фотографии {{imgList[0].author.name}}</p> -->
     <p class="gallery-info__name">Фотографии пользователя</p>
-    <button *ngIf="isSameId">Добавить фотографии</button>
+    <button class="btn__gallery" *ngIf="isSameId">Добавить фотографии</button>
   </div>
   <div class="upload" *ngIf="isSameId">
-    <h1>Upload your Image!</h1>
+    <h1 class="title__gallery" >Upload your Image!</h1>
     <div *ngIf="error">
       {{ error.message }}
     </div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <input type="file" name="files" (change)="onFileChange($event)" #file/>
-      <button type="submit" [disabled]="isDisabled">Upload</button>
+      <input class="input__gallery" type="file" name="files" (change)="onFileChange($event)" #file/>
+      <button class="btn__submit" type="submit" [disabled]="isDisabled">Upload</button>
     </form>
   </div>
   <ul class="images-list">
