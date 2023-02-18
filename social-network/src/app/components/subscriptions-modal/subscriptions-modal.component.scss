@@ -1,4 +1,4 @@
-@import "../../models/styleVar.scss";
+@import "../../../styles.scss";
 
 .cover{
 position: fixed;
@@ -10,24 +10,24 @@ background-color: rgba(128, 128, 128, 0.2);
 }
 
 .wrapper {
-  color: $color-default;
+  color: var(--color-default);
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 350px;
   height: 400px;
-  border: 1px solid $border-item;
+  border: 1px solid var(--border-item);
   border-radius: 1rem;
-  background-color: $background-post;
+  background-color: var(--background-post);
 }
 
 .controls__wrapper {
   display: flex;
   width: 100%;
   margin-bottom: 10px;
-  border-top: 1px solid $border-item;
-  border-bottom: 1px solid $border-item;
+  border-top: 1px solid var(--border-item);
+  border-bottom: 1px solid var(--border-item);
 }
 
 .controls {
@@ -38,15 +38,15 @@ background-color: rgba(128, 128, 128, 0.2);
 }
 
 .controls:hover {
-  background-color: $hover-item;
+  background-color: var(--hover-item);
 }
 
 .active {
-  background-color: $hover-item;
+  background-color: var(--hover-item);
 }
 
 .passive {
-  background-color: $background-post;
+  background-color: var(--background-post);
 }
 
 .headline {
@@ -72,7 +72,7 @@ line-height: 26px;
 }
 
 .line__wrapper:hover {
-  background-color: $hover-item;
+  background-color: var(--hover-item);
 
 }
 
@@ -103,7 +103,7 @@ line-height: 26px;
   left: 3px;
   width: 15px;
   height: 2px;
-  background-color: $color-default;
+  background-color: var(--color-default);
   transform: rotate(45deg);
 }
 

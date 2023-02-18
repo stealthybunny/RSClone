@@ -1,17 +1,15 @@
-@import "../../../models/styleVar.scss";
+@import "../../../../styles.scss";
 
 .chats-container{
   box-sizing: border-box;
   width: 70%;
-  margin-left: 2rem;
-  margin-top: 2rem;
-  border: 1px solid $border-item;
+  border: 1px solid var(--border-item);
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   font-size: 14px;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: $background-post;
+  background-color: var(--background-post);
   overflow: hidden;
 }
 
@@ -23,11 +21,11 @@
   height: 70px;
   padding: 1rem;
   justify-content: space-between;
-  border-bottom: 1px solid $border-item;
+  border-bottom: 1px solid var(--border-item);
 }
 
 .chat-item:hover{
-  background-color: $hover-item;
+  background-color: var(--hover-item);
   transition: all 0.2s;
 }
 
@@ -55,19 +53,19 @@
 
 .chat-date{
   font-size: 14px;
-  color: $active-item;
+  color: var(--active-item);
   width: 5rem;
   text-align: right;
 }
 
 .chat-item__name{
-  color: $color-default-hover;
+  color: var(--color-default-hover);
 }
 
 .chat-item__last-message{
   height: 16px;
   overflow: hidden;
-  color: $color-default;
+  color: var(--color-default);
 }
 
 .chat-item__right {
@@ -86,6 +84,6 @@
   font-size: 12px;
   padding: 3px;
   border-radius: 50%;
-  background-color: $violet-default;
-  color: $green-default;
+  background-color: var(--violet-default);
+  color: var(--green-default);
 }

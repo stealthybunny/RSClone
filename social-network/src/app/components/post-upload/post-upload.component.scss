@@ -1,19 +1,19 @@
-@import "../../models/styleVar.scss";
+@import "../../../styles.scss";
 
 .container{
   width: 500px;
   border-radius: 1rem;
-  background-color: $background-post;
+  background-color: var(--background-post);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  border: 1px solid $border-item;
+  border: 1px solid var(--border-item);
 }
 
 .title__post {
-  color: $color-default;
+  color: var(--color-default);
   font-size: 20px;
   font-weight: 600;
 }
@@ -45,12 +45,12 @@
 
 .headline {
   width: 100%;
-  background-color: $hover-item;
+  background-color: var(--hover-item);
   min-height: 2rem;
   border: 0;
   border-radius: 0.5rem;
   padding-left: 0.7rem;
-  color: $color-default;
+  color: var(--color-default);
   font-size: 18px;
 }
 .headline:focus {
@@ -63,49 +63,49 @@
 }
 .add__file {
   width: 12rem;
-  background-color: $item;
+  background-color: var(--item);
   padding: 0.4rem;
   border-radius: 0.5rem;
-  color: $color-default;
+  color: var(--color-default);
   font-size: 18px;
-  border: 1px solid $border-item;
+  border: 1px solid var(--border-item);
   text-align: center;
   cursor: pointer;
   transition: all 0.2s;
 }
 .add__file:hover {
-  background-color: $hover-item;
+  background-color: var(--hover-item);
   transition: all 0.2s;
 }
 .add__file:active {
-  background-color: $active-item;
+  background-color: var(--active-item);
   transition: all 0.1s;
 }
 .upload__text {
   width: 100%;
-  background-color: $hover-item;
+  background-color: var(--hover-item);
   border: 0;
   border-radius: 0.5rem;
   padding-left: 0.7rem;
-  color: $color-default;
+  color: var(--color-default);
   font-size: 18px;
 }
 .submit__post {
   padding: 0.4rem 1.5rem;
-  background-color: $item;
-  border: 1px solid $border-item;
+  background-color: var(--item);
+  border: 1px solid var(--border-item);
   font-size: 18px;
-  color: $color-default;
+  color: var(--color-default);
   border-radius: 0.5rem;
   transition: all 0.2s;
 }
 
 .submit__post:hover {
-  background-color: $hover-item;
+  background-color: var(--hover-item);
   transition: all 0.2s;
 }
 
 .submit__post:active {
-  background-color: $active-item;
+  background-color: var(--active-item);
   transition: all 0.2s;
 }
