@@ -79,6 +79,13 @@ export class LoginServiceService {
     });
   }
 
+  unsubscribeFromUser(id: string, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete<any>(`${pathToAPI}/users/subs/${id}`, {
+      headers: headers,
+    });
+  }
+
   private errorHandler(error: HttpErrorResponse) {
     this.errorService.handle(error.message);
     console.log('Error occuerd!!!');
