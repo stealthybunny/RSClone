@@ -23,7 +23,6 @@
         class="user__name">{{user.name}}</p>
       </div>
       
-
       <div class="btns__wrap">
         <button
         class="btn__find createChat"
@@ -33,10 +32,18 @@
         </button>
 
         <button
-        (click)="subscribe(user._id, token)"
+        (click)="subscribe(user, token)"
         class="btn__find subscribeToUser"
+        *ngIf="!checkSub(user)"
         >
         Подписаться
+        </button>
+        <button
+        (click)="unsubscribe(user, token)"
+        class="btn__find subscribeToUser"
+        *ngIf="checkSub(user)"
+        >
+        Отписаться
         </button>
         
       </div>

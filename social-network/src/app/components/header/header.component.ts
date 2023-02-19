@@ -81,6 +81,6 @@ export class HeaderComponent implements OnInit {
       this.filtredUsers = this.ursersList;
       this.search.nativeElement.value = '';
       this.isVisible = false;
-    }, 200);
+    }, 2000);
   }
 }

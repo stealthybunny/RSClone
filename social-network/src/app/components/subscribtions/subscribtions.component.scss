@@ -1,4 +1,8 @@
-@import "../../models/styleVar.scss";
+@import "../../../styles.scss";
+
+.headline__block {
+  border-bottom: 1px solid var(--border-item);
+}
 
 .subs__headline {
   margin: 0 auto;
@@ -8,7 +12,7 @@
 }
 
 .subs__headline:hover {
-  background-color: $hover-item;
+  background-color: var(--hover-item);
   overflow: hidden;
 }
 
@@ -28,7 +32,7 @@
   right: -2px;
   width: 13px;
   height: 13px;
-  border: 2px solid $background-post;
+  border: 2px solid var(--background-post);
   border-radius: 1rem;
   background-color: rgb(3, 202, 3);
 }
@@ -48,6 +52,6 @@
 }
 
 .wrapper:hover {
-  background-color: $hover-item;
+  background-color: var(--hover-item);
   border-radius: 1rem;
 }
