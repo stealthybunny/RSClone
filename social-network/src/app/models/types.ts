@@ -25,7 +25,7 @@ export interface IMessage {
   author: IUser;
   date: Date;
   text: string;
-  isRead: boolean;
+  isread: boolean;
 }
 
 export interface IUser {
@@ -40,6 +40,7 @@ export interface IUser {
   gallery: UImageDocument[] | any;
   posts: UPostDocument[] | any;
   chats: IChat[];
+  subscribers: IUser[];
 }
 
 export interface IMessageBody {
@@ -52,6 +53,7 @@ export interface IImage {
   date: Date;
   imgLink: string;
   likes: LikeDocument[] | any;
+  comments: IComment[];
 }
 
 export interface ILike {
@@ -93,7 +95,3 @@ export interface UPostDocument {
 export interface LikeDocument {
   //?
 }
-
-
-
-

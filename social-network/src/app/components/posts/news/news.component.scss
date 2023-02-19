@@ -119,3 +119,12 @@
   pointer-events: none;
   background-color: $active-item;
 }
+
+.comments{
+  overflow: hidden;
+  padding: 1rem;
+  border-radius: 0 0 1rem 1rem;
+  background-color: rgb(39, 39, 39);
+  transform: translateY(-1rem);
+  background-color: $background-post;
+}
