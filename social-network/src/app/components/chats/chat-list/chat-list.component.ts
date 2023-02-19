@@ -47,7 +47,7 @@ export class ChatListComponent implements OnInit {
 
   getNoRead(chat: IChat) {
     const filterMessages = chat.messages.filter(
-      (e) => e.author._id !== this.userLofinInfo._id && !e.isRead
+      (e) => e.author._id !== this.userLofinInfo._id && !e.isread
     );
     return filterMessages.length;
   }

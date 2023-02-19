@@ -23,11 +23,11 @@
           <img class="comment__svg" src="../../../../assets/comment-svgrepo-com.svg" alt="comments">{{ news.comments.length }}
         </div>
       </div>
-      <app-comments
-      *ngIf="isOpen[i]"
-      [comments]="news.comments"
-      [postId]="news._id"
-      (updateComments)="news.comments = $event"></app-comments>
-    </li>
+      <div class="comments" *ngIf="isOpen[i]">
+        <app-comments
+        [comments]="news.comments"
+        [postId]="news._id"
+        (updateComments)="news.comments = $event"></app-comments>
+    </div>
   </ul>
 </div>

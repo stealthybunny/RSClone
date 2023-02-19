@@ -20,6 +20,10 @@
   min-width: 200px;
   background-color: #fff;
   border-radius: 5px;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: 1fr;
+  gap: 0.5rem;
 }
 
 .img-container{
@@ -63,4 +67,16 @@
 
 .img-container__btn{
   width: 50px;
+}
+
+.comments{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content 1fr;
+}
+
+.comments__header{
+  height: 50px;
+  width: 100%;
+  background-color: #fff;
 }

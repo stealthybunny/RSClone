@@ -77,6 +77,18 @@ export class NewsService {
       .pipe(catchError(this.handleError));
   }
 
+  sendImgComment(id: string, body: { text: string }) {
+    const url = pathToAPI + '/posts/image/comment/' + id;
+    console.log(this.token);
+    return this.http
+      .post<IComment[]>(url, body, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
