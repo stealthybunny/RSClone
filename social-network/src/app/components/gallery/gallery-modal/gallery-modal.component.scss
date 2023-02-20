@@ -73,10 +73,19 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr;
+  height: 500px;
+  width: 300px;
 }
 
 .comments__header{
   height: 50px;
   width: 100%;
   background-color: #fff;
+}
+
+.comments__component{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: var(--background-post);
+  padding: 5px;
 }
