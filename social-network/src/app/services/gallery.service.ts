@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { IImage } from './../models/types';
 import {
   HttpClient,
@@ -13,14 +14,16 @@ import { pathToAPI } from '../store';
   providedIn: 'root',
 })
 export class GalleryService {
+  apiUrl = environment.apiUrl;
   userLofinInfo: IToken;
-  url = `http://localhost:5000/users/images`;
+  url: string;
   token: string;
   constructor(private http: HttpClient) {
     this.userLofinInfo = JSON.parse(
       window.localStorage.getItem('RSClone-socnetwork') as string
     ) as IToken;
     this.token = this.userLofinInfo.token;
+    this.url = `${this.apiUrl}/users/images`;
   }
 
   getImagesList(userId: string) {

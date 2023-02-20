@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { FormGroup, FormControl } from '@angular/forms';
 import { IChat, IMessage, IToken, IUser } from './../../../models/types';
 import {
@@ -26,6 +27,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit {
   userLofinInfo = JSON.parse(
     window.localStorage.getItem('RSClone-socnetwork') as string
   ) as IToken;
+  apiUrl = environment.apiUrl;
   constructor(
     private route: ActivatedRoute,
     private sseService: SseService,
@@ -46,7 +48,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit {
       this.chat = data['data'];
     });
     this.sseService
-      .getServerSentEvent(`http://localhost:5000/chats/sse/${this.chat._id}`)
+      .getServerSentEvent(`${this.apiUrl}/chats/sse/${this.chat._id}`)
       .subscribe((data) => (this.chat = JSON.parse(data.data)));
     this.form = new FormGroup({
       text: new FormControl(''),
@@ -60,7 +62,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getImgLink(message: IMessage) {
-    return `http://localhost:5000/${message.author.avatar.imgLink}`;
+    return `${this.apiUrl}/${message.author.avatar.imgLink}`;
   }
 
   scrollToBottom = () => {
@@ -79,7 +81,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     return {
       name: user.name,
-      imgLink: `http://localhost:5000/${user.avatar.imgLink}`,
+      imgLink: `${this.apiUrl}/${user.avatar.imgLink}`,
     };
   }
 }

@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { IChat, IToken, IMessage } from './../../../models/types';
 import { ChatsService } from './../../../services/chats.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +14,7 @@ export class ChatListComponent implements OnInit {
   userLofinInfo = JSON.parse(
     window.localStorage.getItem('RSClone-socnetwork') as string
   ) as IToken;
+  apiUrl = environment.apiUrl;
   constructor(private chatsService: ChatsService) {}
 
   ngOnInit(): void {
@@ -31,11 +33,11 @@ export class ChatListComponent implements OnInit {
     return chat.users[0]._id == this.userLofinInfo._id
       ? {
           name: chat.users[1].name,
-          imgLink: `http://localhost:5000/${chat.users[1].avatar.imgLink}`,
+          imgLink: `${this.apiUrl}/${chat.users[1].avatar.imgLink}`,
         }
       : {
           name: chat.users[0].name,
-          imgLink: `http://localhost:5000/${chat.users[0].avatar.imgLink}`,
+          imgLink: `${this.apiUrl}/${chat.users[0].avatar.imgLink}`,
         };
   }
 

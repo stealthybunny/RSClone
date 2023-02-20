@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import {
   Component,
   EventEmitter,
@@ -22,6 +23,7 @@ export class GalleryImageComponent implements OnInit {
   isOpen = false;
   @Output() delete = new EventEmitter<string>();
   isDisabled = false;
+  apiUrl = environment.apiUrl;
   constructor() {}
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class GalleryImageComponent implements OnInit {
 
   getImageLink(image: IImage) {
     return {
-      link: `background-image: url("http://localhost:5000/${image.imgLink}");`,
+      link: `background-image: url("${this.apiUrl}/${image.imgLink}");`,
     };
   }
 

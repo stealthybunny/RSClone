@@ -1,6 +1,6 @@
+import { environment } from './../../../environments/environment';
 import { IAlertMessage } from './../../models/types';
 import { Component, OnInit } from '@angular/core';
-import { interval, switchMap } from 'rxjs';
 import { IToken } from 'src/app/models/types';
 import { ChatsService } from 'src/app/services/chats.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
@@ -18,6 +18,7 @@ export class AsideComponent implements OnInit {
   ) as IToken;
   unread: IAlertMessage | null = null;
   audio = new Audio();
+  api = environment.apiUrl;
   constructor(
     public loginService: LoginServiceService,
     private chatsService: ChatsService,
@@ -29,9 +30,7 @@ export class AsideComponent implements OnInit {
     this.loginService;
     this.audio.src = '../../../assets/tile3.mp3';
     this.sseService
-      .getServerSentEvent(
-        `http://localhost:5000/chats/sse/${this.userLofinInfo._id}`
-      )
+      .getServerSentEvent(`${this.api}/chats/sse/${this.userLofinInfo._id}`)
       .subscribe({
         next: (data) => {
           this.unread = JSON.parse(data.data);
