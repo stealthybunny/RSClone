@@ -1,15 +1,15 @@
+import { environment } from './../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { IToken } from '../models/types';
-import { pathToAPI } from '../store';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostUploadService {
   userLofinInfo: IToken;
-  url = pathToAPI + '/posts';
+  url = environment.apiUrl + '/posts';
   token: string;
   constructor(private http: HttpClient) {
     this.userLofinInfo = JSON.parse(

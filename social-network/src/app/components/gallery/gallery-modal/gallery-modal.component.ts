@@ -1,4 +1,4 @@
-import { pathToAPI } from './../../../store';
+import { environment } from './../../../../environments/environment';
 import { IImage } from './../../../models/types';
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { GalleryService } from 'src/app/services/gallery.service';
@@ -16,7 +16,7 @@ export class GalleryModalComponent implements OnInit {
   @Output() sendData = new EventEmitter<IImage[]>();
   index: number;
   likesVisable = false;
-  api = pathToAPI;
+  api = environment.apiUrl;
   isDisabled = false;
   constructor(private galleryService: GalleryService) {}
   ngOnInit(): void {

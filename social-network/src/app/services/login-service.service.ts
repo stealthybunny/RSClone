@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import {
   HttpClient,
@@ -8,7 +9,6 @@ import {
 import { IChat, ILogin, IRegister, IToken, IUser } from '../models/types';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { ErrorService } from './error.service';
-import { pathToAPI } from '../store';
 
 @Injectable({
   providedIn: 'root',
@@ -18,11 +18,12 @@ export class LoginServiceService {
   userData: IUser;
   userAvatar: string | undefined;
   userGallery: string[] | string | undefined;
+  apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private errorService: ErrorService) {}
 
   login(loginInfo: ILogin): Observable<IToken> {
-    return this.http.post<IToken>(`${pathToAPI}/auth/login`, loginInfo).pipe(
+    return this.http.post<IToken>(`${this.apiUrl}/auth/login`, loginInfo).pipe(
       tap((resp) => {
         const logInfo: IToken = resp;
         window.localStorage.setItem(
@@ -37,7 +38,7 @@ export class LoginServiceService {
 
   register(registerInfo: IRegister): Observable<any> {
     return this.http
-      .post<IToken>(`${pathToAPI}/auth/registration`, registerInfo)
+      .post<IToken>(`${this.apiUrl}/auth/registration`, registerInfo)
       .pipe(
         tap((resp) => {
           const logInfo: any = resp;
@@ -53,7 +54,7 @@ export class LoginServiceService {
 
   getYourPage(id: string, token: string): Observable<IUser> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<IUser>(`${pathToAPI}/users/` + id, {
+    return this.http.get<IUser>(`${this.apiUrl}/users/` + id, {
       headers: headers,
     });
   }
@@ -61,27 +62,27 @@ export class LoginServiceService {
   getUsers(token: string): Observable<IUser[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http
-      .get<IUser[]>(`${pathToAPI}/users`, { headers: headers })
+      .get<IUser[]>(`${this.apiUrl}/users`, { headers: headers })
       .pipe(catchError(this.handleError));
   }
 
   writeToUser(id: string, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post<any>(`${pathToAPI}/chats/${id}`, '', {
+    return this.http.post<any>(`${this.apiUrl}/chats/${id}`, '', {
       headers: headers,
     });
   }
 
   subscribeOnUser(id: string, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post<any>(`${pathToAPI}/users/subs/${id}`, '', {
+    return this.http.post<any>(`${this.apiUrl}/users/subs/${id}`, '', {
       headers: headers,
     });
   }
 
   unsubscribeFromUser(id: string, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.delete<any>(`${pathToAPI}/users/subs/${id}`, {
+    return this.http.delete<any>(`${this.apiUrl}/users/subs/${id}`, {
       headers: headers,
     });
   }

@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -8,7 +9,6 @@ import { EditProfileService } from 'src/app/services/edit-profile.service';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { SubsModalServiceService } from 'src/app/services/subs-modal-service.service';
-import { pathToAPI } from 'src/app/store';
 
 @Component({
   selector: 'app-user-page',
@@ -26,7 +26,7 @@ export class UserPageComponent implements OnInit {
   token: string;
   isYourPage: boolean = false;
   avatar: IImage;
-  api = pathToAPI;
+  api = environment.apiUrl;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,21 +48,24 @@ export class UserPageComponent implements OnInit {
     this.token = authInfo.token;
     this.userSubscription = this.route.data.subscribe((data) => {
       this.user = data['data'];
-      this.offlineUsers = this.user.subscriptions.filter((el: { isOnline: any; }) => !el.isOnline);
-    this.onlineUsers = this.user.subscriptions.filter((el: { isOnline: any; }) => el.isOnline);
-    this.sortedSubs = [...this.onlineUsers, ...this.offlineUsers];
-    console.log(this.sortedSubs);
-      console.log('yourPage',this.user)
+      this.offlineUsers = this.user.subscriptions.filter(
+        (el: { isOnline: any }) => !el.isOnline
+      );
+      this.onlineUsers = this.user.subscriptions.filter(
+        (el: { isOnline: any }) => el.isOnline
+      );
+      this.sortedSubs = [...this.onlineUsers, ...this.offlineUsers];
+      console.log(this.sortedSubs);
+      console.log('yourPage', this.user);
       // console.log(this.user.gallery)
       if (this.user._id === authInfo._id) {
-        console.log('this is your page')
+        console.log('this is your page');
         this.isYourPage = true;
       } else {
-        console.log('not yours')
+        console.log('not yours');
         this.isYourPage = false;
-
       }
-      this.userAvatar = `${pathToAPI}/${this.user.avatar.imgLink}`;
+      this.userAvatar = `${environment.apiUrl}/${this.user.avatar.imgLink}`;
       console.log(this.userAvatar);
     });
   }
