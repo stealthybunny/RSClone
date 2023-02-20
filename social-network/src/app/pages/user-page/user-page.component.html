@@ -33,8 +33,9 @@
           >Написать</button>
           <button
           class="btn interaction__btn"
-
-          >Подписаться</button>
+          (click)="subAction()"
+          [disabled]="isDisabled"
+          >{{subBtnContent}}</button>
         </div>
 
       </div>
