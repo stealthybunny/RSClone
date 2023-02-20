@@ -13,9 +13,7 @@
             <app-avatar-modal
           class="modal__wrapper"
            *ngIf="editProfileService.isVisible$ | async"></app-avatar-modal>
-
           </div>
-          
             <app-avatar-change-menu
             (changeAvatar)="user.avatar = $event"
            *ngIf="avatarChangeMenuService.isVisible$ | async"
@@ -24,7 +22,6 @@
           class="user__status"
           *ngIf="user.isOnline"></span>
         </div>
-
         <div class="user__interactions__btns"
         *ngIf="!isYourPage">
           <button       
@@ -37,7 +34,6 @@
           [disabled]="isDisabled"
           >{{subBtnContent}}</button>
         </div>
-
       </div>
       <div class="user__description">
         <h1 class="user__name">{{user.name}}</h1>

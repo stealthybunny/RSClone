@@ -4,7 +4,6 @@
   class="subs__headline"
   (click)="subModalService.open()">Подписки: {{subscriptions.length}}</h2>
   </div>
-  
   <div 
   *ngFor="let sub of subscriptions; index as i"
   class="subs__field"
