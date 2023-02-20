@@ -1,9 +1,8 @@
 import { environment } from './../../../environments/environment';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { HeaderModalComponent } from 'src/app/components/header-modal/header-modal.component';
-import { IImage, IUser } from 'src/app/models/types';
+import { IImage, ILogin, IToken, IUser } from 'src/app/models/types';
 import { AvatarChangeMenuService } from 'src/app/services/avatar-change-menu.service';
 import { EditProfileService } from 'src/app/services/edit-profile.service';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
@@ -15,12 +14,18 @@ import { SubsModalServiceService } from 'src/app/services/subs-modal-service.ser
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.scss'],
 })
-export class UserPageComponent implements OnInit {
+export class UserPageComponent implements OnInit, OnChanges {
   user: IUser;
   userSubscription: Subscription;
   onlineUsers: IUser[];
   offlineUsers: IUser[];
   sortedSubs: IUser[];
+  yourSubscribtions: string[];
+  userSubscribers: IUser[];
+  isSubscribed: boolean;
+  subBtnContent: string = '⭯';
+  authInfo: IToken;
+  isDisabled: boolean = false;
 
   userAvatar: string;
   token: string;
@@ -36,16 +41,20 @@ export class UserPageComponent implements OnInit {
     public avatarChangeMenuService: AvatarChangeMenuService,
     public subModalService: SubsModalServiceService
   ) {}
+
+  ngOnChanges(): void {
+    this.getYourSubscribtions();
+  }
+
   ngOnInit(): void {
-    console.log('---------userPage OnInit!!----');
     if (
       JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string)
     ) {
     }
-    const authInfo = JSON.parse(
+    this.authInfo = JSON.parse(
       window.localStorage.getItem('RSClone-socnetwork') as string
     );
-    this.token = authInfo.token;
+    this.token = this.authInfo.token;
     this.userSubscription = this.route.data.subscribe((data) => {
       this.user = data['data'];
       this.offlineUsers = this.user.subscriptions.filter(
@@ -55,11 +64,7 @@ export class UserPageComponent implements OnInit {
         (el: { isOnline: any }) => el.isOnline
       );
       this.sortedSubs = [...this.onlineUsers, ...this.offlineUsers];
-      console.log(this.sortedSubs);
-      console.log('yourPage', this.user);
-      // console.log(this.user.gallery)
-      if (this.user._id === authInfo._id) {
-        console.log('this is your page');
+      if (this.user._id === this.authInfo._id) {
         this.isYourPage = true;
       } else {
         console.log('not yours');
@@ -68,6 +73,79 @@ export class UserPageComponent implements OnInit {
       this.userAvatar = `${environment.apiUrl}/${this.user.avatar.imgLink}`;
       console.log(this.userAvatar);
     });
+    this.getYourSubscribtions();
+  }
+
+  getYourSubscribtions() {
+    this.loginService
+      .getYourPage(this.authInfo._id, this.authInfo.token)
+      .subscribe({
+        next: (data) => {
+          this.userSubscribers = data.subscribers;
+          this.yourSubscribtions = data.subscriptions.map(
+            (el: IUser) => el._id
+          );
+          console.log('yourSUbs', this.yourSubscribtions);
+          this.checkYourSubscribtions();
+        },
+        error: (e) => {
+          console.log(e);
+        },
+      });
+  }
+
+  checkYourSubscribtions() {
+    if (this.yourSubscribtions.includes(this.user._id)) {
+      this.isSubscribed = true;
+      this.subBtnContent = 'Отписаться';
+    } else {
+      this.isSubscribed = false;
+      this.subBtnContent = 'Подписаться';
+    }
+  }
+
+  subAction() {
+    this.subBtnContent = '⭯';
+    this.isDisabled = true;
+    if (this.isSubscribed) {
+      this.unsubscribe();
+    } else {
+      this.subscribe();
+    }
+  }
+
+  subscribe() {
+    this.loginService
+      .subscribeOnUser(this.user._id, this.authInfo.token)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.isDisabled = false;
+          this.ngOnChanges();
+        },
+        error: (e) => {
+          console.log(e);
+          this.isDisabled = false;
+          this.ngOnChanges();
+        },
+      });
+  }
+
+  unsubscribe() {
+    this.loginService
+      .unsubscribeFromUser(this.user._id, this.authInfo.token)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.isDisabled = false;
+          this.ngOnChanges();
+        },
+        error: (e) => {
+          console.log(e);
+          this.isDisabled = false;
+          this.ngOnChanges();
+        },
+      });
   }
 
   writeToThisUser() {

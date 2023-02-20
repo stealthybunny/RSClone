@@ -1,5 +1,4 @@
 import { environment } from './../../../environments/environment';
-import { token } from './../../store';
 import {
   Component,
   ElementRef,

@@ -1,7 +1,6 @@
 import { environment } from './../../../environments/environment';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/types';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
@@ -11,18 +10,28 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
   templateUrl: './find.component.html',
   styleUrls: ['./find.component.scss'],
 })
-export class FindComponent implements OnInit {
+export class FindComponent implements OnInit, OnChanges {
   public users: IUser[];
   public currentSubs: string[] = [];
   public token: string;
   public api = environment.apiUrl;
   public isOnline: boolean = false;
+  public isDisabled: boolean = false;
+  // public isDisabledUnsub: boolean = false;
   constructor(
     private router: Router,
     public headerModalService: HeaderModalService,
     private loginService: LoginServiceService
   ) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getListOfUsers();
+  }
+
   ngOnInit(): void {
+    this.getListOfUsers();
+  }
+
+  getListOfUsers() {
     const authInfo = JSON.parse(
       window.localStorage.getItem('RSClone-socnetwork') as string
     );
@@ -30,7 +39,6 @@ export class FindComponent implements OnInit {
     const token: string = JSON.parse(
       window.localStorage.getItem('RSClone-socnetwork') as string
     ).token;
-
     this.loginService
       .getYourPage(authInfo._id, this.token)
       .subscribe((yourData) => {
@@ -38,7 +46,6 @@ export class FindComponent implements OnInit {
           return el._id;
         });
       });
-
     this.loginService.getUsers(token).subscribe((data) => {
       const dataArr = data.filter((user) => user._id !== authInfo._id);
       this.users = dataArr;
@@ -53,14 +60,32 @@ export class FindComponent implements OnInit {
   }
 
   subscribe(user: IUser, token: string) {
-    this.loginService.subscribeOnUser(user._id, token).subscribe((data) => {
-      console.log(`You have subscribed on ${user.name}!`);
+    console.log('subscribe');
+    this.isDisabled = true;
+    this.loginService.subscribeOnUser(user._id, token).subscribe({
+      next: (data) => {
+        this.getListOfUsers();
+        this.isDisabled = false;
+      },
+      error: (e) => {
+        console.log(e);
+        this.isDisabled = false;
+      },
     });
   }
 
   unsubscribe(user: IUser, token: string) {
-    this.loginService.unsubscribeFromUser(user._id, token).subscribe((data) => {
-      console.log(`You have unsubscribed from ${user.name}!`);
+    console.log('unsubscribe');
+    this.isDisabled = true;
+    this.loginService.unsubscribeFromUser(user._id, token).subscribe({
+      next: (data) => {
+        this.getListOfUsers();
+        this.isDisabled = false;
+      },
+      error: (e) => {
+        console.log(e);
+        this.isDisabled = false;
+      },
     });
   }
 

@@ -2,10 +2,10 @@
   <div class="headline__block">
     <h2
   class="subs__headline"
-  (click)="subModalService.open()">Подписки: {{subscriptions.length}}</h2>
+  (click)="subModalService.open()">Подписчики: {{subscribers.length}}</h2>
   </div>
   <div 
-  *ngFor="let sub of subscriptions; index as i"
+  *ngFor="let sub of subscribers; index as i"
   class="subs__field"
   >
   <div class="wrapper"
