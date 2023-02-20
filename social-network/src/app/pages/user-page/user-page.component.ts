@@ -1,6 +1,6 @@
-import { Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { ActivatedRoute, Params, Route } from '@angular/router';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { HeaderModalComponent } from 'src/app/components/header-modal/header-modal.component';
 import { IImage, ILogin, IToken, IUser } from 'src/app/models/types';
 import { AvatarChangeMenuService } from 'src/app/services/avatar-change-menu.service';
@@ -22,6 +22,7 @@ export class UserPageComponent implements OnInit, OnChanges {
   offlineUsers: IUser[];
   sortedSubs: IUser[];
   yourSubscribtions: string[];
+  userSubscribers: IUser[];
   isSubscribed: boolean;
   subBtnContent: string = '⭯';
   authInfo: IToken;
@@ -40,7 +41,7 @@ export class UserPageComponent implements OnInit, OnChanges {
     public editProfileService: EditProfileService,
     public avatarChangeMenuService: AvatarChangeMenuService,
     public subModalService: SubsModalServiceService
-  ) {}
+  ) { }
 
   ngOnChanges(): void {
     this.getYourSubscribtions();
@@ -76,6 +77,7 @@ export class UserPageComponent implements OnInit, OnChanges {
   getYourSubscribtions() {
     this.loginService.getYourPage(this.authInfo._id, this.authInfo.token).subscribe({
       next: (data) => {
+        this.userSubscribers = data.subscribers;
         this.yourSubscribtions = data.subscriptions.map((el: IUser) => el._id)
         console.log('yourSUbs', this.yourSubscribtions);
         this.checkYourSubscribtions();
@@ -118,6 +120,7 @@ export class UserPageComponent implements OnInit, OnChanges {
       error: (e) => {
         console.log(e);
         this.isDisabled = false
+        this.ngOnChanges()
       },
     })
     
@@ -133,6 +136,7 @@ export class UserPageComponent implements OnInit, OnChanges {
       error: (e) => {
         console.log(e);
         this.isDisabled = false;
+        this.ngOnChanges()
       },
   })
   }

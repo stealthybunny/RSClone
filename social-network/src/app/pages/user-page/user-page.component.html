@@ -55,7 +55,14 @@
       <div class="user__subscriptions">
         <app-subscribtions
         [subscriptions]="sortedSubs"
+        [id]="user._id"
         ></app-subscribtions>
+      </div>
+      <div class="user__subscriptions">
+        <app-subscribers
+        [subscribers]="user.subscribers"
+        [id]="user._id">
+        </app-subscribers>
       </div>
     </div>
     <app-subscriptions-modal

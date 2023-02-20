@@ -1,0 +1,57 @@
+@import "../../../styles.scss";
+
+.headline__block {
+  border-bottom: 1px solid var(--border-item);
+}
+
+.subs__headline {
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.subs__headline:hover {
+  background-color: var(--hover-item);
+  overflow: hidden;
+}
+
+.img__wrapper {
+  position: relative;
+}
+
+.sub__img {
+  width: 40px;
+  height: 40px;
+  border-radius: 1rem;
+}
+
+.status__marker {
+  position: absolute;
+  bottom: 5px;
+  right: -2px;
+  width: 13px;
+  height: 13px;
+  border: 2px solid var(--background-post);
+  border-radius: 1rem;
+  background-color: rgb(3, 202, 3);
+}
+
+.subs__field {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.wrapper:hover {
+  background-color: var(--hover-item);
+  border-radius: 1rem;
+}
