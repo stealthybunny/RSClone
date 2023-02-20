@@ -29,6 +29,7 @@ import { NewsComponent } from './components/posts/news/news.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { SubscribtionsComponent } from './components/subscribtions/subscribtions.component';
 import { SubscriptionsModalComponent } from './components/subscriptions-modal/subscriptions-modal.component';
+import { SubscribersComponent } from './components/subscribers/subscribers.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { SubscriptionsModalComponent } from './components/subscriptions-modal/su
     CommentsComponent,
     SubscribtionsComponent,
     SubscriptionsModalComponent,
+    SubscribersComponent,
   ],
   imports: [
     BrowserModule,
