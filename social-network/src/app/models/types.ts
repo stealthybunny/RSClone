@@ -95,3 +95,8 @@ export interface UPostDocument {
 export interface LikeDocument {
   //?
 }
+
+export interface IAlertMessage {
+  unread: number;
+  sound: boolean;
+}
