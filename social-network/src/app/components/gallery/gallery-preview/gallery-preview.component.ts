@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { IImage } from 'src/app/models/types';
 
 import {
@@ -20,6 +21,7 @@ export class GalleryPreviewComponent implements OnInit, OnChanges {
   imgList: IImage[] = [];
   currentImage: IImage;
   modalOpen = false;
+  apiUrl = environment.apiUrl;
   constructor(private galleryService: GalleryService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -45,7 +47,7 @@ export class GalleryPreviewComponent implements OnInit, OnChanges {
 
   getImageLink(image: IImage) {
     return {
-      link: `background-image: url("http://localhost:5000/${image.imgLink}");`,
+      link: `background-image: url("${this.apiUrl}/${image.imgLink}");`,
     };
   }
 }

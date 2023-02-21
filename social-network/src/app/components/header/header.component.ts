@@ -1,4 +1,4 @@
-import { token } from './../../store';
+import { environment } from './../../../environments/environment';
 import {
   Component,
   ElementRef,
@@ -10,7 +10,6 @@ import { IImage, IToken, IUser } from 'src/app/models/types';
 import { DataTransportService } from 'src/app/services/data-transport.service';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
-import { pathToAPI } from 'src/app/store';
 import { HeaderModalComponent } from '../header-modal/header-modal.component';
 
 @Component({
@@ -26,7 +25,7 @@ export class HeaderComponent implements OnInit {
   ursersList: IUser[] = [];
   filtredUsers: IUser[] = [];
   isVisible = false;
-  api = pathToAPI;
+  api = environment.apiUrl;
   userLofinInfo = JSON.parse(
     window.localStorage.getItem('RSClone-socnetwork') as string
   ) as IToken;
@@ -42,7 +41,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.dataTransport.sub.subscribe((data: any) => {
       console.log('HeaderData', data);
-      this.userAvatar = `${pathToAPI}/${data.imgLink}`;
+      this.userAvatar = `${environment.apiUrl}/${data.imgLink}`;
     });
     const authData = JSON.parse(
       window.localStorage.getItem('RSClone-socnetwork') as string
@@ -51,7 +50,7 @@ export class HeaderComponent implements OnInit {
       .getYourPage(authData._id, authData.token)
       .subscribe((data) => {
         this.userPath = `/user/${data._id}`;
-        this.userAvatar = `${pathToAPI}/${data.avatar.imgLink}`;
+        this.userAvatar = `${environment.apiUrl}/${data.avatar.imgLink}`;
       });
     this.userService.getUsers(this.userLofinInfo.token).subscribe({
       next: (data) => {

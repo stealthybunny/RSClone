@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IImage, IToken, IUser } from 'src/app/models/types';
@@ -5,7 +6,6 @@ import { AvatarChangeMenuService } from 'src/app/services/avatar-change-menu.ser
 import { EditProfileService } from 'src/app/services/edit-profile.service';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
-import { AuthState, pathToAPI } from 'src/app/store';
 
 @Component({
   selector: 'app-main-page',
@@ -35,7 +35,7 @@ export class MainPageComponent implements OnInit {
       .getYourPage(authInfo._id, authInfo.token)
       .subscribe((userdata) => {
         this.userName = userdata.name;
-        this.userAvatar = `${pathToAPI}/${userdata.avatar.imgLink}`;
+        this.userAvatar = `${environment.apiUrl}/${userdata.avatar.imgLink}`;
         this.changedAvatar = userdata.avatar;
       });
   }

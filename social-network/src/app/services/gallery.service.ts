@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { IImage } from './../models/types';
 import {
   HttpClient,
@@ -7,20 +8,21 @@ import {
 import { Injectable } from '@angular/core';
 import { IToken } from '../models/types';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { pathToAPI } from '../store';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GalleryService {
+  apiUrl = environment.apiUrl;
   userLofinInfo: IToken;
-  url = `http://localhost:5000/users/images`;
+  url: string;
   token: string;
   constructor(private http: HttpClient) {
     this.userLofinInfo = JSON.parse(
       window.localStorage.getItem('RSClone-socnetwork') as string
     ) as IToken;
     this.token = this.userLofinInfo.token;
+    this.url = `${this.apiUrl}/users/images`;
   }
 
   getImagesList(userId: string) {
@@ -46,7 +48,7 @@ export class GalleryService {
   }
 
   postLike(id: string) {
-    const url = pathToAPI + '/likes/image/' + id;
+    const url = environment.apiUrl + '/likes/image/' + id;
     console.log(this.token);
     return this.http
       .post<IImage>(

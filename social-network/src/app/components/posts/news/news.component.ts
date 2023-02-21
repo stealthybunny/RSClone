@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import {
   Component,
   Input,
@@ -7,7 +8,6 @@ import {
 } from '@angular/core';
 import { IPost, IToken } from 'src/app/models/types';
 import { NewsService } from 'src/app/services/news.service';
-import { pathToAPI } from 'src/app/store';
 
 @Component({
   selector: 'app-news',
@@ -20,7 +20,7 @@ export class NewsComponent implements OnInit, OnChanges {
   isOpen: boolean[];
   isDisabled = false;
   isDeleteDisabled = false;
-  api = pathToAPI;
+  api = environment.apiUrl;
   isYourPage: boolean;
   userLofinInfo = JSON.parse(
     window.localStorage.getItem('RSClone-socnetwork') as string
