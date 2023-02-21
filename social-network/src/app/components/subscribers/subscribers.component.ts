@@ -12,9 +12,9 @@ import { pathToAPI } from 'src/app/store';
 export class SubscribersComponent implements OnInit, OnChanges{
   @Input() id: string;
   oldID: string;
-  token: string;
-  @Input() subscribers: IUser[];
- 
+  @Input() token: string;
+  @Input() subscribers: IUser[] = [];
+  // @Input() subscribersCount: number;
   api: string;
 
   constructor(
@@ -24,12 +24,37 @@ export class SubscribersComponent implements OnInit, OnChanges{
 
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('subscribers', this.subscribers);
+    // console.log('subscribers', this.subscribers);
+    // this.getListOfSUbscribers(this.id)
+
     this.api = pathToAPI;
   }
   
   ngOnInit(): void {
-    console.log('subscribers', this.subscribers);
+    console.log(this.subscribers)
+    // this.token = JSON.parse(window.localStorage.getItem('RSClone-socnetwork') as string).token;
+    // this.getListOfSUbscribers(this.id)
+
+    // this.oldID = this.id;
+    
+    // console.log('subscribers', this.subscribers);
     this.api = pathToAPI;
   }
+
+  // getListOfSUbscribers(id: string) {
+
+  //   console.log('token',this.token)
+  //   this.loginService.getYourPage(id, this.token).subscribe({
+  //     next: (data) => {
+  //       console.log('data', data)
+  //       this.subscribers = data.subscribers;
+  //       console.log('subscribers',this.subscribers)
+  //     },
+  //     error: (e) => {
+  //       console.log(e)
+  //     }
+  //   })
+
+  // }
 }
+

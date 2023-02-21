@@ -56,8 +56,10 @@
       </div>
       <div class="user__subscriptions">
         <app-subscribers
+        [token]="token"
+        [id]="user._id"
         [subscribers]="user.subscribers"
-        [id]="user._id">
+        >
         </app-subscribers>
       </div>
     </div>

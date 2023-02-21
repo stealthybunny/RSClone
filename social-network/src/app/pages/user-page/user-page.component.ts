@@ -113,8 +113,9 @@ export class UserPageComponent implements OnInit, OnChanges {
   subscribe() {
     this.loginService.subscribeOnUser(this.user._id, this.authInfo.token).subscribe({
       next: (data) => {
-        console.log(data);
-        this.isDisabled = false
+        console.log('-----------------get-----------------------', data.subscribers);
+        this.isDisabled = false;
+        this.user = data;
         this.ngOnChanges()
       },
       error: (e) => {
@@ -129,7 +130,8 @@ export class UserPageComponent implements OnInit, OnChanges {
   unsubscribe() {
     this.loginService.unsubscribeFromUser(this.user._id, this.authInfo.token).subscribe({
       next: (data) => {
-        console.log(data);
+        console.log('-------------------delete---------------------',data.subscribers);
+        this.user = data;
         this.isDisabled = false;
         this.ngOnChanges()
       },
