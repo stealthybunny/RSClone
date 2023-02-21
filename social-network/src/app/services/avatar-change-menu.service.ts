@@ -1,35 +1,31 @@
+import { environment } from './../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { IImage } from '../models/types';
-import { pathToAPI } from '../store';
-import { ErrorService } from './error.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AvatarChangeMenuService {
-
-
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   isVisible$ = new BehaviorSubject<boolean>(false);
 
   open() {
-    this.isVisible$.next(true)
+    this.isVisible$.next(true);
   }
 
   close() {
-    this.isVisible$.next(false)
+    this.isVisible$.next(false);
   }
 
-  upload(data: any, token: string):Observable<IImage> {
-    console.log(data, token)
+  upload(data: any, token: string): Observable<IImage> {
+    console.log(data, token);
 
-    return this.http.post<any>(`${pathToAPI}/users/avatar`, data, {
+    return this.http
+      .post<any>(`${environment.apiUrl}/users/avatar`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           // 'Content-Type': 'multipart/form-data; boundary=something'
@@ -37,7 +33,6 @@ export class AvatarChangeMenuService {
       })
       .pipe(catchError(this.handleError));
   }
-
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -55,6 +50,3 @@ export class AvatarChangeMenuService {
     return throwError(() => error.error);
   }
 }
-
-
-

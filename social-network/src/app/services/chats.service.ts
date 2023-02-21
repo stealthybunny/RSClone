@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import {
   IChat,
   IMessageBody,
@@ -14,14 +15,17 @@ import { catchError, throwError } from 'rxjs';
 })
 export class ChatsService {
   userLofinInfo: IToken;
-  url = `http://localhost:5000/chats`;
-  urlUsers = `http://localhost:5000/users`;
+  apiUrl = environment.apiUrl;
+  url: string;
+  urlUsers: string;
   token: string;
   constructor(private http: HttpClient) {
     this.userLofinInfo = JSON.parse(
       window.localStorage.getItem('RSClone-socnetwork') as string
     ) as IToken;
     this.token = this.userLofinInfo.token;
+    this.url = `${this.apiUrl}/chats`;
+    this.urlUsers = `${this.apiUrl}/users`;
   }
 
   getChats() {

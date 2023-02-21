@@ -1,16 +1,17 @@
+import { environment } from './../../environments/environment';
 import { IComment } from './../models/types';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { IPost, IToken } from '../models/types';
-import { pathToAPI } from '../store';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NewsService {
   userLofinInfo: IToken;
-  url = `${pathToAPI}/posts`;
+  url = `${environment.apiUrl}/posts`;
+  apiUrl = environment.apiUrl;
   token: string;
   constructor(private http: HttpClient) {
     this.userLofinInfo = JSON.parse(
@@ -50,7 +51,7 @@ export class NewsService {
   }
 
   postLike(id: string) {
-    const url = pathToAPI + '/likes/post/' + id;
+    const url = this.apiUrl + '/likes/post/' + id;
     console.log(this.token);
     return this.http
       .post<IPost>(
@@ -66,7 +67,7 @@ export class NewsService {
   }
 
   sendComment(id: string, body: { text: string }) {
-    const url = pathToAPI + '/posts/comment/' + id;
+    const url = this.apiUrl + '/posts/comment/' + id;
     console.log(this.token);
     return this.http
       .post<IComment[]>(url, body, {
@@ -78,7 +79,7 @@ export class NewsService {
   }
 
   sendImgComment(id: string, body: { text: string }) {
-    const url = pathToAPI + '/posts/image/comment/' + id;
+    const url = this.apiUrl + '/posts/image/comment/' + id;
     console.log(this.token);
     return this.http
       .post<IComment[]>(url, body, {

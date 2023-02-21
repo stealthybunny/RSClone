@@ -1,29 +1,21 @@
+import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUser } from '../models/types';
-import { pathToAPI } from '../store';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenCheckService {
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private http: HttpClient
-  ) { 
-    
-  }
-  
   getUsers(token: string): Observable<IUser[]> {
-    const headers = new HttpHeaders()
-    .set('Authorization', `Bearer ${token}`)
-    return this.http.get<IUser[]>(`${pathToAPI}/users`, {'headers': headers})
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<IUser[]>(`${environment.apiUrl}/users`, {
+      headers: headers,
+    });
   }
 
-  tokenCheck() {
-
-  }
-
-
+  tokenCheck() {}
 }
