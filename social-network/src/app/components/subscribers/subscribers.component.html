@@ -1,10 +1,14 @@
-<div class="subscriptions__section">
-  <div class="headline__block">
-    <h2
-  class="subs__headline"
-  (click)="subModalService.open()">Подписчики: {{subscribers.length}}</h2>
+<div 
+class="subscriptions__section"
+(click)="subscribersModalService.open()"
+[ngClass]="{'nograde': (subscribers.length < 1),
+'bronze': (subscribers.length >= 2 && subscribers.length < 4),
+'silver': (subscribers.length >= 4 && subscribers.length < 7),
+'gold': (subscribers.length >= 7)}"
+><div class="headline__block">
+    <h2 class="subs__headline">{{subscribers.length}}</h2>
   </div>
-  <div 
+  <!-- <div 
   *ngFor="let sub of subscribers; index as i"
   class="subs__field"
   >
@@ -22,5 +26,5 @@
     </div>    
     <p>{{sub.name}}</p>
   </div>
-  </div>
+  </div> -->
 </div>

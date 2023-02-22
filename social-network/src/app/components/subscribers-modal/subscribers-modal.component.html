@@ -1,0 +1,25 @@
+<div class="cover"
+(click)="subscribersModalService.close()">
+</div>
+<div class="subscribers">
+  <div class="modal__header">
+    <h2>Подписчики: {{subscribers.length}}</h2>
+    <div class="modal__header_close"
+    (click)="subscribersModalService.close()">
+      <div class="line"></div>
+      <div class="line second__line"></div>
+     </div>
+  </div>
+
+  <div class="modal__body">
+    <div class="wrapper"
+    *ngFor="let user of subscribers"
+    [routerLink]="['/user', user._id]"
+    (click)="subscribersModalService.close()">
+      <img class="user_photo"
+      [src]="api + '/' + user.avatar.imgLink">
+      <p class="user_name">{{user.name}}</p>
+    </div>
+
+  </div>
+</div>

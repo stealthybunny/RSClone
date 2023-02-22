@@ -8,6 +8,8 @@ import { EditProfileService } from 'src/app/services/edit-profile.service';
 import { HeaderModalService } from 'src/app/services/header-modal.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { SubsModalServiceService } from 'src/app/services/subs-modal-service.service';
+import { SubscribersModalComponent } from 'src/app/components/subscribers-modal/subscribers-modal.component';
+import { SubscribersModalService } from 'src/app/services/subscribers-modal.service';
 
 @Component({
   selector: 'app-user-page',
@@ -36,6 +38,7 @@ export class UserPageComponent implements OnInit, OnChanges {
   constructor(
     private route: ActivatedRoute,
     public headerModalService: HeaderModalService,
+    public subscribersModalService: SubscribersModalService,
     public loginService: LoginServiceService,
     public editProfileService: EditProfileService,
     public avatarChangeMenuService: AvatarChangeMenuService,
@@ -92,7 +95,7 @@ export class UserPageComponent implements OnInit, OnChanges {
   }
 
   checkYourSubscribtions() {
-    console.log('-------checking your subscribtions-----')
+    console.log('-!------checking your subscribtions----!-')
     if (this.yourSubscribtions.includes(this.user._id)) {
       this.isSubscribed = true;
       this.subBtnContent = 'Отписаться';
