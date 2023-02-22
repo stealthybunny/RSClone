@@ -30,6 +30,7 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { SubscribtionsComponent } from './components/subscribtions/subscribtions.component';
 import { SubscriptionsModalComponent } from './components/subscriptions-modal/subscriptions-modal.component';
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
+import { SubscribersModalComponent } from './components/subscribers-modal/subscribers-modal.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { SubscribersComponent } from './components/subscribers/subscribers.compo
     SubscribtionsComponent,
     SubscriptionsModalComponent,
     SubscribersComponent,
+    SubscribersModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -73,16 +73,16 @@ export class LoginServiceService {
     });
   }
 
-  subscribeOnUser(id: string, token: string): Observable<any> {
+  subscribeOnUser(id: string, token: string): Observable<IUser> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post<any>(`${this.apiUrl}/users/subs/${id}`, '', {
+    return this.http.post<IUser>(`${this.apiUrl}/users/subs/${id}`, '', {
       headers: headers,
     });
   }
 
-  unsubscribeFromUser(id: string, token: string): Observable<any> {
+  unsubscribeFromUser(id: string, token: string): Observable<IUser> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.delete<any>(`${this.apiUrl}/users/subs/${id}`, {
+    return this.http.delete<IUser>(`${this.apiUrl}/users/subs/${id}`, {
       headers: headers,
     });
   }

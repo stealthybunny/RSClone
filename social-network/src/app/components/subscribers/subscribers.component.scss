@@ -1,57 +1,41 @@
 @import "../../../styles.scss";
 
-.headline__block {
-  border-bottom: 1px solid var(--border-item);
-}
-
-.subs__headline {
-  margin: 0 auto;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 1rem 1rem 0 0;
-}
-
-.subs__headline:hover {
-  background-color: var(--hover-item);
-  overflow: hidden;
-}
-
-.img__wrapper {
-  position: relative;
-}
-
-.sub__img {
-  width: 40px;
-  height: 40px;
-  border-radius: 1rem;
-}
-
-.status__marker {
-  position: absolute;
-  bottom: 5px;
-  right: -2px;
-  width: 13px;
-  height: 13px;
-  border: 2px solid var(--background-post);
-  border-radius: 1rem;
-  background-color: rgb(3, 202, 3);
-}
-
-.subs__field {
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.wrapper {
+.subscriptions__section {
+  color: var(--color-default);
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  width: 80px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--color-default);
+  background-color: var(--background-body);
   cursor: pointer;
 }
 
-.wrapper:hover {
-  background-color: var(--hover-item);
-  border-radius: 1rem;
+.subscriptions__section:hover {
+  filter: brightness(120%);
+}
+
+.nograde {
+  color: var(--color-default);
+  border: 2px solid var(--color-default);
+}
+
+.bronze {
+  color: #b5843f;
+  border: 2px solid #b5843f;
+  box-shadow: 0px 0px 10px 5px #b5843f;  
+}
+
+.silver {
+  color: #C0C0C0;
+  border: 2px solid #C0C0C0;
+  box-shadow: 0px 0px 10px 5px #C0C0C0;
+}
+
+.gold {
+  color: #FFD700;
+  border: 2px solid #FFD700;
+  box-shadow: 0px 0px 10px 5px #FFD700;
 }

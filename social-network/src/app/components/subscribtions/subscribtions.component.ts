@@ -2,7 +2,6 @@ import { environment } from './../../../environments/environment';
 import { Component, Input, OnInit } from '@angular/core';
 import { concat } from 'rxjs';
 import { IUser } from 'src/app/models/types';
-import { LoginServiceService } from 'src/app/services/login-service.service';
 import { SubsModalServiceService } from 'src/app/services/subs-modal-service.service';
 
 @Component({
@@ -17,7 +16,6 @@ export class SubscribtionsComponent implements OnInit {
   api: string;
 
   constructor(
-    private loginService: LoginServiceService,
     public subModalService: SubsModalServiceService
   ) {}
   ngOnInit(): void {

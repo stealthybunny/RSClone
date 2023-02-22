@@ -37,11 +37,21 @@
       </div>
       <div class="user__description">
         <h1 class="user__name">{{user.name}}</h1>
-        <h4>Страна:<span> ЮАР</span></h4>
+
+        <div class="subscribers__sec">
+          <app-subscribers
+          [token]="token"
+          [id]="user._id"
+          [subscribers]="user.subscribers"
+          >
+          </app-subscribers>
+        </div>
+        
+        <!-- <h4>Страна:<span> ЮАР</span></h4>
         <h4>Город:<span> Претория</span></h4>
         <h4>Взраст:<span> NaN</span></h4>
         <h4>Работа:<span> Null</span></h4>
-        <h4>Школа:<span> Undefined</span></h4>
+        <h4>Школа:<span> Undefined</span></h4> -->
       </div>
     </div>
     <div class="wrapper">
@@ -54,16 +64,18 @@
         [id]="user._id"
         ></app-subscribtions>
       </div>
-      <div class="user__subscriptions">
-        <app-subscribers
-        [subscribers]="user.subscribers"
-        [id]="user._id">
-        </app-subscribers>
+      <div >
       </div>
     </div>
     <app-subscriptions-modal
     *ngIf="subModalService.isOpened$ | async"
-    [id]="user._id"></app-subscriptions-modal>
+    [id]="user._id">
+    </app-subscriptions-modal>
+    <app-subscribers-modal
+    class="subscribers-modal"
+    [subscribers]="user.subscribers"
+    *ngIf="subscribersModalService.isCalled$ | async">
+    </app-subscribers-modal>
     <div class="user__create_new_post">
       <app-news [id]="user._id"></app-news>
     </div>

@@ -7,8 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { IUser } from 'src/app/models/types';
-import { LoginServiceService } from 'src/app/services/login-service.service';
-import { SubsModalServiceService } from 'src/app/services/subs-modal-service.service';
+import { SubscribersModalService } from 'src/app/services/subscribers-modal.service';
 
 @Component({
   selector: 'app-subscribers',
@@ -18,22 +17,24 @@ import { SubsModalServiceService } from 'src/app/services/subs-modal-service.ser
 export class SubscribersComponent implements OnInit, OnChanges {
   @Input() id: string;
   oldID: string;
-  token: string;
-  @Input() subscribers: IUser[];
-
+  @Input() token: string;
+  @Input() subscribers: IUser[] = [];
   api: string;
+  nograde: boolean = true;
+  bronze: boolean = false;
+  silver: boolean = false;
+  gold: boolean = false;
 
   constructor(
-    private loginService: LoginServiceService,
-    public subModalService: SubsModalServiceService
+    public subscribersModalService: SubscribersModalService,
   ) {}
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('subscribers', this.subscribers);
     this.api = environment.apiUrl;
   }
 
   ngOnInit(): void {
-    console.log('subscribers', this.subscribers);
+    // switch 
     this.api = environment.apiUrl;
   }
 }
+
