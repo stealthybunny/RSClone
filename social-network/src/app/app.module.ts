@@ -31,6 +31,7 @@ import { SubscribtionsComponent } from './components/subscribtions/subscribtions
 import { SubscriptionsModalComponent } from './components/subscriptions-modal/subscriptions-modal.component';
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
 import { SubscribersModalComponent } from './components/subscribers-modal/subscribers-modal.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { SubscribersModalComponent } from './components/subscribers-modal/subscr
     SubscriptionsModalComponent,
     SubscribersComponent,
     SubscribersModalComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

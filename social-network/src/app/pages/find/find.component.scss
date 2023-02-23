@@ -33,6 +33,10 @@
   padding: 0.3rem 0.5rem;
 }
 
+.user__found:last-child {
+  margin-bottom: 65px;;
+}
+
 .userInfo__wrapper {
   display: flex;
   align-items: center;
@@ -94,6 +98,7 @@
 .avatar_wrapper {
   position: relative;
 }
+
 .status {
   position: absolute;
   bottom: 5px;
