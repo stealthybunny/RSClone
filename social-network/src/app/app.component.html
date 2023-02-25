@@ -1,11 +1,15 @@
 
+<!-- <div class="frame">
+  
+</div> -->
+
 <app-header *ngIf="!isLogin()"></app-header>
+  <div class="app__main">
+    <app-aside *ngIf="!isLogin()"></app-aside>
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
 
-
-<div class="app__main">
-  <app-aside *ngIf="!isLogin()"></app-aside>
-  <router-outlet></router-outlet>
-</div>
 
 
 
