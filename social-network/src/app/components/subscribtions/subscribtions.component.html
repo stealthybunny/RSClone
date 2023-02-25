@@ -1,0 +1,26 @@
+<div class="subscriptions__section">
+  <div class="headline__block">
+    <h2
+  class="subs__headline"
+  (click)="subModalService.open()">Подписки: {{subscriptions.length}}</h2>
+  </div>
+  <div 
+  *ngFor="let sub of subscriptions; index as i"
+  class="subs__field"
+  >
+  <div class="wrapper"
+  [routerLink]="['/user', sub._id]"
+  *ngIf="i < 5"
+  >
+    <div class="img__wrapper">
+      <img
+      class="sub__img"
+      [src]="api + '/' + sub.avatar.imgLink" alt="">
+      <div class="status__marker"
+      *ngIf="sub.isOnline"
+      ></div>
+    </div>    
+    <p>{{sub.name}}</p>
+  </div>
+  </div>
+</div>

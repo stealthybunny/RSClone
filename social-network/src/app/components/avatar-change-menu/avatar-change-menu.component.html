@@ -1,0 +1,36 @@
+<div class="avatar_menu__cover"
+(click)="avatarChangeModalService.close()"
+
+></div>
+<div class="avatar_menu__modal">
+  <div class="modal__header">
+    <p class="modal__header_text">Загрузка новой фотографии</p>
+    <div class="modal__header_close"
+    (click)="avatarChangeModalService.close()">
+      <div class="line"></div>
+      <div class="line second__line"></div>
+    </div>
+  </div>
+ 
+  <div class="modal__body">
+    
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input type="file" name="file" (change)="onFileChange($event)" #file/>
+      <button type="submit" [disabled]="isDisabled">Upload</button>
+    </form>
+    <div class="preview__container">
+      <img class="preview__image" 
+      [src]="photoPreview"
+      *ngIf="photoPreview"
+      alt="avatar preview">
+    </div>
+    <div
+    style="color: red;"
+    *ngIf="error">
+      {{ error.message }}
+    </div>
+  </div>
+  <div class="modal__footer">
+    Используйте фото меньше 5МБ.
+  </div>
+</div>

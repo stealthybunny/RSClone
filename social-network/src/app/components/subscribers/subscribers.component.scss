@@ -1,0 +1,41 @@
+@import "../../../styles.scss";
+
+.subscriptions__section {
+  color: var(--color-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--color-default);
+  background-color: var(--background-body);
+  cursor: pointer;
+}
+
+.subscriptions__section:hover {
+  filter: brightness(120%);
+}
+
+.nograde {
+  color: var(--color-default);
+  border: 2px solid var(--color-default);
+}
+
+.bronze {
+  color: #b5843f;
+  border: 2px solid #b5843f;
+  box-shadow: 0px 0px 10px 5px #b5843f;  
+}
+
+.silver {
+  color: #C0C0C0;
+  border: 2px solid #C0C0C0;
+  box-shadow: 0px 0px 10px 5px #C0C0C0;
+}
+
+.gold {
+  color: #FFD700;
+  border: 2px solid #FFD700;
+  box-shadow: 0px 0px 10px 5px #FFD700;
+}

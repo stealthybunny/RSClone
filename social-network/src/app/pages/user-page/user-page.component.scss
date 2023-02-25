@@ -1,0 +1,148 @@
+@import "../../../styles.scss";
+
+.main {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(177, 177, 177, 0.541);
+}
+
+.user__page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1rem;
+  color: var(--color-default);
+
+}
+
+.user__info {
+  display: flex;
+  width: 100%;
+  height: 230px;
+  gap: 30px;
+  background-color: var(--background-post);
+  border: 1px solid var(--border-item);
+  border-radius: 24px;
+}
+
+.foreign__user_block {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 260px;
+  height: 100%;
+}
+
+.user__avatar {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  border: none;
+  background: var(--violet-default);
+  background: linear-gradient(19deg, var(--green-default) 0%, var(--violet-default) 100%);
+}
+
+.user__photo {
+  position: relative;
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  border: none;
+}
+
+.user__name {
+  margin-top: 20px;
+  color: var(--violet-default);
+  display: flex;
+  align-items: center;
+}
+
+.user__interactions__btns {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn {
+  margin-left: 3rem;
+  background-color: var(--item);
+  width: auto;
+  padding: 0.4rem 1.5rem;
+  height: 2rem;
+  margin-top: 2rem;
+  border: 1px solid var(--border-item);
+  border-radius: 0.5rem;
+  color: var(--color-default);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.interaction__btn {
+  margin: 0;
+}
+
+.btn:hover {
+  background-color: var(--hover-item);
+  transition: all 0.2s;
+}
+
+.btn:active {
+  background-color: var(--active-item);
+  transition: all 0.2s;
+}
+
+.user__gallery {
+  border-radius: 24px;
+  width: 500px;
+}
+
+.user__status {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--background-post);
+  border-radius: 50%;
+  background-color: rgb(3, 202, 3);
+}
+
+.modal__wrapper {
+  position: absolute;
+  top: 80px;
+  left: 150px;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+
+.user__subscriptions {
+  color: var(--color-default);
+  background-color: var(--background-post);
+  border: 1px solid var(--border-item);
+  border-radius: 1rem;
+  flex-grow: 1;
+}
+
+.subscribers-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+

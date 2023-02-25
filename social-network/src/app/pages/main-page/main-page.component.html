@@ -1,0 +1,39 @@
+  <div class="user__page">
+    <div class="user__info">
+      <div class="avatar__block"
+      (mouseleave)="editProfileService.close()"
+      >
+        <div class="user__avatar">
+          <img 
+          class="user__photo"
+          [src]="userAvatar"
+          (mouseover)="editProfileService.open()"
+          alt="">
+          <app-avatar-modal
+          class="modal__wrapper"
+           *ngIf="editProfileService.isVisible$ | async"></app-avatar-modal>
+            <app-avatar-change-menu
+           *ngIf="avatarChangeMenuService.isVisible$ | async"
+            ></app-avatar-change-menu>
+        </div>
+      </div>
+      <div class="user__description">
+        <h1 class="user__name">{{userName}}<button class="btn__nickname">Сменить имя</button></h1>
+        <h4>Страна:<span> ЮАР</span></h4>
+        <h4>Город:<span> Претория</span></h4>
+        <h4>Взраст:<span> NaN</span></h4>
+        <h4>Работа:<span> Null</span></h4>
+        <h4>Школа:<span> Undefined</span></h4>
+      </div>
+    </div>
+    <div class="user__gallery">
+      <app-gallery-preview [id]="authInfo._id"></app-gallery-preview>
+    </div>
+    <div class="user__create_new_post">
+    </div>
+    <div class="user__posts">
+    </div>
+  </div>
+
+
+

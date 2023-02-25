@@ -1,0 +1,30 @@
+<div 
+class="subscriptions__section"
+(click)="subscribersModalService.open()"
+[ngClass]="{'nograde': (subscribers.length < 1),
+'bronze': (subscribers.length >= 2 && subscribers.length < 4),
+'silver': (subscribers.length >= 4 && subscribers.length < 7),
+'gold': (subscribers.length >= 7)}"
+><div class="headline__block">
+    <h2 class="subs__headline">{{subscribers.length}}</h2>
+  </div>
+  <!-- <div 
+  *ngFor="let sub of subscribers; index as i"
+  class="subs__field"
+  >
+  <div class="wrapper"
+  [routerLink]="['/user', sub._id]"
+  *ngIf="i < 5"
+  >
+    <div class="img__wrapper">
+      <img
+      class="sub__img"
+      [src]="api + '/' + sub.avatar.imgLink" alt="">
+      <div class="status__marker"
+      *ngIf="sub.isOnline"
+      ></div>
+    </div>    
+    <p>{{sub.name}}</p>
+  </div>
+  </div> -->
+</div>

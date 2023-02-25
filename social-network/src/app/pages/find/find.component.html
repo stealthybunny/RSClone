@@ -1,0 +1,49 @@
+  <div class="find_page">
+    <div class="find__field">
+      <div class="user__found"
+      *ngFor="let user of users"
+      >
+      <div class="userInfo__wrapper"
+      [routerLink]="['/user', user._id]">
+      <div class="avatar_wrapper"> 
+        <img 
+        [src]="api + '/' + user.avatar.imgLink" 
+        alt="User avatar" 
+        class="user__avatar">
+        <span
+        class="status"
+         *ngIf="user.isOnline"></span>
+      </div>
+        
+        <p 
+        class="user__name">{{user.name}}</p>
+      </div>
+      
+      <div class="btns__wrap">
+        <button
+        class="btn__find createChat"
+        (click)="write(user._id, token)"
+        >
+        Написать
+        </button>
+        <button
+        (click)="subscribe(user, token)"
+        class="btn__find subscribeToUser"
+        *ngIf="!checkSub(user)"
+        [disabled]="isDisabled"
+        >
+        Подписаться
+        </button>
+        <button
+        (click)="unsubscribe(user, token)"
+        class="btn__find subscribeToUser"
+        *ngIf="checkSub(user)"
+        [disabled]="isDisabled"
+        >
+        Отписаться
+        </button>        
+      </div> 
+      </div>      
+    </div>
+  </div>
+

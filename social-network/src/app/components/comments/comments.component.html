@@ -1,0 +1,24 @@
+<div class="comments-container">
+  <ul class="comments">
+    <li class="comment__post" *ngFor="let comment of comments">
+      <img class="comment-avatar" [src]="api+'/'+comment.author.avatar.imgLink" alt="">
+      <div class="comment__post__body">
+        <p class="comment-name">{{comment.author.name}}</p>
+        <p class="comment-text">{{ comment.text }}</p>
+        <p class="comment-date">{{comment.date | date: 'h:mm a MMMM d'}}</p>
+      </div>
+    </li>
+  </ul>
+  <form class="upload" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div
+    class="upload__text"
+    role="textbox"
+    contenteditable="true"
+    aria-multiline="true"
+    #textbox
+    ></div>
+    <button class="submit__post" type="submit" [disabled]="isDisabled">Поделиться</button>
+  </form>
+</div>
+
+

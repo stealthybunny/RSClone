@@ -1,0 +1,55 @@
+<header class="app__header">
+  <div class="header__container">
+    <div class="header__logo"
+    [routerLink]="userPath">
+      GlobaL<p class="right__text-logo">Land</p>
+    </div>
+    <div 
+    class="header__search">
+      <input 
+      class="header__search_field"
+      type="search"
+      placeholder="Поиск"
+      (input)="onInput()"
+      (focus)="isVisible=true"
+      (focusout)="onFocuseOut()"
+      #search
+      >
+      <div class="search-modal" *ngIf="isVisible && filtredUsers.length">
+        <ul class="search-modal__list">
+          <li class="search-modal__list__item" 
+          *ngFor="let user of filtredUsers.slice(0,5)"
+          [routerLink]="'/user/'+user._id"
+          (click)="isVisible=false"
+          >
+            <img [src]="api+'/'+user.avatar.imgLink" alt="">
+            <p>{{user.name}}</p>
+          </li>
+        </ul>
+      </div>  
+    </div>
+    <div 
+    class="img__menu"
+    >
+      <img
+      #headerImage
+      [src]="userAvatar" alt="avatar"
+      (change)="userAvatar"
+      class="header_user__menu"
+      >
+      <svg 
+      class="arrow__down"
+      style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M511.5 789.9 80.6 359c-22.8-22.8-22.8-59.8 0-82.6 22.8-22.8 59.8-22.8 82.6 0l348.3 348.3 348.3-348.3c22.8-22.8 59.8-22.8 82.6 0 22.8 22.8 22.8 59.8 0 82.6L511.5 789.9 511.5 789.9zM511.5 789.9"  /></svg>
+      <app-header-modal
+      class="header__modal__window"
+       *ngIf="headerModalService.isOpened$ | async"></app-header-modal>
+      <div 
+      (click)="headerModalService.open()"
+      class="img__menu_cover"
+      ></div>
+  </div>
+
+  </div>
+
+
+</header>

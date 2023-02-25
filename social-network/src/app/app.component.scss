@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app__main {
+  display: grid;
+  flex: 1 0 auto;
+  grid-template-columns: max-content min-content 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  grid-row: 1;
+  min-height: 80vh;
+}

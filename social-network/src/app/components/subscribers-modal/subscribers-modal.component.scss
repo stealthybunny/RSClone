@@ -1,0 +1,89 @@
+@import "../../../styles.scss";
+
+.cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.subscribers {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 320px;
+  height: 300px;
+  background-color: var(--background-post);
+  border: 1px solid var(--border-item);
+  border-radius: 1rem;
+}
+
+
+.modal__header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.modal__header_close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  // position: relative;
+  cursor: pointer;
+}
+
+
+.line {
+  position: absolute;
+  top: 9px;
+  left: 3px;
+  width: 15px;
+  height: 2px;
+  background-color: var(--color-default);
+  transform: rotate(45deg);
+}
+
+
+
+.second__line {
+  position: absolute;
+  transform: rotate(-45deg);
+}
+
+.modal__body {
+  margin: 0 auto;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 95%;
+  height: 240px;
+  overflow-y: scroll;
+}
+
+.wrapper {
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.wrapper:hover {
+  background-color: var(--hover-item);
+}
+
+
+.user_photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 1rem;
+}
+

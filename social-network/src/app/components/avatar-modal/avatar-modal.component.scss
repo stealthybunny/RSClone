@@ -1,0 +1,39 @@
+@import "../../../styles.scss";
+
+// .avatar_change__cover {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+.avatar__change__wrapper {
+  position: relative;
+  background-color: rgba(102, 102, 102, 0.799);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 140px;
+  height: 60px;
+  border-radius: 15px;
+}
+
+.avatar_modal__btn {
+  height: 40px;
+  width: 120px;
+  border-radius: 5px;
+  border: none;
+  color: #bdace3;
+  background-color: #3e3e3e;
+  cursor: pointer;
+}
+
+.avatar_modal__btn:hover {
+  filter:brightness(120%)
+}

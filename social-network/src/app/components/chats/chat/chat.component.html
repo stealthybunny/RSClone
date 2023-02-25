@@ -1,0 +1,23 @@
+<div class="chat-container">
+  <button class="btn__main" routerLink="">to main</button>
+  <div class="chat-info">
+    <button class="chat-info__btn" routerLink="/chats">Back</button>
+    <p class="chat-info__user">{{getTargetNameAndLink().name}}</p>
+    <img [src]="getTargetNameAndLink().imgLink" alt="fhoto">
+  </div>
+  <ul class="massage-list" #content>
+    <li class="massage-list__item" #messages *ngFor="let message of chat.messages">
+      <img [src]="getImgLink(message)" alt="">
+      <div class="message-container">
+        <p class="author-name">{{message.author.name.split(' ')[0]}}</p>
+        <p class="message__text">{{message.text}}</p>
+      </div>
+      <p class="message-date">{{message.date | date: 'h:mm a MMMM d'}}</p>
+    </li>
+  </ul>
+  <form class="message-form" [formGroup]="form" (ngSubmit)="sendMeassage()">
+    <textarea class="message-form__text" rows="2" cols="45" #textInput formControlName="text">
+    </textarea>
+    <button class="message-form__send" type="submit">Send</button>
+  </form>
+</div>

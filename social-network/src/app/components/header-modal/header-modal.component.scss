@@ -1,0 +1,18 @@
+.header__user_menu {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: #3897f1;
+}
+
+.header__menu_item {
+  cursor: pointer;
+}
+
+.header__modal_cover_1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

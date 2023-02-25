@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="images-list__item__img" [style]="getImageLink(image).link" (click)="isOpen=true">
+  </div>
+  <div class="controls">
+    <button
+    class="delete-btn"
+    (click)="deleteEvent(); isDisabled=true"
+    [disabled]="isDisabled"
+    *ngIf="isSameId"
+    >delete</button>
+    <div class="constrols__date">
+      {{image.date | date: 'h:mm a MMMM d'}}
+    </div>
+  </div>
+  <app-gallery-modal
+    [imgArrFromParrent]="imgList"
+    [image]="image" 
+    *ngIf="isOpen"
+    (newItemEvent)="close($event)">
+  </app-gallery-modal>
+</div>
