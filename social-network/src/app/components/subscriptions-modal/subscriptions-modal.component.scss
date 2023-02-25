@@ -21,9 +21,11 @@
   border: 1px solid var(--border-item);
   border-radius: 1rem;
   background-color: var(--background-post);
+  z-index: 10;
 }
 
 .controls__wrapper {
+  height: 22px;
   display: flex;
   width: 100%;
   margin-bottom: 10px;
@@ -33,6 +35,8 @@
 
 .controls {
   width: 33%;
+  height: 21px;
+  line-height: 20px;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;

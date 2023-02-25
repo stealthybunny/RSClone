@@ -12,6 +12,7 @@ import { SseService } from 'src/app/services/sse.service';
   styleUrls: ['./aside.component.scss'],
 })
 export class AsideComponent implements OnInit {
+  burgerAvtive: boolean = false;
   userPath: string;
   userLofinInfo = JSON.parse(
     window.localStorage.getItem('RSClone-socnetwork') as string
@@ -54,6 +55,13 @@ export class AsideComponent implements OnInit {
       },
     });
   }
+
+  windowCheck() {
+    if (window.innerWidth < 1050) {
+      
+    }
+  }
+
   getGalleryLink() {
     return `/gallery/${this.userLofinInfo._id}`;
   }

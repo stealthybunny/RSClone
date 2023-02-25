@@ -18,4 +18,32 @@
   margin-bottom: 60px;
   grid-row: 1;
   min-height: 80vh;
+  // overflow: hidden;
+}
+
+@media screen and (max-width: 1250px) {
+  .app__main {
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .app__main {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 850px) {
+  .app__main {
+    width: 600px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .app__main {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 360px) {
+  .app__main {
+    max-width: 300px;
+  }
 }
