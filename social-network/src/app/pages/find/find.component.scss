@@ -33,6 +33,11 @@
   padding: 0.3rem 0.5rem;
 }
 
+.user__found:hover {
+  filter: brightness(120%);
+
+}
+
 .user__found:last-child {
   margin-bottom: 65px;;
 }
