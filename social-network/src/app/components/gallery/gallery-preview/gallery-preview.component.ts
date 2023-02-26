@@ -31,7 +31,9 @@ export class GalleryPreviewComponent
   @ViewChild('imglist') imglist: ElementRef;
   constructor(private galleryService: GalleryService) {}
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    this.setGridTamlate();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.getImageList(this.id);
@@ -72,6 +74,8 @@ export class GalleryPreviewComponent
       }
       console.log(grid);
       this.imglist.nativeElement.style.cssText = `${grid};width: ${width}%;`;
+    } else {
+      this.imglist.nativeElement.style.cssText = `grid-template-columns: 1fr 1fr 1fr 1fr;  width: 100%;`;
     }
   }
 }

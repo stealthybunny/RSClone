@@ -29,21 +29,22 @@
 
 @media screen and (max-width: 1050px) {
   .app__main {
-    max-width: 100%;
+    max-width: 800px;
   }
 }
 @media screen and (max-width: 850px) {
   .app__main {
-    width: 600px;
+    width: 80%;
   }
 }
 @media screen and (max-width: 600px) {
   .app__main {
-    width: 90%;
+    margin-right: 50px;
   }
 }
 @media screen and (max-width: 360px) {
   .app__main {
-    max-width: 300px;
+    margin-right: 50px;
+    width: 290px;
   }
 }
