@@ -1,3 +1,4 @@
+import { ThemeService } from './services/theme.service';
 import { Component, OnInit } from '@angular/core';
 import { IToken } from './models/types';
 import { EditProfileService } from './services/edit-profile.service';
@@ -13,7 +14,10 @@ export class AppComponent implements OnInit {
     window.localStorage.getItem('RSClone-socnetwork') as string
   ) as IToken;
 
-  constructor(public editProfileService: EditProfileService) {}
+  constructor(
+    public editProfileService: EditProfileService,
+    private themeService: ThemeService
+  ) {}
   ngOnInit(): void {
     if (!this.userLofinInfo) {
       this.userLofinInfo = { _id: 'id', token: 'token' };
@@ -22,6 +26,7 @@ export class AppComponent implements OnInit {
         JSON.stringify(this.userLofinInfo)
       );
     }
+    this.themeService.changeTheme();
   }
 
   isLogin() {
