@@ -1,7 +1,7 @@
 <div class="container">
   <div class="gallery__block">
     <p class="title__gallery">Фото</p>
-    <ul class="img-list">
+    <ul class="img-list" #imglist>
       <li class="img-list__item" 
       *ngFor="let image of imgList.slice(0, 8); let i=index"
       (click)="currentImage = image; modalOpen=true"
