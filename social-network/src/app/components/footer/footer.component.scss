@@ -72,12 +72,12 @@ a:hover {
 }
 @media screen and (max-width: 850px) {
   .footer__wrapper {
-    max-width: 75%;
+    width: 80%;
   }
 }
 @media screen and (max-width: 600px) {
   .footer__wrapper {
-    max-width: 80%;
+    margin-right: 50px;
   }
 
   .github__logo {

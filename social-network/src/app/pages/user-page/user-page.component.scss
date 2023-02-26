@@ -18,33 +18,40 @@
 
 }
 
+.user__info_wrapper {
+  position: relative;
+  height: 400px;
+  background-color: green;
+  border-radius: 1rem;
+}
+
 .user__info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   display: grid;
   grid-template-areas: 
-  "info name"
-  "info subs"
-  ;
-  grid-template-columns: 260px 1fr;
-  grid-template-rows: 1fr 2fr;
+  "ava name name"
+  "none subs but";
+  grid-template-columns: 200px 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   width: 100%;
-  height: 230px;
-  gap: 30px;
+  height: 100px;
   background-color: var(--background-post);
-  border: 1px solid var(--border-item);
-  border-radius: 24px;
+  border-radius: 1rem;
 }
 
 .foreign__user_block {
-  grid-area: info;
-  display: flex;
-  flex-direction: column;
+
   justify-content: space-around;
-  // width: 260px;
   height: 100%;
 }
 
 .user__avatar {
-  position: relative;
+  grid-area: ava;
+  position: absolute;
+  top: -95px;
+  left: 20px;
   margin: 0 auto;
   margin-top: 1rem;
   display: flex;
@@ -60,24 +67,26 @@
 
 .user__photo {
   position: relative;
-  width: 148px;
-  height: 148px;
+  width: 145px;
+  height: 145px;
   border-radius: 50%;
   border: none;
 }
 
 .user__name {
   grid-area: name;
-  margin-top: 20px;
   color: var(--violet-default);
   display: flex;
   align-items: center;
 }
 
 .user__interactions__btns {
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  grid-area: but;
   display: flex;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
   gap: 5px;
 }
 
@@ -110,8 +119,10 @@
 }
 
 .user__gallery {
+  grid-area: gal;
   border-radius: 24px;
-  width: 500px;
+  width: 100%;
+  height: 100%;
 }
 
 .user__status {
@@ -132,17 +143,28 @@
 }
 
 .wrapper {
-  display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-areas: 
+  "gal sub"
+  "post none";
   width: 100%;
   gap: 1rem;
+  grid-template-columns: 1fr 200px;
 }
 
 .user__subscriptions {
+  grid-area: sub;
   color: var(--color-default);
   background-color: var(--background-post);
   border: 1px solid var(--border-item);
   border-radius: 1rem;
   flex-grow: 1;
+}
+
+.user__create_new_post {
+  grid-area: post;
+  width: 100%;
 }
 
 .subscribers-modal {
@@ -160,18 +182,8 @@
 
 @media screen and (max-width: 1250px) {
   .user__page {
-max-width: 75%;
 margin: 0 auto;
 }
-
-.wrapper {
-  justify-content: space-between;
-  gap: 10px;
-}
-
-  .user__gallery {
-    width: 80%;
-  }
 }
 
 @media screen and (max-width: 1050px) {
@@ -184,8 +196,7 @@ margin: 0 auto;
   }
 
   .user__info {
-    gap: 5px;
-    grid-template-columns: 190px 1fr;
+    grid-template-columns: 160px 1fr 1fr;
   }
 
   .foreign__user_block {
@@ -199,10 +210,11 @@ margin: 0 auto;
   .user__avatar {
     width: 125px;
     height: 125px;
+    top: -80px;
   }
 
   .user__info {
-    height: 190px;
+    grid-template-columns: 140px 1fr 1fr;
   }
 
   .user__status {
@@ -225,17 +237,36 @@ margin: 0 auto;
 
 
   .wrapper {
-    flex-direction: column-reverse;
+    grid-template-areas: 
+    "sub none"
+    "gal none"
+    "post none";
+    grid-template-columns: 100% 0;
   }
 }
 
 @media screen and (max-width: 600px) {
   .user__info {
-    flex-direction: column-reverse;
+    grid-template-areas: 
+    "ava name name"
+    "subs but but";
   }
 
   .user__description {
     display: flex;
+  }
+
+  .user__name {
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .subscribers__sec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
