@@ -63,9 +63,11 @@
 }
 
 .chat-item__last-message{
+  width: 200px;
   height: 16px;
   overflow: hidden;
   color: var(--color-default);
+  word-wrap: break-word;
 }
 
 .chat-item__right {

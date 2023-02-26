@@ -163,6 +163,7 @@
   transform: translateY(-1rem);
 }
 
+// -----------------------------media queries-------------------
 @media screen and (max-width: 850px) {
   .container {
     margin: 0 auto;
@@ -174,6 +175,27 @@
   .container {
     margin-right: 35px;
     margin-left: auto;
+  }
+
+  .header__post {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: 1fr 20px;
+    grid-template-areas: 
+    "auth  delete"
+    "date  nothing";
+  }
+
+  .author__post {
+    grid-area: auth;
+  }
+
+  .post-delete {
+    grid-area: delete;
+  }
+
+  .date__post {
+    grid-area: date;
   }
   
 }
