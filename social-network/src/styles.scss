@@ -46,6 +46,11 @@ body {
 
 .text__post p {
   text-indent: 20px;
+  margin-top: 10px;
+}
+
+.text__post img {
+  margin: 5px;
 }
 
 .text__post h1,
@@ -53,6 +58,7 @@ body {
 .text__post h3,
 .text__post h4 {
   text-align: center;
+  margin-top: 10px;
 }
 
 .text__post a {

@@ -257,6 +257,11 @@ margin: 0 auto;
     "subs but but";
   }
 
+  .modal__wrapper {
+    top: 50%;
+    left: 0;
+  }
+
   .user__description {
     display: flex;
   }
@@ -276,6 +281,14 @@ margin: 0 auto;
 }
 
 @media screen and (max-width: 440px) {
+  .user__page {
+    width: 90%;
+  }
+
+  .user__info_wrapper {
+    height: 250px;
+  }
+
   .user__name {
     font-size: 15px;
   }
