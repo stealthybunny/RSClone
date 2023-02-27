@@ -25,9 +25,14 @@
   color: var(--green-default);
   font-size: 28px;
   font-family: 'Kanit', sans-serif;
-  // font-family: 'Lobster', cursive;
   display: flex;
   cursor: pointer;
+  transition: 0.3s all linear;
+}
+
+.header__logo:hover {
+  filter: brightness(120%);
+  transition: 0.3s all linear;
 }
 
 .right__text-logo {
@@ -130,6 +135,41 @@
   width: 40px;
   min-width: 40px;
   height: 40px;
+}
+
+@media screen and (max-width: 1250px) {
+  .header__container {
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .header__container {
+    max-width: 800px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .header__container {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .header__container {
+    margin-right: 50px;
+  }
+
+  .header__logo {
+    font-size: 24px;
+  }
+
+  .header__search_field {
+    width: 100px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .header__container {
+    max-width: 300px;
+  }
 }
 
 

@@ -2,6 +2,8 @@
 
 .container {
   display: flex;
+  // max-width: 90%;
+  width: 100%;
   flex-direction: column;
   gap: 1rem;
 }
@@ -9,6 +11,7 @@
 .header__post {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--header-background);
   color: var(--color-default);
   border-bottom: 1px solid var(--border-item);
@@ -23,6 +26,9 @@
 }
 
 .author__post {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -37,9 +43,11 @@
 .author__post:hover {
   color: var(--color-default-hover);
   transition: all 0.2s;
+  filter: brightness(120%);
 }
 
 .date__post {
+  font-size: small;
   cursor: default;
 }
 
@@ -113,7 +121,7 @@
 }
 
 .images__post {
-  max-width: 400px;
+  max-width: 80%;
 }
 
 .app__comments {
@@ -126,11 +134,11 @@
 }
 
 .post-delete {
-  margin-left: 3rem;
+  display: flex;
+  justify-content: center;
   background-color: var(--item);
-  width: auto;
-  padding: 0.4rem 1.5rem;
-  // height: 2rem;
+  width: 40px;
+  padding: 5px;
   border: 1px solid var(--border-item);
   border-radius: 0.5rem;
   color: var(--color-default);
@@ -153,4 +161,19 @@
   border-radius: 0 0 1rem 1rem;
   background-color: var(--background-post);
   transform: translateY(-1rem);
+}
+
+@media screen and (max-width: 850px) {
+  .container {
+    margin: 0 auto;
+    // width: 80vw;
+  }
+  
+}
+@media screen and (max-width: 600px) {
+  .container {
+    margin-right: 35px;
+    margin-left: auto;
+  }
+  
 }

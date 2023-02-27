@@ -1,11 +1,16 @@
 @import "../../../styles.scss";
 
+a {
+  transition: 0.3s all linear;
+}
+
 a:visited {
   color: var(--color-default);
 }
 
 a:hover {
-  background-color: var(--hover-item);
+  filter: brightness(120%);
+  transition: 0.3s all linear;
 }
 
 .footer {
@@ -23,7 +28,7 @@ a:hover {
 
 .footer__wrapper {
   margin: 0 auto;
-  width: 1200px;
+  max-width: 1200px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -51,6 +56,41 @@ a:hover {
 
 .logo__block {
   color: wheat;
-  width: 80px;
+  width: 90px;
 }
 
+@media screen and (max-width: 1250px) {
+  .footer__wrapper {
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .footer__wrapper {
+    max-width: 800px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .footer__wrapper {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .footer__wrapper {
+    margin-right: 50px;
+  }
+
+  .github__logo {
+    width: 25px;
+    height: 25px;
+  }
+
+  .logo__block {
+    width: 70px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .footer__wrapper {
+    max-width: 300px;
+  }
+}

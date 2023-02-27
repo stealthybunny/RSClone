@@ -1,70 +1,65 @@
   <div class="user__page">
-    <div class="user__info">
-      <div class="foreign__user_block"
-      (mouseleave)="editProfileService.close()">
-        <div class="user__avatar">
-          <img 
-          class="user__photo"
-          [src]="api + '/' + user.avatar.imgLink"
-          (mouseover)="editProfileService.open()"
-          alt="avatar">
-          <div class="div"
-          *ngIf="isYourPage">
-            <app-avatar-modal
-          class="modal__wrapper"
-           *ngIf="editProfileService.isVisible$ | async"></app-avatar-modal>
+    <div class="user__info_wrapper">
+      <div class="user__info">
+        <div class="foreign__user_block"
+        (mouseleave)="editProfileService.close()">
+          <div class="user__avatar">
+            <img 
+            class="user__photo"
+            [src]="api + '/' + user.avatar.imgLink"
+            (mouseover)="editProfileService.open()"
+            alt="avatar">
+            <div class="div"
+            *ngIf="isYourPage">
+              <app-avatar-modal
+            class="modal__wrapper"
+             *ngIf="editProfileService.isVisible$ | async"></app-avatar-modal>
+            </div>
+              <app-avatar-change-menu
+              (changeAvatar)="user.avatar = $event"
+             *ngIf="avatarChangeMenuService.isVisible$ | async"
+              ></app-avatar-change-menu>
+            <span
+            class="user__status"
+            *ngIf="user.isOnline"></span>
           </div>
-            <app-avatar-change-menu
-            (changeAvatar)="user.avatar = $event"
-           *ngIf="avatarChangeMenuService.isVisible$ | async"
-            ></app-avatar-change-menu>
-          <span
-          class="user__status"
-          *ngIf="user.isOnline"></span>
         </div>
         <div class="user__interactions__btns"
-        *ngIf="!isYourPage">
-          <button       
-          (click)="writeToThisUser()"
-          class="btn interaction__btn"
-          >Написать</button>
-          <button
-          class="btn interaction__btn"
-          (click)="subAction()"
-          [disabled]="isDisabled"
-          >{{subBtnContent}}</button>
+          *ngIf="!isYourPage">
+            <button       
+            (click)="writeToThisUser()"
+            class="btn interaction__btn"
+            >Написать</button>
+            <button
+            class="btn interaction__btn"
+            (click)="subAction()"
+            [disabled]="isDisabled"
+            >{{subBtnContent}}</button>
+          </div>
+          <h1 class="user__name">{{user.name}}</h1>
+          <div class="subscribers__sec">
+            <app-subscribers
+            [token]="token"
+            [id]="user._id"
+            [subscribers]="user.subscribers"
+            >
+            </app-subscribers>
         </div>
-      </div>
-      <div class="user__description">
-        <h1 class="user__name">{{user.name}}</h1>
-
-        <div class="subscribers__sec">
-          <app-subscribers
-          [token]="token"
-          [id]="user._id"
-          [subscribers]="user.subscribers"
-          >
-          </app-subscribers>
-        </div>
-        
-        <!-- <h4>Страна:<span> ЮАР</span></h4>
-        <h4>Город:<span> Претория</span></h4>
-        <h4>Взраст:<span> NaN</span></h4>
-        <h4>Работа:<span> Null</span></h4>
-        <h4>Школа:<span> Undefined</span></h4> -->
       </div>
     </div>
+    
     <div class="wrapper">
       <div class="user__gallery">
         <app-gallery-preview [id]="user._id"></app-gallery-preview>
+      </div>
+      <div class="user__create_new_post">
+        <app-news [id]="user._id"></app-news>
       </div>
       <div class="user__subscriptions">
         <app-subscribtions
         [subscriptions]="sortedSubs"
         [id]="user._id"
         ></app-subscribtions>
-      </div>
-      <div >
       </div>
     </div>
     <app-subscriptions-modal
@@ -76,11 +71,8 @@
     [subscribers]="user.subscribers"
     *ngIf="subscribersModalService.isCalled$ | async">
     </app-subscribers-modal>
-    <div class="user__create_new_post">
-      <app-news [id]="user._id"></app-news>
-    </div>
-    <div class="user__posts">
-    </div>
+    <!-- <div class="user__posts">
+    </div> -->
   </div>
 
 
