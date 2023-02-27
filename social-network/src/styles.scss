@@ -33,3 +33,33 @@ body {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background-color: rgb(27, 27, 27);
 }
+
+.text__post ul>li {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.text__post ol>li {
+  list-style-type: decimal;
+  margin-left: 20px;
+}
+
+.text__post p {
+  text-indent: 20px;
+}
+
+.text__post h1,
+.text__post h2,
+.text__post h3,
+.text__post h4 {
+  text-align: center;
+}
+
+.text__post a {
+  color: var(--border-item);
+}
+
+.text__post a:hover {
+  color: blue;
+}
+
