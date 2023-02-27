@@ -64,6 +64,8 @@
 }
 
 .body__post {
+  display: flex;
+  flex-direction: column;
   background-color: var(--background-post);
   color: var(--color-default);
   padding: 1rem;
@@ -124,6 +126,8 @@
 
 .images__post {
   max-width: 80%;
+  align-self: center;
+  margin: 10px;
 }
 
 .app__comments {
