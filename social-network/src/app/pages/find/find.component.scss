@@ -115,3 +115,11 @@
   background-color: rgb(3, 202, 3);
 }
 
+@media screen and (max-width: 600px) {
+  .user__found {
+    flex-direction: column;
+  }
+
+  
+}
+
