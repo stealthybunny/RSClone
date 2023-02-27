@@ -3,7 +3,9 @@
   <div class="chat-info">
     <button class="chat-info__btn" routerLink="/chats">Back</button>
     <p class="chat-info__user">{{getTargetNameAndLink().name}}</p>
-    <img [src]="getTargetNameAndLink().imgLink" alt="fhoto">
+    <img [src]="getTargetNameAndLink().imgLink"
+    [routerLink]="['/user', getTargetNameAndLink().id]"
+     alt="fhoto">
   </div>
   <ul class="massage-list" #content>
     <li class="massage-list__item" #messages *ngFor="let message of chat.messages">

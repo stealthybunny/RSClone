@@ -82,6 +82,8 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit {
     return {
       name: user.name,
       imgLink: `${this.apiUrl}/${user.avatar.imgLink}`,
+      id: user._id,
     };
   }
+
 }
