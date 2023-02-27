@@ -10,17 +10,17 @@
         </div>
       </div>
       <div class="img-container" (mouseover)="likesVisable=true" (mouseleave)="likesVisable=false">
-        <button class="img-container__btn" (click)="decrement()">left</button>
+        <button class="img-container__btn btn-style" (click)="decrement()"><fa-icon [icon]="faChevronLeft"></fa-icon></button>
         <img [src]="[api+'/'+imgList[index].imgLink]" alt="">
-        <button class="img-container__btn" (click)="increment()">right</button>
+        <button class="img-container__btn btn-style" (click)="increment()"><fa-icon [icon]="faChevronRight"></fa-icon></button>
         <div *ngIf="likesVisable" class="likes">
-          <button (click)="postLike(imgList[index]._id); isDisabled=true" [disabled]="isDisabled">like</button>
+          <button class="btn-style heart" (click)="postLike(imgList[index]._id); isDisabled=true" [disabled]="isDisabled"><fa-icon [icon]="faHeart"></fa-icon></button>
         </div>
       </div>
     </div>
     <div class="comments">
       <div class="comments__header">
-
+        <button class="btn-style" (click)="close()"><fa-icon [icon]="faXmark"></fa-icon></button>
       </div>
       <app-comments
       class="comments__component"

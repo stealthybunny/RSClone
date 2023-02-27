@@ -9,6 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { IImage } from 'src/app/models/types';
+import { faCoffee, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-gallery-image',
@@ -24,6 +25,8 @@ export class GalleryImageComponent implements OnInit {
   @Output() delete = new EventEmitter<string>();
   isDisabled = false;
   apiUrl = environment.apiUrl;
+  faCoffee = faCoffee;
+  faTrash = faTrash;
   constructor() {}
 
   ngOnInit(): void {

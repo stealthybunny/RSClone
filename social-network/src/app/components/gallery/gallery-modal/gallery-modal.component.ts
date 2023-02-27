@@ -2,6 +2,12 @@ import { environment } from './../../../../environments/environment';
 import { IImage } from './../../../models/types';
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { GalleryService } from 'src/app/services/gallery.service';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronLeft,
+  faChevronRight,
+  faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-gallery-modal',
@@ -18,6 +24,10 @@ export class GalleryModalComponent implements OnInit {
   likesVisable = false;
   api = environment.apiUrl;
   isDisabled = false;
+  faHeart = faHeart;
+  faChevronLeft = faChevronLeft;
+  faChevronRight = faChevronRight;
+  faXmark = faXmark;
   constructor(private galleryService: GalleryService) {}
   ngOnInit(): void {
     this.imgList = this.imgArrFromParrent;
