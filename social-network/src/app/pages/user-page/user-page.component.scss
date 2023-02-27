@@ -219,6 +219,11 @@ margin: 0 auto;
     font-size: 12px;
   }
 
+  .modal__wrapper {
+    top: 50px;
+    left: 100px;
+  }
+
   h1 {
     font-size: 24px;
   }
@@ -242,7 +247,7 @@ margin: 0 auto;
   }
 
   .user__info {
-    grid-template-columns: 140px 1fr 1fr;
+    grid-template-columns: 160px 1fr 1fr;
   }
 
   .user__status {
