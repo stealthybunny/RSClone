@@ -39,17 +39,17 @@ export class LoginServiceService {
   register(registerInfo: IRegister): Observable<any> {
     return this.http
       .post<IToken>(`${this.apiUrl}/auth/registration`, registerInfo)
-      .pipe(
-        tap((resp) => {
-          const logInfo: any = resp;
-          window.localStorage.setItem(
-            'RSClone-socnetwork',
-            JSON.stringify(logInfo)
-          );
-          window.location.assign(`/users/${logInfo._id}`);
-        }),
-        catchError(this.errorHandler.bind(this))
-      );
+      // .pipe(
+      //   tap((resp) => {
+      //     const logInfo: any = resp;
+      //     window.localStorage.setItem(
+      //       'RSClone-socnetwork',
+      //       JSON.stringify(logInfo)
+      //     );
+      //     window.location.assign(`/user/${logInfo._id}`);
+      //   }),
+      //   catchError(this.errorHandler.bind(this))
+      // );
   }
 
   getYourPage(id: string, token: string): Observable<IUser> {
