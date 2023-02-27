@@ -33,6 +33,7 @@ import { SubscribersComponent } from './components/subscribers/subscribers.compo
 import { SubscribersModalComponent } from './components/subscribers-modal/subscribers-modal.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BgChangeModalComponent } from './components/bg-change-modal/bg-change-modal.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SubscribersComponent,
     SubscribersModalComponent,
     FooterComponent,
+    BgChangeModalComponent,
   ],
   imports: [
     BrowserModule,

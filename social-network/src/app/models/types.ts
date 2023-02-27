@@ -34,6 +34,7 @@ export interface IUser {
   name: string;
   password: string;
   avatar: IImage;
+  background: string;
   isOnline: boolean;
   lastVisit: Date;
   subscriptions: UserDocument[] | any;

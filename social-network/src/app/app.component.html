@@ -3,6 +3,7 @@
     <app-aside *ngIf="!isLogin()"></app-aside>
     <router-outlet></router-outlet>
   </div>
+  <div class="preloader" *ngIf="isActive"></div>
   <app-footer></app-footer>
 
 

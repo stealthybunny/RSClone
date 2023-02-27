@@ -2,6 +2,13 @@ import { ThemeService } from './services/theme.service';
 import { Component, OnInit } from '@angular/core';
 import { IToken } from './models/types';
 import { EditProfileService } from './services/edit-profile.service';
+import {
+  ActivationEnd,
+  ActivationStart,
+  NavigationEnd,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +20,11 @@ export class AppComponent implements OnInit {
   userLofinInfo = JSON.parse(
     window.localStorage.getItem('RSClone-socnetwork') as string
   ) as IToken;
-
+  isActive = false;
   constructor(
     public editProfileService: EditProfileService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private router: Router
   ) {}
   ngOnInit(): void {
     if (!this.userLofinInfo) {
@@ -27,6 +35,16 @@ export class AppComponent implements OnInit {
       );
     }
     this.themeService.changeTheme();
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationStart) {
+        this.isActive = true;
+      }
+      if (event instanceof NavigationEnd) {
+        setTimeout(() => {
+          this.isActive = false;
+        }, 1000);
+      }
+    });
   }
 
   isLogin() {
@@ -34,5 +52,12 @@ export class AppComponent implements OnInit {
     return (
       url.pathname === '/auth/login' || url.pathname === '/auth/registration'
     );
+  }
+
+  runPreloader() {
+    this.isActive = true;
+    setTimeout(() => {
+      this.isActive = false;
+    }, 1580);
   }
 }
