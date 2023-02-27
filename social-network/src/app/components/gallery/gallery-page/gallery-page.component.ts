@@ -1,3 +1,4 @@
+import { IUser } from 'src/app/models/types';
 import { environment } from './../../../../environments/environment';
 import { IImage } from './../../../models/types';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -5,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChatsService } from 'src/app/services/chats.service';
 import { GalleryService } from 'src/app/services/gallery.service';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-gallery-page',
@@ -20,10 +22,14 @@ export class GalleryPageComponent implements OnInit {
   id: string;
   isSameId: boolean;
   api = environment.apiUrl;
+  user: IUser;
+  isLoaded = false;
+  isUpload = false;
   constructor(
     private route: ActivatedRoute,
     private galleryService: GalleryService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private loginService: LoginServiceService
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +42,17 @@ export class GalleryPageComponent implements OnInit {
     });
     this.id = this.getId() as string;
     this.isSameId = this.id == this.galleryService.userLofinInfo._id;
+    this.loginService
+      .getYourPage(this.id, this.galleryService.userLofinInfo.token)
+      .subscribe({
+        next: (data) => {
+          this.user = data;
+          this.isLoaded = true;
+        },
+        error: (e) => {
+          console.log(e);
+        },
+      });
   }
 
   onFileChange(event: any) {
@@ -59,6 +76,7 @@ export class GalleryPageComponent implements OnInit {
         this.imgList = data;
         this.file.nativeElement.value = null;
         this.isDisabled = false;
+        this.form.reset();
       },
       error: (e) => {
         console.log(e);

@@ -21,8 +21,9 @@
 .user__info_wrapper {
   position: relative;
   height: 400px;
-  background-color: green;
   border-radius: 1rem;
+  background-image: url(../../../assets/radiant-gradient.png);
+  background-size: cover;
 }
 
 .user__info {
@@ -39,6 +40,10 @@
   height: 100px;
   background-color: var(--background-post);
   border-radius: 1rem;
+}
+
+.cover{
+  
 }
 
 .foreign__user_block {

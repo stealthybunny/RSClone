@@ -32,6 +32,7 @@ import { SubscriptionsModalComponent } from './components/subscriptions-modal/su
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
 import { SubscribersModalComponent } from './components/subscribers-modal/subscribers-modal.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [LoginServiceService, HeaderComponent],
   bootstrap: [AppComponent],
