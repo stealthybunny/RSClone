@@ -1,0 +1,18 @@
+
+<div class="container">
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>Придайте индивидуальность<br>своей странице</p>
+    <select class="select" formControlName="link">
+      <option value="bg1.png">Фон 1</option>
+      <option value="bg2.png">Фон 2</option>
+      <option value="bg3.png">Фон 3</option>
+      <option value="bg4.png">Фон 4</option>
+      <option value="bg5.png">Фон 5</option>
+      <option value="bg6.png">Фон 6</option>
+      <option value="bg7.png">Фон 7</option>
+      <option value="bg8.png">Фон 8</option>
+      <option value="bg9.png">Фон 9</option>
+    </select>
+    <button class="btn-style" [disabled]="isDisabled" type="submit">Изменить</button>
+  </form>
+</div>
