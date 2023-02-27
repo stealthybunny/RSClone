@@ -178,7 +178,7 @@ ul{
 
 .message__text {
   color: var(--color-default);
-  width: 20%;
+  width: 450px;
   height: auto;
   word-wrap: break-word;
 }
@@ -203,11 +203,16 @@ ul{
   }
 
   .message__text {
-width: 20%;  }
+    width: 400px;  
+  }
 
   .message-form {
     flex-direction: column;
-    // width: 200px;
+    gap: 0;
+  }
+
+  .message-form__send {
+    margin-bottom: 10px;
   }
 
   .message-form__text {
@@ -217,9 +222,25 @@ width: 20%;  }
 }
 @media screen and (max-width: 850px) {
   .chat-container {
-    width: 80%;
+    width: 100%;
   }  
   .message__text {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .message__text {
     width: 200px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .message__text {
+    width: 180px;
+  }
+
+  .message-date {
+    width: 40px;
   }
 }
