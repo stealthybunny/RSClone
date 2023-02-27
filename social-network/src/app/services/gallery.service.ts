@@ -74,6 +74,17 @@ export class GalleryService {
       .pipe(catchError(this.handleError));
   }
 
+  changeUserBg(body: { link: string }) {
+    const api = `${this.apiUrl}/users/theme`;
+    return this.http
+      .put<{ link: string }>(api, body, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

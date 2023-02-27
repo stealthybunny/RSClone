@@ -1,5 +1,8 @@
   <div class="user__page">
-    <div class="user__info_wrapper">
+    <div class="user__info_wrapper" 
+    [style]="user.background?'background-image: url('+api+'/theme/'+user.background+');':'background-image: none'">
+      <button class="bgc-btn btn-style" *ngIf="isYourPage" (click)="bgModal=!bgModal"><fa-icon [icon]="faEllipsis"></fa-icon></button>
+      <app-bg-change-modal *ngIf="bgModal" (bgChange)="user.background=$event.link"></app-bg-change-modal>
       <div class="user__info">
         <div class="foreign__user_block"
         (mouseleave)="editProfileService.close()">
