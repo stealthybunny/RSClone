@@ -44,13 +44,11 @@ export class GalleryModalComponent implements OnInit {
 
   close() {
     this.imgArrFromParrent = [...this.imgList];
-    console.log('event');
     this.newItemEvent.emit(false);
     this.sendData.emit(this.imgList);
   }
 
   getIndex() {
-    console.log(this.imgList.indexOf(this.image));
     return this.imgList.indexOf(this.image);
   }
 
@@ -73,7 +71,6 @@ export class GalleryModalComponent implements OnInit {
   postLike(id: string) {
     this.galleryService.postLike(id).subscribe({
       next: (data) => {
-        console.log(data);
         this.imgList[this.index] = data;
         this.isDisabled = false;
       },

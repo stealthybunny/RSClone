@@ -31,7 +31,6 @@ export class CommentsComponent implements OnInit {
   constructor(private newsServes: NewsService) {}
 
   ngOnInit(): void {
-    console.log(this.comments);
     this.form = new FormGroup({
       text: new FormControl(''),
     });
@@ -43,7 +42,6 @@ export class CommentsComponent implements OnInit {
       if (this.isPost) {
         this.newsServes.sendComment(this.postId, this.form.value).subscribe({
           next: (data) => {
-            console.log(data);
             //this.comments = data;
             this.updateComments.emit(data);
             this.form.reset();
@@ -58,7 +56,6 @@ export class CommentsComponent implements OnInit {
       } else {
         this.newsServes.sendImgComment(this.postId, this.form.value).subscribe({
           next: (data) => {
-            console.log(data);
             this.updateComments.emit(data);
             this.form.reset();
             this.textbox.nativeElement.innerText = '';

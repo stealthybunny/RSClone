@@ -37,10 +37,8 @@ export class NewsComponent implements OnInit, OnChanges {
     if (!this.id) {
       this.newsServes.getAllNewsList().subscribe({
         next: (data) => {
-          console.log(data);
           this.newsList = data;
           this.isOpen = Array.from(this.newsList, (e) => false);
-          console.log(this.isOpen);
         },
         error: (e) => {
           console.log(e);
@@ -54,7 +52,6 @@ export class NewsComponent implements OnInit, OnChanges {
   getUserPostList(id: string) {
     this.newsServes.getUserPostList(id).subscribe({
       next: (data) => {
-        console.log(data);
         this.newsList = data;
         this.isOpen = Array.from(this.newsList, (e) => false);
       },
@@ -67,7 +64,6 @@ export class NewsComponent implements OnInit, OnChanges {
   sendLike(id: string, index: number) {
     this.newsServes.postLike(id).subscribe({
       next: (data) => {
-        console.log(data);
         this.newsList[index] = data;
         this.isDisabled = false;
       },
@@ -82,7 +78,6 @@ export class NewsComponent implements OnInit, OnChanges {
     this.isDeleteDisabled = true;
     this.newsServes.deletePost(id).subscribe({
       next: (data) => {
-        console.log(data);
         this.newsList = this.newsList.filter((e) => e._id !== data._id);
         this.isDeleteDisabled = false;
       },
@@ -94,7 +89,5 @@ export class NewsComponent implements OnInit, OnChanges {
   }
 
   getComments(post: IPost) {
-    console.log(post);
-    console.log(document.querySelectorAll('app-comments'));
   }
 }

@@ -45,7 +45,6 @@ export class ChatsService {
   }
 
   sendMessage(message: IMessageBody, chatId: string) {
-    console.log('отправка сообщения', message, chatId);
     return this.http.post(`${this.url}/message/${chatId}`, message, {
       headers: {
         Authorization: `Bearer ${this.token}`,

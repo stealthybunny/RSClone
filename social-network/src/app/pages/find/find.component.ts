@@ -60,7 +60,6 @@ export class FindComponent implements OnInit, OnChanges {
   }
 
   subscribe(user: IUser, token: string) {
-    console.log('subscribe');
     this.isDisabled = true;
     this.loginService.subscribeOnUser(user._id, token).subscribe({
       next: (data) => {
@@ -75,7 +74,6 @@ export class FindComponent implements OnInit, OnChanges {
   }
 
   unsubscribe(user: IUser, token: string) {
-    console.log('unsubscribe');
     this.isDisabled = true;
     this.loginService.unsubscribeFromUser(user._id, token).subscribe({
       next: (data) => {

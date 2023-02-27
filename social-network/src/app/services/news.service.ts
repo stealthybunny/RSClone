@@ -52,7 +52,6 @@ export class NewsService {
 
   postLike(id: string) {
     const url = this.apiUrl + '/likes/post/' + id;
-    console.log(this.token);
     return this.http
       .post<IPost>(
         url,
@@ -68,7 +67,6 @@ export class NewsService {
 
   sendComment(id: string, body: { text: string }) {
     const url = this.apiUrl + '/posts/comment/' + id;
-    console.log(this.token);
     return this.http
       .post<IComment[]>(url, body, {
         headers: {
@@ -80,7 +78,6 @@ export class NewsService {
 
   sendImgComment(id: string, body: { text: string }) {
     const url = this.apiUrl + '/posts/image/comment/' + id;
-    console.log(this.token);
     return this.http
       .post<IComment[]>(url, body, {
         headers: {

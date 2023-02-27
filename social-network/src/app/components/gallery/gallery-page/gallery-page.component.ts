@@ -35,7 +35,6 @@ export class GalleryPageComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
       this.imgList = data['data'];
-      console.log(this.imgList);
     });
     this.form = this.formBuilder.group({
       files: [''],
@@ -56,11 +55,9 @@ export class GalleryPageComponent implements OnInit {
   }
 
   onFileChange(event: any) {
-    console.log('change');
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.form.get('files')!.setValue(file);
-      console.log(this.form);
       this.error = null;
     }
   }
@@ -72,7 +69,6 @@ export class GalleryPageComponent implements OnInit {
 
     this.galleryService.upload(formData).subscribe({
       next: (data) => {
-        console.log(data);
         this.imgList = data;
         this.file.nativeElement.value = null;
         this.isDisabled = false;
