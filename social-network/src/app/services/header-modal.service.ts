@@ -9,12 +9,10 @@ export class HeaderModalService {
 
   open() {
     this.isOpened$.next(true)
-    console.log(this.isOpened$.value)
 
   }
 
   close() {
     this.isOpened$.next(false)
-    console.log(this.isOpened$.value)
   }
 }

@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataTransport.sub.subscribe((data: any) => {
-      console.log('HeaderData', data);
       this.userAvatar = `${environment.apiUrl}/${data.imgLink}`;
     });
     const authData = JSON.parse(
@@ -54,7 +53,6 @@ export class HeaderComponent implements OnInit {
       });
     this.userService.getUsers(this.userLofinInfo.token).subscribe({
       next: (data) => {
-        console.log(data);
         this.ursersList = data;
         this.filtredUsers = data;
       },
@@ -72,7 +70,6 @@ export class HeaderComponent implements OnInit {
         e.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
       );
     }
-    console.log('input');
   }
 
   onFocuseOut() {

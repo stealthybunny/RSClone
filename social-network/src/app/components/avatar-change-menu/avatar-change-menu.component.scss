@@ -6,6 +6,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 10;
   background-color: rgba(128, 128, 128, 0.2);
 }
 
@@ -16,6 +17,7 @@
   left: 50%;
   width: 300px;
   height: 300px;
+  z-index: 20;
   background-color: var(--background-post);
   border-radius: 1rem;
   border: 1px solid var(--border-item);

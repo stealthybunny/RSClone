@@ -33,7 +33,6 @@ export class SubscribersComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    // switch 
     this.api = environment.apiUrl;
   }
 }

@@ -23,7 +23,6 @@ export class BgChangeModalComponent implements OnInit {
     this.isDisabled = true;
     this.galleryService.changeUserBg(this.form.value).subscribe({
       next: (data) => {
-        console.log(data);
         this.bgChange.emit(data);
         this.form.reset();
         this.isDisabled = false;

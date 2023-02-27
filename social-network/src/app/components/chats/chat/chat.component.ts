@@ -44,7 +44,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
-      console.log(data);
       this.chat = data['data'];
     });
     this.sseService
@@ -56,7 +55,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   sendMeassage() {
-    console.log(this.form);
     this.chatsService.sendMessage(this.form.value, this.chat._id).subscribe();
     this.form.reset();
   }

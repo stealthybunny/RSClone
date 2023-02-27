@@ -23,14 +23,13 @@ export class RegisterModalComponent implements OnInit {
       Validators.minLength(4)
     ])
   })
+  errorMessage: string[] | null = null;
 
   constructor(private loginService: LoginServiceService) {
 
   }
 
   register() {
-    console.log('register!')
-    console.log(this.form.value);
     window.localStorage.removeItem('RSClone-socnetwork');
     const registerInfo: IRegister = {
       username: this.form.value.username as string,
@@ -39,13 +38,14 @@ export class RegisterModalComponent implements OnInit {
     }
     this.loginService.register(registerInfo).subscribe({
       next: (data) => {
-        console.log(data)
         const authData: IToken = data;
         window.localStorage.setItem('RSClone-socnetwork', JSON.stringify(authData));
         window.location.assign(`/user/${authData._id}`);
       },
       error: (e) => {
-        console.log(e)
+        if (Array.isArray(e.message)) {
+          this.errorMessage = e.message;
+        }
       }
     })
   }

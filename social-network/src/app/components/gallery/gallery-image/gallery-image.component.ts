@@ -30,7 +30,6 @@ export class GalleryImageComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('персесборка');
   }
 
   getImageLink(image: IImage) {
@@ -41,11 +40,9 @@ export class GalleryImageComponent implements OnInit {
 
   close(status: boolean) {
     this.isOpen = status;
-    console.log(this.isOpen);
   }
 
   test() {
-    console.log('test');
   }
 
   deleteEvent() {
@@ -53,7 +50,6 @@ export class GalleryImageComponent implements OnInit {
   }
 
   getIndex() {
-    console.log(this.imgList.indexOf(this.image));
     return this.imgList.indexOf(this.image);
   }
 }

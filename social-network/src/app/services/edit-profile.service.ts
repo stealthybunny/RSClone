@@ -14,16 +14,13 @@ export class EditProfileService {
 
   open() {
     this.isVisible$.next(true);
-    console.log('open');
   }
 
   close() {
     this.isVisible$.next(false);
-    console.log('close');
   }
 
   log() {
-    console.log('Shalom!');
   }
 
   changeProfilePhoto(token: string) {

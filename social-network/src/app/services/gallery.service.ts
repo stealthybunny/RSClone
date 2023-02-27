@@ -49,7 +49,6 @@ export class GalleryService {
 
   postLike(id: string) {
     const url = environment.apiUrl + '/likes/image/' + id;
-    console.log(this.token);
     return this.http
       .post<IImage>(
         url,

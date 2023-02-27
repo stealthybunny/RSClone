@@ -46,7 +46,6 @@ export class GalleryPreviewComponent
   getImageList(id: string) {
     this.galleryService.getImagesList(id).subscribe({
       next: (data) => {
-        console.log(data);
         this.imgList = data;
         this.setGridTamlate();
       },
@@ -67,12 +66,10 @@ export class GalleryPreviewComponent
     if (this.imgList.length < 4) {
       let width = 40;
       let grid = 'grid-template-columns:';
-      console.log('длина' + this.imgList.length);
       for (let i = 0; i < this.imgList.length; i++) {
         grid += ' 1fr';
         width += 20;
       }
-      console.log(grid);
       this.imglist.nativeElement.style.cssText = `${grid};width: ${width}%;`;
     } else {
       this.imglist.nativeElement.style.cssText = `grid-template-columns: 1fr 1fr 1fr 1fr;  width: 100%;`;

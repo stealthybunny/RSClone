@@ -44,7 +44,6 @@ export class AvatarChangeMenuComponent implements OnInit {
     formData.append('file', this.form.get('file')!.value);
     this.avatarChangeModalService.upload(formData, this.userToken).subscribe({
       next: (data) => {
-        console.log(data);
         this.file.nativeElement.value = null;
         this.isDisabled = false;
         this.changeAvatar.emit(data);
@@ -62,11 +61,9 @@ export class AvatarChangeMenuComponent implements OnInit {
   }
 
   onFileChange(event: any) {
-    console.log('change');
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.form.get('file')!.setValue(file);
-      console.log(this.form);
       this.error = null;
       const reader = new FileReader();
       reader.onload = () => {
