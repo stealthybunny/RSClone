@@ -275,6 +275,13 @@ margin: 0 auto;
   }
 }
 
+@media screen and (max-width: 440px) {
+  .user__name {
+    font-size: 15px;
+  }
+  
+}
+
 // @media screen and (max-width: 360px) {
 //   .header__container {
 //     max-width: 300px;
