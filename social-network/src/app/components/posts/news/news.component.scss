@@ -59,6 +59,7 @@
 
 .li__post {
   border: 1px solid var(--border-item);
+  background-color: var(--background-post);
   border-radius: 1rem;
   overflow: hidden;
 }
@@ -92,6 +93,8 @@
 
 
 .item__footer-post {
+  position: relative;
+  z-index: 10;
   padding: 1rem;
   border-radius: 1rem;
   display: flex;
