@@ -31,7 +31,7 @@ export class CommentsComponent implements OnInit {
   faPaperPlane = faPaperPlane;
   constructor(
     private newsServes: NewsService,
-    // public galleryModal: GalleryModalComponent
+    public galleryModal: GalleryModalComponent
     ) {}
 
 
