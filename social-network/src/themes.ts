@@ -1,15 +1,15 @@
 export const lightTheme = `
   --color-default: rgb(46, 42, 42);
   --color-default-hover: rgb(0, 0, 0);
-  --header-background: rgb(220, 227, 243);
+  --header-background: rgb(182, 212, 197);
   --active-item: rgb(229, 236, 251);
   --hover-item: rgb(217, 217, 217);
-  --item: rgb(235, 228, 228);
-  --background-post: rgb(227, 227, 227);
+  --item: rgb(182, 212, 197);
+  --background-post: rgb(248, 248, 248);
   --green-default: rgb(63, 93, 61);
   --violet-default: rgb(155, 115, 224);
-  --border-item: rgb(90, 90, 90);
-  --background-body: rgb(239, 239, 239);
+  --border-item: rgb(182, 212, 197);
+  --background-body: rgb(210, 226, 218);
 `;
 
 export const darkTheme = `

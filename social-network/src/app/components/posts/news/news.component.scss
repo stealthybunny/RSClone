@@ -23,6 +23,13 @@
   background-color: var(--background-post);
   color: var(--color-default);
   padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.title__post>h1{
+  font-size: 40px;
+  color: var(--green-default);
 }
 
 .author__post {
