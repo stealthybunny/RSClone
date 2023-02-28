@@ -1,6 +1,6 @@
 <div class="container">
   <div class="gallery-info" *ngIf="isLoaded">
-    <img [src]="[api+'/'+ user.avatar.imgLink]" alt="">
+    <img [src]="[api+'/'+ user.avatar.imgLink]" class="user__img" alt="">
     <p class="gallery-info__name">Фотографии {{user.name}}</p>
     <button class="btn__gallery" *ngIf="isSameId" (click)="isUpload=!isUpload">Добавить фотографии</button>
   </div>

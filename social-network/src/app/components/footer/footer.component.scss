@@ -9,7 +9,7 @@ a:visited {
 }
 
 a:hover {
-  filter: brightness(120%);
+  color: var(--color-default-hover);
   transition: 0.3s all linear;
 }
 

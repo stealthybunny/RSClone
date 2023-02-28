@@ -1,16 +1,30 @@
+@import "../../../styles.scss";
+
 .header__user_menu {
   position: relative;
+  z-index: 100;
   width: 150px;
   height: 150px;
-  background: #3897f1;
+  background: var(--header-background);
+  color: var(--color-defaul);
+}
+
+.header__menu_list {
+  padding-top: 20px;
 }
 
 .header__menu_item {
   cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.header__menu_item:hover {
+  background-color: var(--hover-item);
 }
 
 .header__modal_cover_1 {
   position: fixed;
+  z-index: 50;
   top: 0;
   left: 0;
   right: 0;

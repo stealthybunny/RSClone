@@ -12,6 +12,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { IComment } from 'src/app/models/types';
 import { NewsService } from 'src/app/services/news.service';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { GalleryModalComponent } from '../gallery/gallery-modal/gallery-modal.component';
 
 @Component({
   selector: 'app-comments',
@@ -28,7 +29,9 @@ export class CommentsComponent implements OnInit {
   api = environment.apiUrl;
   @ViewChild('textbox') textbox: ElementRef;
   faPaperPlane = faPaperPlane;
-  constructor(private newsServes: NewsService) {}
+  constructor(
+    private newsServes: NewsService) {}
+
 
   ngOnInit(): void {
     this.form = new FormGroup({

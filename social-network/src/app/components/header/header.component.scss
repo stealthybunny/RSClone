@@ -18,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: var(--color-default);
 }
 
 .header__logo {
@@ -83,10 +83,6 @@
   cursor: pointer;
 }
 
-.img__menu:hover {
-  opacity: 0.8;
-}
-
 .img__menu_cover {
   position: absolute;
   width: 100%;
@@ -104,8 +100,8 @@
 
 .search-modal{
   position: absolute;
-  background-color: #2e2e2e;
-  color: #cbcbcb;
+  background-color: var(--header-background);
+  color: var(--color-defaul);
   font-size: 14px;
   top: 50px;
   z-index: 100;

@@ -29,7 +29,7 @@
 
 .img-container{
   background-color: #252525;
-  min-width: 650px;
+  width: 650px;
   height: 450px;
   display: flex;
   justify-content:space-between;
@@ -37,15 +37,16 @@
   position: relative;
 }
 
-.img-container>img{
+.img-container>img {
   max-height: 450px;
+  width: 80%;
 }
 
 .modal-info__author{
   padding: 5px;
 }
 
-.modal-info__author>img{
+.modal-info__author>img {
   border-radius: 50%;
   width: 40px;
   min-width: 40px;
@@ -106,4 +107,56 @@
 
 .heart:hover{
   color: #e43838;
+}
+
+
+@media  screen and (max-width: 1000px) {
+  .modal {
+    grid-template-columns: max-content 200px;
+  }
+  .comments {
+    width: 200px;
+  }
+
+  .img-container {
+    width: 450px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .modal {
+    grid-template-columns: max-content 170px;
+  }
+
+  .img-container {
+    width: 300px;
+  }
+
+  .comments {
+    width: 170px;
+  }
+
+  .img-container>img {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .comments {
+    display: none;
+  }
+
+  .modal {
+    grid-template-columns: max-content 0px;
+  }
+
+  .img-container {
+    width: 330px;
+    height: 350px;
+  }
+
+  .img-container>img {
+    width: 80%;
+    max-height: 350px;
+  }
 }
