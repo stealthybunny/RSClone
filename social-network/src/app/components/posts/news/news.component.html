@@ -3,7 +3,11 @@
   <ul class="ul__post">
     <li class="li__post" *ngFor="let news of newsList; let i=index">
       <div class="header__post">
-        <p class="author__post"><img [src]="api+'/'+news.author.avatar.imgLink" alt="avatar"> {{ news.author.name }}</p>
+        <p class="author__post"><img 
+          [src]="api+'/'+news.author.avatar.imgLink"
+          [routerLink]="['/user', news.author._id]"
+           alt="avatar"
+           > {{ news.author.name }}</p>
         <p class="date__post">{{ news.date | date: 'medium' }}</p>
         <button class="post-delete"  *ngIf="isYourPage" [disabled]="isDeleteDisabled" (click)="deletePost(news._id)">
           <svg class="svg-icon" 

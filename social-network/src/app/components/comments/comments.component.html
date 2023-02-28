@@ -4,7 +4,9 @@
       <h1>Оставте свой коментарий</h1>
     </li>
     <li class="comment__post" *ngFor="let comment of comments">
-      <img class="comment-avatar" [src]="api+'/'+comment.author.avatar.imgLink" alt="">
+      <img class="comment-avatar" [src]="api+'/'+comment.author.avatar.imgLink"
+      [routerLink]="['/user', comment.author._id]"
+       alt="">
       <div class="comment__post__body">
         <p class="comment-name">{{comment.author.name}}</p>
         <p class="comment-text">{{ comment.text }}</p>
