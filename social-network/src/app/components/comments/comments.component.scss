@@ -26,7 +26,8 @@
 }
 
 .comment__post {
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content 1fr;
   align-items: center;
   gap: 10px;
   border-bottom: 1px solid #464646;
@@ -57,7 +58,7 @@
 }
 .comment-text{
   font-size: 14px;
-  max-width: 80%;
+  max-width: 90%;
   word-wrap: break-word;
 }
 
