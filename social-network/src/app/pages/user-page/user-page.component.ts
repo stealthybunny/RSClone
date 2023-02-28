@@ -77,8 +77,9 @@ export class UserPageComponent implements OnInit, OnChanges {
         this.isYourPage = false;
       }
       this.userAvatar = `${environment.apiUrl}/${this.user.avatar.imgLink}`;
+      this.getYourSubscribtions();
     });
-    this.getYourSubscribtions();
+    
   }
 
   getYourSubscribtions() {
