@@ -30,9 +30,7 @@ export class CommentsComponent implements OnInit {
   @ViewChild('textbox') textbox: ElementRef;
   faPaperPlane = faPaperPlane;
   constructor(
-    private newsServes: NewsService,
-    public galleryModal: GalleryModalComponent
-    ) {}
+    private newsServes: NewsService) {}
 
 
   ngOnInit(): void {

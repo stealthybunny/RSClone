@@ -6,8 +6,7 @@
     <li class="comment__post" *ngFor="let comment of comments">
       <img class="comment-avatar" [src]="api+'/'+comment.author.avatar.imgLink"
       [routerLink]="['/user', comment.author._id]"
-      (click)="this.galleryModal.close()"
-       alt="">
+      alt="">
       <div class="comment__post__body">
         <p class="comment-name">{{comment.author.name}}</p>
         <p class="comment-text">{{ comment.text }}</p>
