@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    alert('Подождите до 01.03 пожалуйста и получите плюс в карму')
     if (!this.userLofinInfo) {
       this.userLofinInfo = { _id: 'id', token: 'token' };
       window.localStorage.setItem(
