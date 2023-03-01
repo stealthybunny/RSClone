@@ -25,11 +25,13 @@
   padding: 1rem;
   display: flex;
   justify-content: space-around;
+  word-wrap: break-word;
 }
 
 .title__post>h1{
   font-size: 40px;
   color: var(--green-default);
+  word-wrap: break-word;
 }
 
 .author__post {
@@ -185,6 +187,9 @@
     margin: 0 auto;
     // width: 80vw;
   }
+  .title__post>h1{
+    font-size: 30px;
+  }
   
 }
 @media screen and (max-width: 600px) {
@@ -212,6 +217,10 @@
 
   .date__post {
     grid-area: date;
+  }
+
+  .title__post>h1{
+    font-size: 30px;
   }
   
 }
