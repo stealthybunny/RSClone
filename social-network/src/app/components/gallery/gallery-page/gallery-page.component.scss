@@ -41,21 +41,19 @@ ul{
 // }
 
 .images-list{
-  align-self: flex-end;
-  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
   gap: 5px;
+  width: 100%;
 }
 
 
 
 .images-list__item{
-  align-self: flex-start;
   background-size: 100% 100%;
   border-radius: 3px;
+  width: min-content;
 }
 
 
