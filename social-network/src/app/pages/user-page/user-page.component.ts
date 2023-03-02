@@ -10,6 +10,7 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
 import { SubsModalServiceService } from 'src/app/services/subs-modal-service.service';
 import { SubscribersModalComponent } from 'src/app/components/subscribers-modal/subscribers-modal.component';
 import { SubscribersModalService } from 'src/app/services/subscribers-modal.service';
+import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user-page',
@@ -34,6 +35,9 @@ export class UserPageComponent implements OnInit, OnChanges {
   isYourPage: boolean = false;
   avatar: IImage;
   api = environment.apiUrl;
+
+  faEllipsis = faEllipsis;
+  bgModal = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -73,8 +77,9 @@ export class UserPageComponent implements OnInit, OnChanges {
         this.isYourPage = false;
       }
       this.userAvatar = `${environment.apiUrl}/${this.user.avatar.imgLink}`;
+      this.getYourSubscribtions();
     });
-    this.getYourSubscribtions();
+    
   }
 
   getYourSubscribtions() {
@@ -95,7 +100,7 @@ export class UserPageComponent implements OnInit, OnChanges {
   }
 
   checkYourSubscribtions() {
-    console.log('-!------checking your subscribtions----!-')
+    console.log('-!------checking your subscribtions----!-');
     if (this.yourSubscribtions.includes(this.user._id)) {
       this.isSubscribed = true;
       this.subBtnContent = 'Отписаться';
@@ -116,34 +121,37 @@ export class UserPageComponent implements OnInit, OnChanges {
   }
 
   subscribe() {
-    this.loginService.subscribeOnUser(this.user._id, this.authInfo.token).subscribe({
-      next: (data) => {
-        this.isDisabled = false;
-        this.user = data;
-        this.ngOnChanges()
-      },
-      error: (e) => {
-        console.log(e);
-        this.isDisabled = false
-        this.ngOnChanges()
-      },
-    })
-    
+    this.loginService
+      .subscribeOnUser(this.user._id, this.authInfo.token)
+      .subscribe({
+        next: (data) => {
+          this.isDisabled = false;
+          this.user = data;
+          this.ngOnChanges();
+        },
+        error: (e) => {
+          console.log(e);
+          this.isDisabled = false;
+          this.ngOnChanges();
+        },
+      });
   }
 
   unsubscribe() {
-    this.loginService.unsubscribeFromUser(this.user._id, this.authInfo.token).subscribe({
-      next: (data) => {
-        this.user = data;
-        this.isDisabled = false;
-        this.ngOnChanges()
-      },
-      error: (e) => {
-        console.log(e);
-        this.isDisabled = false;
-        this.ngOnChanges()
-      },
-  })
+    this.loginService
+      .unsubscribeFromUser(this.user._id, this.authInfo.token)
+      .subscribe({
+        next: (data) => {
+          this.user = data;
+          this.isDisabled = false;
+          this.ngOnChanges();
+        },
+        error: (e) => {
+          console.log(e);
+          this.isDisabled = false;
+          this.ngOnChanges();
+        },
+      });
   }
 
   writeToThisUser() {

@@ -18,17 +18,18 @@
   z-index: 100;
   min-height: 200px;
   min-width: 200px;
-  background-color: #fff;
+  background-color: var(--gallery-modal-bg);
   border-radius: 5px;
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: max-content 300px;
   grid-template-rows: 1fr;
   gap: 0.5rem;
+  overflow: hidden;
 }
 
 .img-container{
   background-color: #252525;
-  min-width: 650px;
+  width: 650px;
   height: 450px;
   display: flex;
   justify-content:space-between;
@@ -36,15 +37,16 @@
   position: relative;
 }
 
-.img-container>img{
+.img-container>img {
   max-height: 450px;
+  width: 80%;
 }
 
 .modal-info__author{
   padding: 5px;
 }
 
-.modal-info__author>img{
+.modal-info__author>img {
   border-radius: 50%;
   width: 40px;
   min-width: 40px;
@@ -62,12 +64,9 @@
   left: 50%;
   top: 20%;
   transform: translate(-50%,-50%);
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
-.img-container__btn{
-  width: 50px;
-}
 
 .comments{
   display: grid;
@@ -80,7 +79,9 @@
 .comments__header{
   height: 50px;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--gallery-modal-bg);
+  display: flex;
+  justify-content: flex-end;
 }
 
 .comments__component{
@@ -88,4 +89,74 @@
   overflow-x: hidden;
   background-color: var(--background-post);
   padding: 5px;
+}
+
+.btn-style{
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  color: #696969;
+}
+
+.heart{
+  font-size: 45px;
+  color: #b64444;
+}
+
+.heart:hover{
+  color: #e43838;
+}
+
+
+@media  screen and (max-width: 1000px) {
+  .modal {
+    grid-template-columns: max-content 200px;
+  }
+  .comments {
+    width: 200px;
+  }
+
+  .img-container {
+    width: 450px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .modal {
+    grid-template-columns: max-content 170px;
+  }
+
+  .img-container {
+    width: 300px;
+  }
+
+  .comments {
+    width: 170px;
+  }
+
+  .img-container>img {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .comments {
+    display: none;
+  }
+
+  .modal {
+    grid-template-columns: max-content 0px;
+  }
+
+  .img-container {
+    width: 330px;
+    height: 350px;
+  }
+
+  .img-container>img {
+    width: 80%;
+    max-height: 350px;
+  }
 }

@@ -39,7 +39,6 @@ export class SubscriptionsModalComponent implements OnInit, OnChanges {
     ).token;
     this.loginService.getYourPage(this.id, token).subscribe((data) => {
       this.subs = data.subscriptions;
-      console.log(this.subs);
       this.output = this.subs;
     });
   }

@@ -22,7 +22,6 @@ export class AvatarChangeMenuService {
   }
 
   upload(data: any, token: string): Observable<IImage> {
-    console.log(data, token);
 
     return this.http
       .post<any>(`${environment.apiUrl}/users/avatar`, data, {

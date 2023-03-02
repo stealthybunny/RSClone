@@ -2,6 +2,12 @@ import { environment } from './../../../../environments/environment';
 import { IImage } from './../../../models/types';
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { GalleryService } from 'src/app/services/gallery.service';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronLeft,
+  faChevronRight,
+  faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-gallery-modal',
@@ -18,6 +24,10 @@ export class GalleryModalComponent implements OnInit {
   likesVisable = false;
   api = environment.apiUrl;
   isDisabled = false;
+  faHeart = faHeart;
+  faChevronLeft = faChevronLeft;
+  faChevronRight = faChevronRight;
+  faXmark = faXmark;
   constructor(private galleryService: GalleryService) {}
   ngOnInit(): void {
     this.imgList = this.imgArrFromParrent;
@@ -34,13 +44,11 @@ export class GalleryModalComponent implements OnInit {
 
   close() {
     this.imgArrFromParrent = [...this.imgList];
-    console.log('event');
     this.newItemEvent.emit(false);
     this.sendData.emit(this.imgList);
   }
 
   getIndex() {
-    console.log(this.imgList.indexOf(this.image));
     return this.imgList.indexOf(this.image);
   }
 
@@ -63,7 +71,6 @@ export class GalleryModalComponent implements OnInit {
   postLike(id: string) {
     this.galleryService.postLike(id).subscribe({
       next: (data) => {
-        console.log(data);
         this.imgList[this.index] = data;
         this.isDisabled = false;
       },

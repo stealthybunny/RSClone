@@ -20,7 +20,6 @@ export class ChatListComponent implements OnInit {
   ngOnInit(): void {
     this.chatsService.getChats().subscribe({
       next: (data) => {
-        console.log(data);
         this.chatSubs = data;
       },
       error: (e) => {

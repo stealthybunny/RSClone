@@ -49,7 +49,6 @@ export class GalleryService {
 
   postLike(id: string) {
     const url = environment.apiUrl + '/likes/image/' + id;
-    console.log(this.token);
     return this.http
       .post<IImage>(
         url,
@@ -67,6 +66,17 @@ export class GalleryService {
     const url = `${this.url}/${id}`;
     return this.http
       .delete<IImage[]>(url, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  changeUserBg(body: { link: string }) {
+    const api = `${this.apiUrl}/users/theme`;
+    return this.http
+      .put<{ link: string }>(api, body, {
         headers: {
           Authorization: `Bearer ${this.token}`,
         },

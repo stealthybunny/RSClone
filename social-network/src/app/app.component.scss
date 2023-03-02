@@ -21,6 +21,31 @@
   // overflow: hidden;
 }
 
+.preloader{
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 8px solid rgb(119, 189, 117);
+  border-top: 8px solid rgb(80, 138, 72);
+  border-radius: 50%;
+  animation-name: rotation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotation {
+  0% {
+      transform:rotate(0deg);
+  }
+  100% {
+      transform:rotate(360deg);
+  }
+}
+
 @media screen and (max-width: 1250px) {
   .app__main {
     max-width: 1000px;
@@ -39,12 +64,12 @@
 }
 @media screen and (max-width: 600px) {
   .app__main {
-    margin-right: 50px;
+    margin-right: 60px;
   }
 }
 @media screen and (max-width: 360px) {
   .app__main {
-    margin-right: 50px;
+    margin-right: 60px;
     width: 290px;
   }
 }

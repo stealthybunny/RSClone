@@ -1,8 +1,10 @@
 <ul class="chats-container">
-  <li class="chat-item" *ngFor="let chat of chatSubs">
+  <li class="chat-item" 
+  *ngFor="let chat of chatSubs"
+  [routerLink]="['/chats',chat._id]">
     <div class="chat-item__left">
       <img [src]="getUserName(chat).imgLink" alt="">
-      <div class="chat-item__info" [routerLink]="['/chats',chat._id]">
+      <div class="chat-item__info" >
         <p class="chat-item__name">{{getUserName(chat).name}}</p>
         <p class="chat-item__last-message">{{getLastMessage(chat).text}}</p>
       </div>

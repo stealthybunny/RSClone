@@ -19,7 +19,6 @@ export class SubscribtionsComponent implements OnInit {
     public subModalService: SubsModalServiceService
   ) {}
   ngOnInit(): void {
-    console.log(this.subscriptions);
     this.api = environment.apiUrl;
   }
 }

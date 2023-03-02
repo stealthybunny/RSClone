@@ -42,7 +42,6 @@ export class PostUploadComponent implements OnInit {
     formData.append('text', this.form.get('text')?.value);
     this.postUploadService.postUpload(formData).subscribe({
       next: (data) => {
-        console.log(data);
         this.form.reset();
         this.textbox.nativeElement.innerText = '';
         this.files.nativeElement.value = null;
@@ -63,7 +62,6 @@ export class PostUploadComponent implements OnInit {
   }
 
   onFileChange(event: any) {
-    console.log('change');
     let addFile = document.querySelector('.add__file');
     addFile!.innerHTML = 'Фото выбрано (1)';
     if (event.target.files.length > 0) {

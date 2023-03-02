@@ -28,7 +28,6 @@ export class LoginModalComponent implements OnInit {
   ) {}
 
   submit() {
-    console.log(this.form.value);
     window.localStorage.removeItem('RSClone-socnetwork');
     const loginInfo: ILogin = {
       username: this.form.value.username as string,

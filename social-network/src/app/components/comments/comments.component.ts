@@ -11,6 +11,8 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { IComment } from 'src/app/models/types';
 import { NewsService } from 'src/app/services/news.service';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { GalleryModalComponent } from '../gallery/gallery-modal/gallery-modal.component';
 
 @Component({
   selector: 'app-comments',
@@ -26,10 +28,12 @@ export class CommentsComponent implements OnInit {
   form: FormGroup;
   api = environment.apiUrl;
   @ViewChild('textbox') textbox: ElementRef;
-  constructor(private newsServes: NewsService) {}
+  faPaperPlane = faPaperPlane;
+  constructor(
+    private newsServes: NewsService) {}
+
 
   ngOnInit(): void {
-    console.log(this.comments);
     this.form = new FormGroup({
       text: new FormControl(''),
     });
@@ -41,7 +45,6 @@ export class CommentsComponent implements OnInit {
       if (this.isPost) {
         this.newsServes.sendComment(this.postId, this.form.value).subscribe({
           next: (data) => {
-            console.log(data);
             //this.comments = data;
             this.updateComments.emit(data);
             this.form.reset();
@@ -56,7 +59,6 @@ export class CommentsComponent implements OnInit {
       } else {
         this.newsServes.sendImgComment(this.postId, this.form.value).subscribe({
           next: (data) => {
-            console.log(data);
             this.updateComments.emit(data);
             this.form.reset();
             this.textbox.nativeElement.innerText = '';

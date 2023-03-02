@@ -32,6 +32,8 @@ import { SubscriptionsModalComponent } from './components/subscriptions-modal/su
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
 import { SubscribersModalComponent } from './components/subscribers-modal/subscribers-modal.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BgChangeModalComponent } from './components/bg-change-modal/bg-change-modal.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { FooterComponent } from './components/footer/footer.component';
     SubscribersComponent,
     SubscribersModalComponent,
     FooterComponent,
+    BgChangeModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [LoginServiceService, HeaderComponent],
   bootstrap: [AppComponent],

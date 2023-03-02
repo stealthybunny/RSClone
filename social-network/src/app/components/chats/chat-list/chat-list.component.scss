@@ -2,7 +2,7 @@
 
 .chats-container{
   box-sizing: border-box;
-  width: 70%;
+  width: 100%;
   border: 1px solid var(--border-item);
   border-radius: 1rem;
   display: flex;
@@ -22,6 +22,7 @@
   padding: 1rem;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-item);
+  cursor: pointer;
 }
 
 .chat-item:hover{
@@ -63,9 +64,11 @@
 }
 
 .chat-item__last-message{
+  width: 200px;
   height: 16px;
   overflow: hidden;
   color: var(--color-default);
+  word-wrap: break-word;
 }
 
 .chat-item__right {
@@ -86,4 +89,26 @@
   border-radius: 50%;
   background-color: var(--violet-default);
   color: var(--green-default);
+}
+
+@media screen and (max-width: 850px) {
+  .chat-item {
+    gap: 10px;
+  }
+  
+}
+
+@media screen and (max-width: 600px) {
+  .chat-container {
+    width: 60%;
+  }
+
+  .chat-item__last-message {
+    width: 120px;
+  }
+
+  .chat-item {
+    gap: 5px;
+  }
+  
 }

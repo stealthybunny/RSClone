@@ -1,7 +1,12 @@
 <div class="comments-container">
   <ul class="comments">
+    <li class="pre-comment" *ngIf="!comments.length">
+      <h1>Оставте свой коментарий</h1>
+    </li>
     <li class="comment__post" *ngFor="let comment of comments">
-      <img class="comment-avatar" [src]="api+'/'+comment.author.avatar.imgLink" alt="">
+      <img class="comment-avatar" [src]="api+'/'+comment.author.avatar.imgLink"
+      [routerLink]="['/user', comment.author._id]"
+      alt="">
       <div class="comment__post__body">
         <p class="comment-name">{{comment.author.name}}</p>
         <p class="comment-text">{{ comment.text }}</p>
@@ -17,7 +22,7 @@
     aria-multiline="true"
     #textbox
     ></div>
-    <button class="submit__post" type="submit" [disabled]="isDisabled">Поделиться</button>
+    <button class="submit__post btn-style" type="submit" [disabled]="isDisabled"><fa-icon [icon]="faPaperPlane"></fa-icon></button>
   </form>
 </div>
 

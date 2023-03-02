@@ -39,17 +39,7 @@ export class LoginServiceService {
   register(registerInfo: IRegister): Observable<any> {
     return this.http
       .post<IToken>(`${this.apiUrl}/auth/registration`, registerInfo)
-      .pipe(
-        tap((resp) => {
-          const logInfo: any = resp;
-          window.localStorage.setItem(
-            'RSClone-socnetwork',
-            JSON.stringify(logInfo)
-          );
-          window.location.assign(`/users/${logInfo._id}`);
-        }),
-        catchError(this.errorHandler.bind(this))
-      );
+        .pipe(catchError(this.handleError));
   }
 
   getYourPage(id: string, token: string): Observable<IUser> {
@@ -89,7 +79,6 @@ export class LoginServiceService {
 
   private errorHandler(error: HttpErrorResponse) {
     this.errorService.handle(error.message);
-    console.log('Error occuerd!!!');
     return throwError(() => error.message);
   }
 

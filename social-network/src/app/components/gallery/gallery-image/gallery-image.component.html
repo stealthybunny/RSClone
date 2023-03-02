@@ -7,7 +7,9 @@
     (click)="deleteEvent(); isDisabled=true"
     [disabled]="isDisabled"
     *ngIf="isSameId"
-    >delete</button>
+    >
+    <fa-icon [icon]="faTrash"></fa-icon>
+  </button>
     <div class="constrols__date">
       {{image.date | date: 'h:mm a MMMM d'}}
     </div>

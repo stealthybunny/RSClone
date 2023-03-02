@@ -19,7 +19,6 @@ export class SseService {
 
         this.eventSource.onmessage = (event) => {
           this._zone.run(() => {
-            console.log('test');
             observer.next(event);
           });
         };

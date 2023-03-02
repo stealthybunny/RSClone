@@ -9,6 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { IImage } from 'src/app/models/types';
+import { faCoffee, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-gallery-image',
@@ -24,10 +25,11 @@ export class GalleryImageComponent implements OnInit {
   @Output() delete = new EventEmitter<string>();
   isDisabled = false;
   apiUrl = environment.apiUrl;
+  faCoffee = faCoffee;
+  faTrash = faTrash;
   constructor() {}
 
   ngOnInit(): void {
-    console.log('персесборка');
   }
 
   getImageLink(image: IImage) {
@@ -38,11 +40,9 @@ export class GalleryImageComponent implements OnInit {
 
   close(status: boolean) {
     this.isOpen = status;
-    console.log(this.isOpen);
   }
 
   test() {
-    console.log('test');
   }
 
   deleteEvent() {
@@ -50,7 +50,6 @@ export class GalleryImageComponent implements OnInit {
   }
 
   getIndex() {
-    console.log(this.imgList.indexOf(this.image));
     return this.imgList.indexOf(this.image);
   }
 }

@@ -38,7 +38,6 @@ export class AsideComponent implements OnInit {
           if (this.unread?.sound) {
             this.audio.play();
           }
-          //console.log(JSON.parse(data.data));
         },
         error: (e) => {
           console.log(e);
@@ -48,7 +47,6 @@ export class AsideComponent implements OnInit {
     this.chatsService.getUnReadMassages().subscribe({
       next: (data) => {
         this.unread = data;
-        console.log(data);
       },
       error: (e) => {
         console.log(e);
